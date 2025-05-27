@@ -247,6 +247,32 @@ namespace NGMapping
             }
         }
         #endregion
+        public bool GetData(List<string> sql, out DataTable[] results)
+        {
+            results = new DataTable[sql.Count];
+
+            try
+            {
+                using var connection = new SQLiteConnection($"Data Source={DbPath};Version=3;");
+                connection.Open();
+
+                for (int i = 0; i < sql.Count; i++)
+                {
+                    results[i] = new DataTable();
+                    using var command = new SQLiteCommand(sql[i], connection);
+                    using var adapter = new SQLiteDataAdapter(command);
+                    adapter.Fill(results[i]);
+                }
+                return true; // 成功
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"データ取得中にエラーが発生しました: {ex.Message}");
+                return false; // 失敗
+            }
+        }
+
+
         #region method----InsertData(sql文でInsert)
         public bool InsertData(string query)
         {
@@ -263,6 +289,45 @@ namespace NGMapping
             catch (Exception ex)
             {
                 Console.WriteLine($"データ挿入中にエラーが発生しました: {ex.Message}");
+                return false; // 失敗
+            }
+        }
+        #endregion
+        #region method----Excute        
+        public bool Execute(List<string> sql)
+        {
+            using var connection = new SQLiteConnection($"Data Source={DbPath};Version=3;");
+            connection.Open();
+
+            using var transaction = connection.BeginTransaction(); // トランザクションを開始
+            try
+            {
+                using var command = new SQLiteCommand();
+                command.Connection=connection;
+                command.Transaction =  transaction;
+                // コマンド作成と実行
+                for (int i = 0; i < sql.Count; i++)
+                {
+                    command.CommandText = sql[i];
+                    command.ExecuteNonQuery();
+                }
+                transaction.Commit();// 成功時にトランザクションをコミット
+                return true; // 成功
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"クエリ実行中にエラーが発生しました: {ex.Message}");
+
+                // エラー時にトランザクションをロールバック
+                try
+                {
+                    transaction.Rollback();
+                }
+                catch (Exception rollbackEx)
+                {
+                    Console.WriteLine($"ロールバック処理中にエラーが発生しました: {rollbackEx.Message}");
+                }
+
                 return false; // 失敗
             }
         }

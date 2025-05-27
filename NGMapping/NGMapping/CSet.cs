@@ -321,11 +321,10 @@ namespace NGMapping
                     "T_Daicho",
                     [
                         new("ID", DataType.Integer, isNullable: false, isPrimaryKey: true, isAutoIncrement: true),
-                        new("SN", DataType.Text, isNullable: false, isPrimaryKey: true, isAutoIncrement: true),
+                        new("SN", DataType.Text, isNullable: false,maxLength:50),
                         new("TestDate", DataType.DateTime, isNullable: false),
                         new("SaveDateTime", DataType.DateTime, isNullable: false),
-                        new("Hinban", DataType.Text, isNullable: true),
-                        new("Board", DataType.Text, isNullable: true),
+                        new("Hinban", DataType.Text, isNullable: true,maxLength:50),
                         new("isDay", DataType.Boolean, isNullable: false)
                     ]
                 ),
@@ -334,7 +333,8 @@ namespace NGMapping
                     "T_Data",
                     [
                         new("ID", DataType.Integer, isNullable : false, isPrimaryKey : true, isAutoIncrement : true),
-                        new("DaichoID", DataType.Integer, isNullable: false),
+                        new("SN", DataType.Text, isNullable: false,maxLength:50),
+                        new("Board", DataType.Text, isNullable: true, maxLength : 5),
                         new("NgType", DataType.Integer, isNullable: false),
                         new("NgText", DataType.Text, isNullable: true),
                         new("X", DataType.Double, isNullable: false),

@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 
 namespace NGMapping
@@ -74,11 +75,13 @@ namespace NGMapping
                 SQLiteCon db = new(CSet.DbPath, CSet.DbTableCFG(), true);
             }
 
-                // PictureBoxのイベント設定
-                picBox_A.MouseClick += PictureBox_MouseClick;
+            // PictureBoxのイベント設定
+            picBox_A.MouseClick += PictureBox_MouseClick;
             picBox_B.MouseClick += PictureBox_MouseClick;
+            dtPicker_TestDate.Value = DateTime.Now.Date; // デフォルトで今日の日付を設定
 
             CSet.SetFormLocState(this);
+            
             Init();
         }
         #endregion
@@ -244,89 +247,147 @@ namespace NGMapping
         #region event-----品番コンボボックス選択
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // 画像を読み込む
+            setSN(true); // S/Nを設定
+        }
+        #endregion
+        private void DtPicker_TestDate_ValueChanged(object sender, EventArgs e)
+        {
+            setSN(true);
+        }
+
+        private void ra_Day_Click(object sender, EventArgs e)
+        {
+            setSN(true);
+        }
+        private void setSN(bool FLG_ReadSN_FromDB) 
+        {
+
+            NowSerial = "";
+
+            if (cb_Hinban.SelectedIndex < 0) return;
+            if(!ra_Day.Checked && !ra_Night.Checked) return;
+            DateTime dt = dtPicker_TestDate.Value.Date;
+            DateTime dtNow = DateTime.Now;
+            if (dt.Year < 2025 || dt > dtNow.Date) return; // 2025年以前や未来は処理しない
+
+            string hinban = cb_Hinban.Text;
+            int isDay = ra_Day.Checked ? 1 : 0; // 昼勤か夜勤かを判定
+            string DummySN = $"{cb_Hinban.Text}_{dt:yyyyMMdd}_{dtNow:HHmmss}";
+
+
             if (!LoadImageToPictureBox(out string mes))
             {
                 MessageBox.Show(mes);
             }
 
-            DispQRCode(1); // QRコードの表示
-        }
-        #endregion
-        private void DtPicker_TestDate_ValueChanged(object sender, EventArgs e)
-        {
-            if (cb_Hinban.SelectedIndex < 0) return; // 品番が選択されていない場合は処理を中止
-            int isDay = ra_Day.Checked ? 1 : 0; // 昼勤か夜勤かを判定
 
-            string hinban = cb_Hinban.Text;
-            DateTime dt = dtPicker_TestDate.Value.Date;
-            DateTime dtNow=DateTime.Now;
 
-            if (dt.Year < 2025 || dt> dtNow.Date) return; // 2025年以前や未来は処理しない
-
-            if(isQRead)//QRコード読み取りモードの場合
-            {
-                NowSerial = "";
-                if(isQRDisp) // QRコード表示
+            if (isQRead)//QRコード読み取りモードの場合
+            {                
+                if (isQRDisp) // QRコード表示
                 {
-                    string DummySN= $"{cb_Hinban.Text}_{dt:yyyyMMdd}_{dtNow:HHmmss}";
                     DispQRCode(DummySN); // QRコードの表示
                 }
             }
             else //紙から入力の場合
             {
-                //まず、検査日がdtで、品番がcb_Hinban.TextのS/NﾘｽﾄをDBから取得する
-                string sql = $"SELECT SN FROM T_Daicho WHERE TestDate = '{dt:yyyy-MM-dd}' AND Hinban = '{hinban.Replace("'", "''")}' AND isDay = {isDay} ORDER BY SaveDateTime DESC;";
-                db.GetData(sql, out DataTable dtSNList);
+                if (FLG_ReadSN_FromDB)
+                {
+                    //まず、検査日がdtで、品番がcb_Hinban.TextのS/NﾘｽﾄをDBから取得する
+                    //string sql = $"SELECT SN FROM T_Daicho WHERE TestDate = '{dt:yyyy-MM-dd}' AND Hinban = '{hinban.Replace("'", "''")}' AND isDay = {isDay} ORDER BY SaveDateTime DESC;";
 
-                listBox1.Items.Clear(); // ListBoxの内容をクリア
-                listBox1.Items.AddRange([.. dtSNList.Rows.Cast<DataRow>().Select(row => row.Field<string>("SN"))]);
+                    string sql = 
+                        $"SELECT DISTINCT SN " +
+                        $"FROM T_Daicho " +
+                        $"WHERE TestDate = '{dt:yyyy-MM-dd}' " +
+                        $"AND Hinban = '{hinban.Replace("'", "''")}' " +
+                        $"AND isDay = {isDay} " +
+                        $"ORDER BY SaveDateTime DESC;";
 
 
+                    db.GetData(sql, out DataTable dtSNList);
 
+                    listBox1.Items.Clear(); // ListBoxの内容をクリア
+                    listBox1.Items.AddRange([.. dtSNList.Rows.Cast<DataRow>().Select(row => row.Field<string>("SN"))]);
+                }
+                NowSerial = DummySN;
 
             }
-            CreateSN();
+
+            L_SN.Text = NowSerial; // ラベルに現在のシリアル番号を表示
+
+
         }
 
 
-        #region method----S/N生成
-        private string CreateSN() 
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cb_Hinban.SelectedIndex < 0) return ""; // 品番が選択されていない場合は空文字を返す
+            if (listBox1.SelectedIndex < 0) return; // 選択されていない場合は何もしない
 
-            string hinban = cb_Hinban.Text;
-
-            DateTime dt0 = dtPicker_TestDate.Value;
-            DateTime dt1 = DateTime.Now;
-
-            int year = dt0.Year;
-            int month = dt0.Month;
-            int day = dt0.Day;
-            int hour = dt1.Hour;
-            int minute = dt1.Minute;
-            int second = dt1.Second;
+            string SN= listBox1.Text;
+            ReadSN(SN); // 選択されたS/Nを読み込む
 
 
 
-            return CreateSN( DateTime.Now); 
         }
-        private string CreateSN(DateTime dt)
+
+        private void ReadSN(string sn)
         {
-            string hinban = cb_Hinban.Text;
-            DateTime dt0 = dtPicker_TestDate.Value;
-            DateTime dt1 = DateTime.Now;
+            if (string.IsNullOrWhiteSpace(sn)) return; // 空文字列の場合は何もしない
+            List<string> sql = [];
+            string[] AB = ["A", "B"];
 
-            int year = dt0.Year;
-            int month = dt0.Month;
-            int day = dt0.Day;
-            int hour = dt1.Hour;
-            int minute = dt1.Minute;
-            int second = dt1.Second;
-            DateTime dateTime = new(year, month, day, hour, minute, second);
-            return "";
+            ImgGen[0].ClearPoints(); // 画像のポイントをクリア
+            ImgGen[1].ClearPoints(); // 画像のポイントをクリア
+
+
+            for (int i = 0; i < 2; i++)
+            {
+                sql.Add(
+                $"SELECT " +
+                $"  T1.TestDate AS TestDate, " +
+                $"  T1.Hinban AS Hinban, " +
+                $"  T2.Board AS Board, " +
+                $"  T2.NgType AS NgType, " +
+                $"  T2.NgText AS NgText, " +
+                $"  T2.X AS X, " +
+                $"  T2.Y AS Y " +
+                $"FROM " +
+                $"            T_Daicho T1 " +
+                $"  LEFT JOIN T_Data   T2 ON T2.SN = T1.SN " +
+                $"WHERE " +
+                $"  T1.SN = '{sn}' " +
+                $"  AND T2.Board='{AB[i]}';");
+            }
+
+            db.GetData(sql, out DataTable[] dts);
+
+
+            for (int i = 0; i < 2; i++)
+            {
+                ImgGen[i].ClearPoints(); // 画像のポイントをクリア
+
+                if (dts[i].Rows.Count == 0) continue; // データがない場合はスキップ
+                foreach (DataRow ro in dts[i].Rows)
+                {
+
+                    float x = (float)ro.Field<double>("X");
+                    float y = (float)ro.Field<double>("Y");
+                    int typ= (int)ro.Field<long>("NgType");
+                    string txt = ro.Field<string>("NgText");
+
+                    NgCounter ngCounter = new NgCounter(x, y, typ, txt);
+                    ImgGen[i].addPoint(ngCounter); // 画像にポイントを追加
+                }
+            }
+
+            // QRコードのテキストを設定
+            NowSerial = sn;
+            L_SN.Text = sn;
+            // QRコードを表示
+            DispQRCode(sn);
         }
-        #endregion
 
         private void DispQRCode(string txt) 
         {
@@ -381,7 +442,7 @@ namespace NGMapping
         #region method----画像読み込み
         private bool LoadImageToPictureBox(out string mes)
         {
-            if (cb_Hinban.SelectedIndex < 0) {mes= "品番が選択されていません"; return false; }
+            
 
             string Hinban = cb_Hinban.Text;
             string appFolderPath = Application.StartupPath;// アプリケーション自身のフォルダのパスを取得
@@ -606,34 +667,43 @@ namespace NGMapping
                 return;
             }
 
+            string mkDate = dtPicker_TestDate.Value.ToString("yyyy-MM-dd");
+            string svDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            string hinban = cb_Hinban.Text;
+            int isDay = ra_Day.Checked ? 1 : 0;
+
+
+            //現在のデータを削除する
+            List<string> SqlList0 =
+                [
+                $"DELETE FROM T_Daicho WHERE SN='{NowSerial}';",
+                $"DELETE FROM T_Data WHERE SN='{NowSerial}';",
+                ];
+            db.Execute(SqlList0);
+
+            List<string> SqlList = 
+                [
+                $"INSERT INTO T_Daicho (SN,TestDate, SaveDateTime,Hinban,isDay) VALUES ('{NowSerial}','{mkDate}', '{svDate}','{hinban}',{isDay});"
+                ];
+
+            string[] board =["A", "B"];
 
             for (int i = 0; i < 2; i++)
             {
-                string mkDate = dtPicker_TestDate.Value.ToString("yyyy-MM-dd");
-                string svDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                string hinban = cb_Hinban.Text;
-                string board = i == 0 ? "A" : "B";
-                int isDay = ra_Day.Checked ? 1 : 0;
-
-
-                string sql = $"INSERT INTO T_Daicho (MakeDate, SaveDateTime,Hinban,Board,isDay) VALUES ('{mkDate}', '{svDate}','{hinban}','{board}',{isDay});";
-
-                if (!db.InsertDataAndGetId(sql,out int ID))
-                {
-                    MessageBox.Show("データ挿入失敗");
-                    return;
-                }
-
 
                 foreach (var item in ImgGen[i].NgPoints)
                 {
                     int areaNo = GetArea(item.XYPercent, i);
-
-                    sql = $"INSERT INTO T_Data (DaichoID, NgType,NgText,X,Y,Area) VALUES ({ID}, {item.NgType},'{item.NgText}',{item.XPercent},{item.YPercent},{areaNo});";
-
-                    db.InsertData(sql);
+                    SqlList.Add($"INSERT INTO T_Data (SN,Board, NgType,NgText,X,Y,Area) VALUES ('{NowSerial}','{board[i]}', {item.NgType},'{item.NgText}',{item.XPercent},{item.YPercent},{areaNo});");
                 }
             }
+
+            db.Execute(SqlList);
+
+            
+            if(!listBox1.Items.Contains(NowSerial))listBox1.Items.Add(NowSerial); // ListBoxの内容をクリア
+            setSN(false); // S/Nを更新
+
             ImgGen[0].ClearPoints();
             ImgGen[1].ClearPoints();
             CountUpdate();
@@ -772,34 +842,36 @@ namespace NGMapping
             string[] hinban = ["6365590", "6365590", "6365590", "6365590", "6365630", "6365630", "6365630", "6365630"];
             string[] board = ["A", "B", "A", "B", "A", "B", "A", "B"];
             int[] isDay = [1, 1, 0, 0, 1, 1, 0, 0];
-            DataTable[] dt = new DataTable[8];
+            //DataTable[] dt = new DataTable[8];
 
+            List<string> sqlList =[];
 
-            for (int i = 0; i < 8; i++) 
+            for (int i = 0; i < 8; i++)
             {
 
                 string sql =
                      "SELECT " +
-                     "   d.Area, " +
-                     "   d.NgType, " +
+                     "   T2.Area, " +
+                     "   T2.NgType, " +
                      "   COUNT(*) AS NgTypeCount " +
                      "FROM " +
-                     "              T_Daicho daicho " +
-                     "   INNER JOIN T_Data d ON daicho.ID = d.DaichoID " +
+                     "              T_Daicho T1 " +
+                     "   INNER JOIN T_Data   T2 ON T2.SN = T1.SN " +
                      "WHERE " +
-                    $"       daicho.MakeDate = '{mkDate}' " +
-                    $"   AND daicho.Hinban = '{hinban[i]}' " +
-                    $"   AND daicho.Board = '{board[i]}' " +
-                    $"   AND daicho.isDay = {isDay[i]} " +
+                    $"       T1.TestDate = '{mkDate}' " +
+                    $"   AND T1.Hinban = '{hinban[i]}' " +
+                    $"   AND T2.Board = '{board[i]}' " +
+                    $"   AND T1.isDay = {isDay[i]} " +
                      "GROUP BY " +
-                     "   d.Area, " +
-                     "   d.NgType; ";
+                     "   T2.Area, " +
+                     "   T2.NgType; ";
+                sqlList.Add(sql);
 
-                if (!db.GetData(sql, out dt[i]))
-                {
-                    MessageBox.Show("データ取得失敗");
-                    return;
-                }
+            }
+            if (!db.GetData(sqlList, out DataTable[] dt))
+            {
+                MessageBox.Show("データ取得失敗");
+                return;
             }
             string[] sName1 = ["6365590D(ALL)", "6365630D(ALL)", "6365590D", "6365590N", "6365630D", "6365630N"];
             string[] sName2 = ["6365590D", "6365590N", "6365630D", "6365630N"];
@@ -809,10 +881,10 @@ namespace NGMapping
 
             List<string> worksheetNames = [];
 
-            foreach (var worksheet in workbook.Worksheets)
-            {
-                worksheetNames.Add(worksheet.Name);
-            }
+            //foreach (var worksheet in workbook.Worksheets)
+            //{
+            //    worksheetNames.Add(worksheet.Name);
+            //}
 
 
             // 指定されたシートを選択
@@ -903,11 +975,6 @@ namespace NGMapping
                 mainScreen.Bounds.X + (mainScreen.Bounds.Width - frm.Width) / 2,
                 mainScreen.Bounds.Y + (mainScreen.Bounds.Height - frm.Height) / 2);
 
-
-
-
-
-
             frm.ShowDialog();
         }
 
@@ -917,5 +984,9 @@ namespace NGMapping
         }
 
         
+
+
+
+
     }
 }
