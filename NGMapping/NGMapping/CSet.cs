@@ -322,7 +322,7 @@ namespace NGMapping
                     [
                         new("ID", DataType.Integer, isNullable: false, isPrimaryKey: true, isAutoIncrement: true),
                         new("SN", DataType.Text, isNullable: false, isPrimaryKey: true, isAutoIncrement: true),
-                        new("MakeDate", DataType.DateTime, isNullable: false),
+                        new("TestDate", DataType.DateTime, isNullable: false),
                         new("SaveDateTime", DataType.DateTime, isNullable: false),
                         new("Hinban", DataType.Text, isNullable: true),
                         new("Board", DataType.Text, isNullable: true),

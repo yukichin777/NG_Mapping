@@ -35,9 +35,13 @@ namespace NGMapping
         readonly Label[] La_NgItems;
         readonly List<string> NgTexts = ["はんだボール", "はんだ屑", "炭化物", "ヒュミシール付着", "ヒュミシール未塗布", "浮き", "破損", "リードカット異常"];
 
-
+        bool isQRDisp = false; // QRコードの表示フラグ
+        bool isQRead = false; // QRコード読み取りフラグ
         string NowSerial = ""; // シリアル番号
 
+        SQLiteCon db;
+
+        #region constructor
         public MainForm()
         {
             InitializeComponent();
@@ -52,42 +56,46 @@ namespace NGMapping
             Ra_NgItems = [radioButton1, radioButton2, radioButton3, radioButton4, radioButton5, radioButton6, radioButton7, radioButton8, radioButton9];
             La_NgItems = [L_Color1, L_Color2, L_Color3, L_Color4, L_Color5, L_Color6, L_Color7, L_Color8];
         }
+        #endregion
+        #region event-----Formロード
         private void MainForm_Load(object sender, EventArgs e)
         {
-
-
             if (string.IsNullOrWhiteSpace(CSet.DbPath) || !File.Exists(CSet.DbPath))
             {
                 string myDocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                 string dbfolder = Path.Combine(myDocumentsPath, "NgMapping");
                 Directory.CreateDirectory(dbfolder);
                 string dbPath = Path.Combine(dbfolder, "NgMapping.sqlite");
-                SQLiteCon sqliteCon = new(dbPath, CSet.DbTableCFG(), admin: true);
+                db = new(dbPath, CSet.DbTableCFG(), admin: true);
                 CSet.DbPath = dbPath;
             }
+            else
+            {
+                SQLiteCon db = new(CSet.DbPath, CSet.DbTableCFG(), true);
+            }
 
-            // PictureBoxのイベント設定
-            picBox_A.MouseClick += PictureBox_MouseClick;
+                // PictureBoxのイベント設定
+                picBox_A.MouseClick += PictureBox_MouseClick;
             picBox_B.MouseClick += PictureBox_MouseClick;
 
             CSet.SetFormLocState(this);
             Init();
         }
-
-        bool isQRDisp = false; // QRコードの表示フラグ
-        bool isQRead = false; // QRコード読み取りフラグ
-
+        #endregion
+        #region method-----初期化
         private void Init()
         {
+
+            db = new(CSet.DbPath, CSet.DbTableCFG(), false);
             ColorInit(); // 色の初期化とコンテキストメニューの作成
 
             isQRead = CSet.isQRCodeReadMode;
             isQRDisp = isQRead && CSet.FLG_DispDummyQR;
-
-
             menu_Save.Enabled = !isQRead; // QRコード読み取りモードでは保存ボタンを無効化
 
         }
+        #endregion
+        #region method-----色初期化
         private void ColorInit()
         {
             Color[] colors = CSet.NgColors;
@@ -126,9 +134,9 @@ namespace NGMapping
                 }
             }
         }
+        #endregion
 
-
-        
+        #region event-----コンテキストメニューのクリックイベント
         private void MenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem menuItem = sender as ToolStripMenuItem;
@@ -138,7 +146,10 @@ namespace NGMapping
 
             if (lastRightClickPoint.IsEmpty || !cachedImageRect.Contains(lastRightClickPoint)) return;
             ImgGen[pBoxInd].addPoint(lastRightClickPoint, ngType, ngText);
-        }        
+            CountUpdate(); // カウントを更新
+        }
+        #endregion
+        #region method-----NGカウント更新
         private void CountUpdate()
         {
             int[] NgCountA = ImgGen[0].NgCount;
@@ -155,7 +166,9 @@ namespace NGMapping
             LCountB[8].Value = NgCountB.Sum();
             LCount[8].Value = NgCountA.Sum() + NgCountB.Sum();
 
-        }        
+        }
+        #endregion
+        #region event-----PictureBoxのクリックイベント
         private void PictureBox_MouseClick(object sender, MouseEventArgs e)
         {
             if (sender is not PictureBox pBox) return; // nullチェック
@@ -190,8 +203,9 @@ namespace NGMapping
                 }
             }
             CountUpdate();
-
         }
+        #endregion
+        #region method-----PictureBox内のImage部分のRectangleを返す関数
         private Rectangle GetImageDisplayRectangle(PictureBox pb)
         {
             if (pb.Image == null) return Rectangle.Empty;
@@ -216,6 +230,8 @@ namespace NGMapping
 
             return new Rectangle(x, y, width, height);
         }
+        #endregion
+        #region method-----選択されているNG種類を取得する関数
         private int GetSelectedNGType()
         {
             for (int i = 0;i<Ra_NgItems.Length;i++)
@@ -224,7 +240,7 @@ namespace NGMapping
             }
             return -1;
         }
-
+        #endregion
         #region event-----品番コンボボックス選択
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -237,6 +253,43 @@ namespace NGMapping
             DispQRCode(1); // QRコードの表示
         }
         #endregion
+        private void DtPicker_TestDate_ValueChanged(object sender, EventArgs e)
+        {
+            if (cb_Hinban.SelectedIndex < 0) return; // 品番が選択されていない場合は処理を中止
+            int isDay = ra_Day.Checked ? 1 : 0; // 昼勤か夜勤かを判定
+
+            string hinban = cb_Hinban.Text;
+            DateTime dt = dtPicker_TestDate.Value.Date;
+            DateTime dtNow=DateTime.Now;
+
+            if (dt.Year < 2025 || dt> dtNow.Date) return; // 2025年以前や未来は処理しない
+
+            if(isQRead)//QRコード読み取りモードの場合
+            {
+                NowSerial = "";
+                if(isQRDisp) // QRコード表示
+                {
+                    string DummySN= $"{cb_Hinban.Text}_{dt:yyyyMMdd}_{dtNow:HHmmss}";
+                    DispQRCode(DummySN); // QRコードの表示
+                }
+            }
+            else //紙から入力の場合
+            {
+                //まず、検査日がdtで、品番がcb_Hinban.TextのS/NﾘｽﾄをDBから取得する
+                string sql = $"SELECT SN FROM T_Daicho WHERE TestDate = '{dt:yyyy-MM-dd}' AND Hinban = '{hinban.Replace("'", "''")}' AND isDay = {isDay} ORDER BY SaveDateTime DESC;";
+                db.GetData(sql, out DataTable dtSNList);
+
+                listBox1.Items.Clear(); // ListBoxの内容をクリア
+                listBox1.Items.AddRange([.. dtSNList.Rows.Cast<DataRow>().Select(row => row.Field<string>("SN"))]);
+
+
+
+
+            }
+            CreateSN();
+        }
+
+
         #region method----S/N生成
         private string CreateSN() 
         {
@@ -275,6 +328,13 @@ namespace NGMapping
         }
         #endregion
 
+        private void DispQRCode(string txt) 
+        {
+            CM.MakeQRImage(txt, out Image QrImage);
+            pictureBox2.Image = QrImage;
+            L_SN.Text = txt;
+
+        }
         string[] QrCodeText = ["", ""];
         private void DispQRCode(int ind)
         {
@@ -318,8 +378,6 @@ namespace NGMapping
 
             }
         }
-
-
         #region method----画像読み込み
         private bool LoadImageToPictureBox(out string mes)
         {
@@ -533,7 +591,7 @@ namespace NGMapping
                 [0, 100, 0, 100, xy_B[4],xy_B[5] ,xy_B[6], xy_B[7]],
             ];
 
-            SQLiteCon db = new (CSet.DbPath, CSet.DbTableCFG(), false);
+            //SQLiteCon db = new (CSet.DbPath, CSet.DbTableCFG(), false);
             if (!db.IsConnected)
             {
                 MessageBox.Show("DB接続失敗");
@@ -688,13 +746,6 @@ namespace NGMapping
 
             return re ;
         }
-
-    
-
-
-
-        
-        
 
         private void B_Excel_Click(object sender, EventArgs e)
         {
@@ -865,22 +916,6 @@ namespace NGMapping
             CSet.SaveFormLocState(this);
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DtPicker_TestDate_ValueChanged(object sender, EventArgs e)
-        {
-            if(cb_Hinban.SelectedIndex < 0) return; // 品番が選択されていない場合は処理を中止
-
-            
-            CreateSN();
-        }
+        
     }
 }
