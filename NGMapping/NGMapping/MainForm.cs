@@ -1,5 +1,4 @@
 ﻿using ClosedXML.Excel;
-using DocumentFormat.OpenXml.Office.MetaAttributes;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,8 +6,10 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
+using System.Windows.Media.Media3D;
 
 namespace NGMapping
 {
@@ -35,13 +36,22 @@ namespace NGMapping
 
         readonly RadioButton[] Ra_NgItems;
         readonly Label[] La_NgItems;
-        readonly List<string> NgTexts = ["はんだボール", "はんだ屑", "炭化物", "ヒュミシール付着", "ヒュミシール未塗布", "浮き", "破損", "リードカット異常"];
+        readonly List<string> NgTexts_jp = ["はんだボール",  "はんだ屑",         "炭化物",    "ヒュミシール付着",  "ヒュミシール未塗布",      "浮き",                      "破損",   "リードカット異常"];
+        readonly List<string> NgTexts_en = ["Solder ball",   "Solder residue",   "Carbide",   "Humiseal adhesion",  "No Humiseal adhesion",   "Lift or Floating",          "Damage", "Lead cutting abnormality"];
+        readonly List<string> NgTexts_pt = ["Bola de solda", "Resíduo de solda", "Carboneto", "Adesão de Humiseal", "Sem adesão de Humiseal", "Levantamento ou Flutuação", "Danos",  "Anormalidade no corte de terminal"];
+        readonly List<string> etcTexts_jp = ["異物","汚れ","フラックス"];
+        readonly List<string> etcTexts_en = [ "Foreign material", "Dirt/Contamination", "Flux"];
+        readonly List<string> etcTexts_pt = [ "Material estranho", "Sujeira/Contaminação", "Fluxo"];
+
 
         bool isQRDisp = false; // QRコードの表示フラグ
         bool isQRead = false; // QRコード読み取りフラグ
         string NowSerial = ""; // シリアル番号
 
         SQLiteCon db;
+
+
+
 
         #region constructor
         public MainForm()
@@ -82,9 +92,51 @@ namespace NGMapping
             dtPicker_TestDate.Value = DateTime.Now.Date; // デフォルトで今日の日付を設定
 
             CSet.SetFormLocState(this);
-            
+
+
+            toolStripComboBox1.ComboBox.SelectedIndexChanged += ComboBox_SelectedIndexChanged;
+
             Init();
         }
+
+        private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string lang = ((ComboBox)sender).SelectedItem.ToString();
+            List<string> ngtxt;
+            int wd=130;
+
+            switch (lang)
+            {
+                case "English":
+                    ngtxt = NgTexts_en;
+                    ngtxt.Add("Eraser"); // 英語のNGテキストを追加
+                    wd = 160;
+                    break;
+                case "Português":
+                    ngtxt = NgTexts_pt;
+                    ngtxt.Add("Borracha"); // ポルトガル語のNGテキストを追加
+                    wd = 160;
+                    break;
+                case "Japanease":
+                default:
+                    ngtxt = NgTexts_jp;
+                    ngtxt.Add("消しゴム"); // 日本語のNGテキストを追加
+                    ngtxt = NgTexts_jp; break;
+                    wd = 130;
+            }
+
+            for (int i = 0; i < Ra_NgItems.Length; i++)
+            {
+                Ra_NgItems[i].Text = ngtxt[i];
+                
+            }
+            //tableLayoutPanel2.ColumnStyles[5].SizeType = SizeType.Percent; // サイズを％で設定可能にする
+            tableLayoutPanel2.ColumnStyles[11].Width = wd;
+            tableLayoutPanel2.ColumnStyles[11].Width = wd;
+
+        }
+
+
         #endregion
         #region method-----初期化
         private void Init()
@@ -117,7 +169,7 @@ namespace NGMapping
             for (int i = 0; i < 8; i++)
             {
                 int ngType = i; // ローカル変数でNG種類を保存
-                ToolStripMenuItem menuItem = new(NgTexts[i]) { Tag = i };
+                ToolStripMenuItem menuItem = new(NgTexts_jp[i]) { Tag = i };
                 menuItem.Click += MenuItem_Click;
                 contextMenu.Items.Add(menuItem);
             }
@@ -195,7 +247,7 @@ namespace NGMapping
                         MessageBox.Show("NG種類を選択してください。");
                         return;
                     }
-                    ImgGen[pBoxInd].addPoint(e.Location, ngType, NgTexts[ngType]);
+                    ImgGen[pBoxInd].addPoint(e.Location, ngType, NgTexts_jp[ngType]);
                 }
             }
             else if (e.Button == MouseButtons.Right)
@@ -634,7 +686,7 @@ namespace NGMapping
 
         private void B_Setting_Click(object sender, EventArgs e)
         {
-            F_Setting frm = new(NgTexts);
+            F_Setting frm = new(NgTexts_jp);
             frm.ShowDialog();
             ColorInit();
         }
@@ -984,10 +1036,6 @@ namespace NGMapping
             CSet.SaveFormLocState(this);
         }
 
-        
-
-
-
-
+       
     }
 }
