@@ -1,4 +1,5 @@
 ﻿using ClosedXML.Excel;
+using DocumentFormat.OpenXml.Office.MetaAttributes;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -328,8 +329,6 @@ namespace NGMapping
             string SN= listBox1.Text;
             ReadSN(SN); // 選択されたS/Nを読み込む
 
-
-
         }
 
         private void ReadSN(string sn)
@@ -391,6 +390,8 @@ namespace NGMapping
 
         private void DispQRCode(string txt) 
         {
+            if (!isQRead || !isQRDisp) return;
+
             CM.MakeQRImage(txt, out Image QrImage);
             pictureBox2.Image = QrImage;
             L_SN.Text = txt;
