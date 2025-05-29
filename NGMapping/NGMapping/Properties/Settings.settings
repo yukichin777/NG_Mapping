@@ -38,5 +38,8 @@
     <Setting Name="FLG_DispQRCode" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="Language" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Japanease</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

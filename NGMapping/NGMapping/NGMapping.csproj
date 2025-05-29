@@ -55,12 +55,19 @@
     <Compile Include="F_Ana.Designer.cs">
       <DependentUpon>F_Ana.cs</DependentUpon>
     </Compile>
+    <Compile Include="f_Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="f_Login.Designer.cs">
+      <DependentUpon>f_Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="F_Setting.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="F_Setting.Designer.cs">
       <DependentUpon>F_Setting.cs</DependentUpon>
     </Compile>
+    <Compile Include="KeyboardHook.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +86,9 @@
     </Compile>
     <EmbeddedResource Include="F_Ana.resx">
       <DependentUpon>F_Ana.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="f_Login.resx">
+      <DependentUpon>f_Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F_Setting.resx">
       <DependentUpon>F_Setting.cs</DependentUpon>

@@ -94,61 +94,17 @@ namespace NGMapping
 
             CSet.SetFormLocState(this);
 
+            Init();
 
             toolStripComboBox1.ComboBox.SelectedIndexChanged += ComboBox_SelectedIndexChanged;
 
-            Init();
         }
 
         private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             string lang = ((ComboBox)sender).SelectedItem.ToString();
-            List<string> ngtxt;
-            int wd0 = 130;
-            int wd1 = 130;
-
-            switch (lang)
-            {
-                case "RomanAlphabet":
-                    ngtxt = NgTexts_rm;
-                    ngtxt.Add("Keshigomu"); // ポルトガル語のNGテキストを追加
-                    wd0 = 160;
-                    wd1 = 125;
-                    break;
-                case "English":
-                    ngtxt = NgTexts_en;
-                    ngtxt.Add("Eraser"); // 英語のNGテキストを追加
-                    wd0 = 175;
-                    wd1 = 190;
-                    break;
-                case "Português":
-                    ngtxt = NgTexts_pt;
-                    ngtxt.Add("Borracha"); // ポルトガル語のNGテキストを追加
-                    wd0 = 195;
-                    wd1 = 210;
-                    break;
-
-                case "Japanease":
-                default:
-                    ngtxt = NgTexts_jp;
-                    ngtxt.Add("消しゴム"); // 日本語のNGテキストを追加
-                    ngtxt = NgTexts_jp;
-                    wd0 = 130;
-                    wd1 = 115;
-                    break;
-            }
-
-            for (int i = 0; i < Ra_NgItems.Length; i++)
-            {
-                Ra_NgItems[i].Text = ngtxt[i];
-                
-            }
-            //tableLayoutPanel2.ColumnStyles[5].SizeType = SizeType.Percent; // サイズを％で設定可能にする
-            tableLayoutPanel2.ColumnStyles[5].Width = wd0;
-            tableLayoutPanel2.ColumnStyles[11].Width = wd1;
-            numericUpDown0.Value = wd0;
-            numericUpDown1.Value = wd1;
-
+            SetLanguage(lang); // 言語設定を更新
+            CSet.Language = lang; // 言語設定を保存
         }
 
 
@@ -159,6 +115,9 @@ namespace NGMapping
 
             db = new(CSet.DbPath, CSet.DbTableCFG(), false);
             ColorInit(); // 色の初期化とコンテキストメニューの作成
+            toolStripComboBox1.ComboBox.Text = CSet.Language;
+            SetLanguage(CSet.Language); // 言語設定を適用
+
 
             isQRead = CSet.isQRCodeReadMode;
             isQRDisp = isQRead && CSet.FLG_DispDummyQR;
@@ -206,7 +165,95 @@ namespace NGMapping
             }
         }
         #endregion
+        #region method-----言語設定
+        private void SetLanguage(string lang)
+        {
+           
+            List<string> ngtxt;
+            int wd0 = 130;
+            int wd1 = 130;
 
+            switch (lang)
+            {
+                case "RomanAlphabet":
+                    ngtxt = NgTexts_rm;
+                    ngtxt.Add("Keshigomu"); // ポルトガル語のNGテキストを追加
+                    wd0 = 160;
+                    wd1 = 125;
+                    label3.Text = "Kensabi";
+                    label4.Text = "Kiban";
+                    ra_Day.Text = "Chukin";
+                    ra_Night.Text = "Yakin";
+                    L_Operator.Text = "Kensasya";
+                    label10.Text = "Kei";
+                    label44.Text = "Kei";
+                    L_A.Text = "A_Men";
+                    L_B.Text = "B_Men";
+                    button3.Text = "Hanten";
+
+                    break;
+                case "English":
+                    ngtxt = NgTexts_en;
+                    ngtxt.Add("Eraser"); // 英語のNGテキストを追加
+                    wd0 = 175;
+                    wd1 = 190;
+                    label3.Text = "Test Date";    // 検査日
+                    label4.Text = "Board";      // 対象基盤
+                    ra_Day.Text = "Day Shift";         // 昼勤
+                    ra_Night.Text = "Night Shift";     // 夜勤
+                    L_Operator.Text = "Operator";     // 検査者
+                    label10.Text = "Sum";            // 計
+                    label44.Text = "Sum";            // 計
+                    L_A.Text = "Side A";               // A面
+                    L_B.Text = "Side B";               // B面
+                    button3.Text = "Toggle";           // 反転
+                    break;
+                case "Português":
+                    ngtxt = NgTexts_pt;
+                    ngtxt.Add("Borracha"); // ポルトガル語のNGテキストを追加
+                    wd0 = 195;
+                    wd1 = 210;
+                    label3.Text = "Data de Teste";       // 検査日 (Test Date)
+                    label4.Text = "Placa";          // 対象基盤
+                    ra_Day.Text = "Turno Diurno";        // 昼勤
+                    ra_Night.Text = "Turno Noturno";     // 夜勤
+                    L_Operator.Text = "Operador";        // 検査者
+                    label10.Text = "Soma";              // 計
+                    label44.Text = "Soma";              // 計
+                    L_A.Text = "Lado A";                 // A面
+                    L_B.Text = "Lado B";                 // B面
+                    button3.Text = "Inverter";
+                    break;
+                case "Japanease":
+                default:
+                    label3.Text = "検査日";
+                    label4.Text = "対象基盤";
+                    ra_Day.Text = "昼勤";
+                    ra_Night.Text = "夜勤";
+                    L_Operator.Text = "検査者";
+                    label10.Text = "計";
+                    label44.Text = "計";
+                    L_A.Text = "A面";
+                    L_B.Text = "B面";
+                    button3.Text = "反転";
+                    ngtxt = NgTexts_jp;
+                    ngtxt.Add("消しゴム"); // 日本語のNGテキストを追加
+                    ngtxt = NgTexts_jp;
+                    wd0 = 130;
+                    wd1 = 115;
+                    break;
+            }
+
+            for (int i = 0; i < Ra_NgItems.Length; i++)
+            {
+                Ra_NgItems[i].Text = ngtxt[i];
+
+            }
+            //tableLayoutPanel2.ColumnStyles[5].SizeType = SizeType.Percent; // サイズを％で設定可能にする
+            tableLayoutPanel2.ColumnStyles[5].Width = wd0;
+            tableLayoutPanel2.ColumnStyles[11].Width = wd1;
+        }
+        #endregion
         #region event-----コンテキストメニューのクリックイベント
         private void MenuItem_Click(object sender, EventArgs e)
         {
@@ -370,7 +417,7 @@ namespace NGMapping
                         $"WHERE TestDate = '{dt:yyyy-MM-dd}' " +
                         $"AND Hinban = '{hinban.Replace("'", "''")}' " +
                         $"AND isDay = {isDay} " +
-                        $"ORDER BY SaveDateTime DESC;";
+                        $"ORDER BY SaveDateTime;";
 
 
                     db.GetData(sql, out DataTable dtSNList);
@@ -739,6 +786,8 @@ namespace NGMapping
             string svDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             string hinban = cb_Hinban.Text;
             int isDay = ra_Day.Checked ? 1 : 0;
+            string ope = t_operator.Text;
+            if (string.IsNullOrEmpty(ope)) ope = "unknown";
 
 
             //現在のデータを削除する
@@ -751,7 +800,7 @@ namespace NGMapping
 
             List<string> SqlList = 
                 [
-                $"INSERT INTO T_Daicho (SN,TestDate, SaveDateTime,Hinban,isDay) VALUES ('{NowSerial}','{mkDate}', '{svDate}','{hinban}',{isDay});"
+                $"INSERT INTO T_Daicho (SN,TestDate, SaveDateTime,Hinban,isDay,Operator) VALUES ('{NowSerial}','{mkDate}', '{svDate}','{hinban}',{isDay},'{ope}');"
                 ];
 
             string[] board =["A", "B"];
@@ -1051,16 +1100,7 @@ namespace NGMapping
             CSet.SaveFormLocState(this);
         }
 
-        private void NumericUpDown0_ValueChanged(object sender, EventArgs e)
-        {
-            int wd = (int)numericUpDown0.Value;
-            tableLayoutPanel2.ColumnStyles[5].Width = wd;
-        }
-        private void NumericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-            int wd = (int)numericUpDown1.Value;
-            tableLayoutPanel2.ColumnStyles[11].Width = wd;
-        }
+       
 
     }
 }

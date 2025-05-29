@@ -91,13 +91,15 @@ namespace NGMapping
             }
         }
 
-        //public static Point WindowLocation
-        //{
-        //    get { return Properties.Settings.Default.WindowLocation;  }
-        //    set { Properties.Settings.Default.WindowLocation = value; 
-        //    Properties.Settings.Default.Save();
-        //    }
-        //}
+        public static string Language
+        {
+            get { return Properties.Settings.Default.Language;  }
+            set
+            {
+                Properties.Settings.Default.Language = value;
+                Properties.Settings.Default.Save();
+            }
+        }
         //public static Size WindowSize
         //{
         //    get { return Properties.Settings.Default.WindowSize; }
@@ -322,6 +324,7 @@ namespace NGMapping
                     [
                         new("ID", DataType.Integer, isNullable: false, isPrimaryKey: true, isAutoIncrement: true),
                         new("SN", DataType.Text, isNullable: false,maxLength:50),
+                        new("Operator", DataType.Text, isNullable: false,maxLength:50),
                         new("TestDate", DataType.DateTime, isNullable: false),
                         new("SaveDateTime", DataType.DateTime, isNullable: false),
                         new("Hinban", DataType.Text, isNullable: true,maxLength:50),
