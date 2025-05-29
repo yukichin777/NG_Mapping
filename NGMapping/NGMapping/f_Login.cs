@@ -15,7 +15,9 @@ namespace NGMapping
     public partial class f_Login : Form
     {
 
-        KeyboardHook _hook = new();
+
+        private GlobalKeyboardHook _hook;
+
         bool Flg_ready = false;
         string buf = "";
         int Flg_KeyDispose = 1;//1を指定すると、ﾌｯｸしたｷｰを破棄する。
@@ -24,16 +26,35 @@ namespace NGMapping
         public f_Login()
         {
             InitializeComponent();
+            _hook = new GlobalKeyboardHook
+            {
+                SubmitKeyMode = SubmitKey.CRLF
+            };
+
+            _hook.CharReceived += (s, c) => Console.WriteLine($"Char: {c}");
+            _hook.InputSubmitted += (s, e) => Console.WriteLine($"Submitted: [{e.InputText}]");
+
         }
 
         private void f_Login_Load(object sender, EventArgs e)
         {
-            
-            _hook.OnKeyDown += _hook_OnKeyDown;
+
+            _hook.CharReceived += _hook_CharReceived;
+            _hook.InputSubmitted += _hook_InputSubmitted;
 
             //_hook.OnKeyUp += _hook_OnKeyUp;
 
             _hook.Hook();
+        }
+
+        private void _hook_InputSubmitted(object sender, KeyInputEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void _hook_CharReceived(object sender, char e)
+        {
+            throw new NotImplementedException();
         }
 
         private void _hook_OnKeyUp(object sender, KeyboardHookEventArgs e)
