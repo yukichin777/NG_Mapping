@@ -36,10 +36,11 @@ namespace NGMapping
 
         readonly RadioButton[] Ra_NgItems;
         readonly Label[] La_NgItems;
-        readonly List<string> NgTexts_jp = ["はんだボール",  "はんだ屑",         "炭化物",    "ヒュミシール付着",  "ヒュミシール未塗布",      "浮き",                      "破損",   "リードカット異常"];
-        readonly List<string> NgTexts_en = ["Solder ball",   "Solder residue",   "Carbide",   "Humiseal adhesion",  "No Humiseal adhesion",   "Lift or Floating",          "Damage", "Lead cutting abnormality"];
-        readonly List<string> NgTexts_pt = ["Bola de solda", "Resíduo de solda", "Carboneto", "Adesão de Humiseal", "Sem adesão de Humiseal", "Levantamento ou Flutuação", "Danos",  "Anormalidade no corte de terminal"];
-        readonly List<string> etcTexts_jp = ["異物","汚れ","フラックス"];
+        readonly List<string> NgTexts_jp = ["はんだボール", "はんだ屑", "炭化物", "ヒュミシール付着", "ヒュミシール未塗布", "浮き", "破損", "リードカット異常"];
+        readonly List<string> NgTexts_en = ["Solder ball", "Solder residue", "Carbide", "Humiseal adhesion", "No Humiseal adhesion", "Lift or Floating", "Damage", "Lead cutting abnormality"];
+        readonly List<string> NgTexts_pt = ["Bola de solda", "Resíduo de solda", "Carboneto", "Adesão de Humiseal", "Sem adesão de Humiseal", "Levantamento ou Flutuação", "Danos", "Anormalidade no corte de terminal"];
+        readonly List<string> NgTexts_rm = ["handa booru", "handa kotsubu", "tankabutsu", "hyumishiiru fuchaku", "hyumishiiru mitofu", "uki", "hason", "riido katto ijou"];
+        readonly List<string> etcTexts_jp = ["異物", "汚れ", "フラックス"];
         readonly List<string> etcTexts_en = [ "Foreign material", "Dirt/Contamination", "Flux"];
         readonly List<string> etcTexts_pt = [ "Material estranho", "Sujeira/Contaminação", "Fluxo"];
 
@@ -103,26 +104,38 @@ namespace NGMapping
         {
             string lang = ((ComboBox)sender).SelectedItem.ToString();
             List<string> ngtxt;
-            int wd=130;
+            int wd0 = 130;
+            int wd1 = 130;
 
             switch (lang)
             {
+                case "RomanAlphabet":
+                    ngtxt = NgTexts_rm;
+                    ngtxt.Add("Keshigomu"); // ポルトガル語のNGテキストを追加
+                    wd0 = 160;
+                    wd1 = 125;
+                    break;
                 case "English":
                     ngtxt = NgTexts_en;
                     ngtxt.Add("Eraser"); // 英語のNGテキストを追加
-                    wd = 160;
+                    wd0 = 175;
+                    wd1 = 190;
                     break;
                 case "Português":
                     ngtxt = NgTexts_pt;
                     ngtxt.Add("Borracha"); // ポルトガル語のNGテキストを追加
-                    wd = 160;
+                    wd0 = 195;
+                    wd1 = 210;
                     break;
+
                 case "Japanease":
                 default:
                     ngtxt = NgTexts_jp;
                     ngtxt.Add("消しゴム"); // 日本語のNGテキストを追加
-                    ngtxt = NgTexts_jp; break;
-                    wd = 130;
+                    ngtxt = NgTexts_jp;
+                    wd0 = 130;
+                    wd1 = 115;
+                    break;
             }
 
             for (int i = 0; i < Ra_NgItems.Length; i++)
@@ -131,8 +144,10 @@ namespace NGMapping
                 
             }
             //tableLayoutPanel2.ColumnStyles[5].SizeType = SizeType.Percent; // サイズを％で設定可能にする
-            tableLayoutPanel2.ColumnStyles[11].Width = wd;
-            tableLayoutPanel2.ColumnStyles[11].Width = wd;
+            tableLayoutPanel2.ColumnStyles[5].Width = wd0;
+            tableLayoutPanel2.ColumnStyles[11].Width = wd1;
+            numericUpDown0.Value = wd0;
+            numericUpDown1.Value = wd1;
 
         }
 
@@ -1036,6 +1051,16 @@ namespace NGMapping
             CSet.SaveFormLocState(this);
         }
 
-       
+        private void NumericUpDown0_ValueChanged(object sender, EventArgs e)
+        {
+            int wd = (int)numericUpDown0.Value;
+            tableLayoutPanel2.ColumnStyles[5].Width = wd;
+        }
+        private void NumericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            int wd = (int)numericUpDown1.Value;
+            tableLayoutPanel2.ColumnStyles[11].Width = wd;
+        }
+
     }
 }
