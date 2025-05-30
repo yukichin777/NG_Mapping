@@ -323,6 +323,7 @@ namespace NGMapping
                     "T_Daicho",
                     [
                         new("ID", DataType.Integer, isNullable: false, isPrimaryKey: true, isAutoIncrement: true),
+                        new("mode", DataType.Integer, isNullable:false),
                         new("SN", DataType.Text, isNullable: false,maxLength:50),
                         new("Operator", DataType.Text, isNullable: false,maxLength:50),
                         new("TestDate", DataType.DateTime, isNullable: false),

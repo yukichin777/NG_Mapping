@@ -45,20 +45,24 @@ namespace NGMapping
         readonly List<string> etcTexts_pt = [ "Material estranho", "Sujeira/Contaminação", "Fluxo"];
 
 
+        private string operatorName = "";
+
         bool isQRDisp = false; // QRコードの表示フラグ
         bool isQRead = false; // QRコード読み取りフラグ
         string NowSerial = ""; // シリアル番号
 
         SQLiteCon db;
 
-
+        f_Login loginForm;
 
 
         #region constructor
-        public MainForm()
+        public MainForm(string opeName, f_Login frm)
         {
             InitializeComponent();
-            LCountA = [L_CountA_0, L_CountA_1, L_CountA_2, L_CountA_3, L_CountA_4, L_CountA_5, L_CountA_6, L_CountA_7,L_CountA];
+            loginForm = frm;
+
+            LCountA = [L_CountA_0, L_CountA_1, L_CountA_2, L_CountA_3, L_CountA_4, L_CountA_5, L_CountA_6, L_CountA_7, L_CountA];
             LCountB = [L_CountB_0, L_CountB_1, L_CountB_2, L_CountB_3, L_CountB_4, L_CountB_5, L_CountB_6, L_CountB_7, L_CountB];
             LCount = [L_Count_0, L_Count_1, L_Count_2, L_Count_3, L_Count_4, L_Count_5, L_Count_6, L_Count_7, L_Count];
 
@@ -68,6 +72,10 @@ namespace NGMapping
 
             Ra_NgItems = [radioButton1, radioButton2, radioButton3, radioButton4, radioButton5, radioButton6, radioButton7, radioButton8, radioButton9];
             La_NgItems = [L_Color1, L_Color2, L_Color3, L_Color4, L_Color5, L_Color6, L_Color7, L_Color8];
+
+            t_operator.Text = opeName;
+            operatorName = opeName;
+            this.loginForm = loginForm;
         }
         #endregion
         #region event-----Formロード
@@ -100,6 +108,9 @@ namespace NGMapping
 
         }
 
+       
+
+
         private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             string lang = ((ComboBox)sender).SelectedItem.ToString();
@@ -118,9 +129,9 @@ namespace NGMapping
             toolStripComboBox1.ComboBox.Text = CSet.Language;
             SetLanguage(CSet.Language); // 言語設定を適用
 
-
-            isQRead = CSet.isQRCodeReadMode;
+            isQRead = operatorName != "##"; 
             isQRDisp = isQRead && CSet.FLG_DispDummyQR;
+            
             menu_Save.Enabled = !isQRead; // QRコード読み取りモードでは保存ボタンを無効化
 
         }
@@ -1100,7 +1111,9 @@ namespace NGMapping
             CSet.SaveFormLocState(this);
         }
 
-       
-
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            loginForm.Close();
+        }
     }
 }

@@ -30,7 +30,7 @@ namespace NGMapping
         private const int WH_KEYBOARD_LL = 13;
         private const int WM_KEYDOWN = 0x0100;
 
-        private StringBuilder _buffer = new StringBuilder();
+        private StringBuilder _buffer = new();
         private LowLevelKeyboardProc _proc;
         private IntPtr _hookID = IntPtr.Zero;
 
@@ -42,14 +42,24 @@ namespace NGMapping
         public GlobalKeyboardHook()
         {
             _proc = HookCallback;
-            _hookID = SetHook(_proc);
+            // 初期状態ではフックしない
         }
-
-        public void Unhook()
+        public void Start()
         {
-            UnhookWindowsHookEx(_hookID);
+            if (_hookID == IntPtr.Zero)
+            {
+                _hookID = SetHook(_proc);
+            }
         }
 
+        public void Stop()
+        {
+            if (_hookID != IntPtr.Zero)
+            {
+                UnhookWindowsHookEx(_hookID);
+                _hookID = IntPtr.Zero;
+            }
+        }
         public string GetCharsFromKey(Keys key)
         {
             byte[] keyboardState = new byte[256];
@@ -57,7 +67,7 @@ namespace NGMapping
                 return "";
 
             uint scanCode = MapVirtualKey((uint)key, 0);
-            StringBuilder sb = new StringBuilder(10);
+            StringBuilder sb = new(10);
             int result = ToUnicode((uint)key, scanCode, keyboardState, sb, sb.Capacity, 0);
 
             return result > 0 ? sb.ToString() : "";
@@ -91,7 +101,6 @@ namespace NGMapping
                 int vkCode = Marshal.ReadInt32(lParam);
                 Keys key = (Keys)vkCode;
 
-                // バックスペース対応
                 if (key == Keys.Back)
                 {
                     if (_buffer.Length > 0)
