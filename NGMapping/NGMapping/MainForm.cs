@@ -44,6 +44,10 @@ namespace NGMapping
         readonly List<string> etcTexts_en = [ "Foreign material", "Dirt/Contamination", "Flux"];
         readonly List<string> etcTexts_pt = [ "Material estranho", "Sujeira/Contaminação", "Fluxo"];
 
+        readonly List<UndoInfo> undoList = []; // クリックデータの履歴
+
+
+
 
         private string operatorName = "";
 
@@ -117,7 +121,6 @@ namespace NGMapping
             SetLanguage(lang); // 言語設定を更新
             CSet.Language = lang; // 言語設定を保存
         }
-
 
         #endregion
         #region method-----初期化
@@ -275,6 +278,7 @@ namespace NGMapping
 
             if (lastRightClickPoint.IsEmpty || !cachedImageRect.Contains(lastRightClickPoint)) return;
             ImgGen[pBoxInd].addPoint(lastRightClickPoint, ngType, ngText);
+            undoList.Add(new UndoInfo(pBoxInd, -1, null));
             CountUpdate(); // カウントを更新
         }
         #endregion
@@ -311,7 +315,11 @@ namespace NGMapping
             {
                 int ngType = GetSelectedNGType();
                 if (CTRL || ngType==8) {
-                    ImgGen[pBoxInd].DeletePoint(e.Location);
+                    int ListInd = ImgGen[pBoxInd].DeletePoint(e.Location, out NgCounter ngcnt);
+                    if (ListInd != -1)
+                    {
+                        undoList.Add(new UndoInfo(pBoxInd,ListInd,ngcnt));
+                    }
                 }
                 else
                 {
@@ -321,6 +329,7 @@ namespace NGMapping
                         return;
                     }
                     ImgGen[pBoxInd].addPoint(e.Location, ngType, NgTexts_jp[ngType]);
+                    undoList.Add(new UndoInfo(pBoxInd, -1, null));
                 }
             }
             else if (e.Button == MouseButtons.Right)
@@ -832,6 +841,7 @@ namespace NGMapping
             if(!listBox1.Items.Contains(NowSerial))listBox1.Items.Add(NowSerial); // ListBoxの内容をクリア
             setSN(false); // S/Nを更新
 
+            undoList.Clear(); // アンドゥリストをクリア
             ImgGen[0].ClearPoints();
             ImgGen[1].ClearPoints();
             CountUpdate();
@@ -1114,6 +1124,36 @@ namespace NGMapping
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             loginForm.Close();
+        }
+
+        private void toolStripButton5_Click(object sender, EventArgs e)
+        {
+
+            int LastIndex = undoList.Count - 1;
+            if (LastIndex < 0) return; // アンドゥリストが空の場合は何もしない
+
+            UndoInfo uinfo= undoList[LastIndex]; // NgCounterを解放
+            if(uinfo.ListIndex==-1) // addしたとき
+            {
+                ImgGen[uinfo.PanelIndex].delLastPoint(); // 最後のポイントを削除
+            }
+            else // DeletePointしたとき
+            {
+                ImgGen[uinfo.PanelIndex].insertPoint(uinfo.ngCounter,uinfo.ListIndex); // NgCounterを復元
+            }
+            undoList.RemoveAt(LastIndex); // アンドゥリストから削除
+        }
+    }
+    public class UndoInfo
+    {
+        public int PanelIndex { get; set; } // クリックしたPictureBoxのインデックス（0: A面, 1: B面）
+        public int ListIndex { get; set; } // DeletePointしたときのListIndex。addしたときは-1。
+        public NgCounter ngCounter { get; set; }//addしたときは、nullのままでOK
+        public UndoInfo(int PanelInd, int ListInd, NgCounter ngcnt)
+        {
+            this.PanelIndex = PanelInd;
+            this.ListIndex = ListInd;
+            this.ngCounter = ngcnt;
         }
     }
 }

@@ -32,21 +32,31 @@ namespace NGMapping
                     siz = Properties.Settings.Default.WindowSize;
                     string dum = Properties.Settings.Default.WindowState;
                     if (dum == FormWindowState.Maximized.ToString()) state= FormWindowState.Maximized;else state= FormWindowState.Normal;
+                    if (loc != Point.Empty && siz != Size.Empty && IsOnScreen(loc, siz))
+                    {
+                        frm.Location = loc;
+                        frm.Size = siz;
+                    }
+                    else
+                    {
+                        frm.StartPosition = FormStartPosition.CenterScreen;
+                    }
+                    break;
+                case "f_login":
+                    loc = Properties.Settings.Default.WindowLocation;
+
+                    // フォームを対象スクリーンの中央に配置
+                    Screen targetScreen = Screen.AllScreens.FirstOrDefault(screen =>
+                        screen.WorkingArea.Contains(loc)) ?? Screen.PrimaryScreen;
+
+                    frm.StartPosition = FormStartPosition.Manual; // 手動で位置を指定
+                    frm.Location = new Point(
+                        targetScreen.WorkingArea.X + (targetScreen.WorkingArea.Width - frm.Width) / 2,
+                        targetScreen.WorkingArea.Y + (targetScreen.WorkingArea.Height - frm.Height) / 2
+                    );
                     break;
                 default:
                     break;
-            }
-
-            // 保存された位置・サイズを復元
-            if (loc != Point.Empty && siz != Size.Empty && IsOnScreen(loc, siz))
-            {
-                frm.Location = loc;
-                frm.Size = siz;
-            }
-            else
-            {
-                // デフォルト位置（主ディスプレイの中央など）に設定
-                frm.StartPosition = FormStartPosition.CenterScreen;
             }
 
             // ウィンドウ状態を復元
@@ -328,6 +338,7 @@ namespace NGMapping
                         new("Operator", DataType.Text, isNullable: false,maxLength:50),
                         new("TestDate", DataType.DateTime, isNullable: false),
                         new("SaveDateTime", DataType.DateTime, isNullable: false),
+                        new("BoardDate", DataType.DateTime, isNullable: false),
                         new("Hinban", DataType.Text, isNullable: true,maxLength:50),
                         new("isDay", DataType.Boolean, isNullable: false)
                     ]
@@ -349,17 +360,7 @@ namespace NGMapping
             ];
 
             return tables;
-        }
-
-        public static bool isQRCodeReadMode
-        {
-            get { return Properties.Settings.Default.isQRCodeReadMode; }
-            set
-            {
-                Properties.Settings.Default.isQRCodeReadMode = value;
-                Properties.Settings.Default.Save();
-            }
-        }
+        }       
         public static bool FLG_DispDummyQR
         {
             get { return Properties.Settings.Default.FLG_DispQRCode; }

@@ -124,12 +124,8 @@ namespace NGMapping
                     colorButtons[i].ButtonColor = SystemColors.Control;
                 }
             }
-
-            ra_Paper.Checked = !CSet.isQRCodeReadMode;
-            ra_QR.Checked = CSet.isQRCodeReadMode;
             
             ch_DispDummyQR.Checked = CSet.FLG_DispDummyQR;
-            ch_DispDummyQR.Visible = CSet.isQRCodeReadMode;
 
         }
 
@@ -450,13 +446,6 @@ namespace NGMapping
             }
 
         }
-
-        private void Ra_Paper_Click(object sender, EventArgs e)
-        {
-            ch_DispDummyQR.Visible = !ra_Paper.Checked;
-            CSet.isQRCodeReadMode = ra_QR.Checked;
-        }
-
         private void Ch_DispDummyQR_CheckedChanged(object sender, EventArgs e)
         {
             CSet.FLG_DispDummyQR = ch_DispDummyQR.Checked;

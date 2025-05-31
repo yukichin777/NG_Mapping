@@ -14,8 +14,6 @@ namespace NGMapping
 {
     public partial class f_Login : Form
     {
-
-
         private GlobalKeyboardHook _hook = new();
 
         private MainForm mainfrm;
@@ -31,6 +29,7 @@ namespace NGMapping
 
         private void f_Login_Load(object sender, EventArgs e)
         {
+            CSet.SetFormLocState(this);
 
             //_hook.CharReceived += _hook_CharReceived;
             _hook.InputSubmitted += _hook_InputSubmitted;

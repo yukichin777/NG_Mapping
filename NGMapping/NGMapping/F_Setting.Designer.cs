@@ -34,8 +34,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.ra_Paper = new System.Windows.Forms.RadioButton();
-            this.ra_QR = new System.Windows.Forms.RadioButton();
             this.ch_DispDummyQR = new System.Windows.Forms.CheckBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -174,46 +172,20 @@
             // 
             this.tableLayoutPanel4.ColumnCount = 1;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Controls.Add(this.ra_Paper, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.ra_QR, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.ch_DispDummyQR, 0, 2);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(645, 27);
+            this.tableLayoutPanel4.Controls.Add(this.ch_DispDummyQR, 0, 0);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(621, 27);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 3;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(138, 258);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(172, 258);
             this.tableLayoutPanel4.TabIndex = 7;
-            // 
-            // ra_Paper
-            // 
-            this.ra_Paper.AutoSize = true;
-            this.ra_Paper.Location = new System.Drawing.Point(3, 3);
-            this.ra_Paper.Name = "ra_Paper";
-            this.ra_Paper.Size = new System.Drawing.Size(111, 21);
-            this.ra_Paper.TabIndex = 0;
-            this.ra_Paper.TabStop = true;
-            this.ra_Paper.Text = "紙から入力作業";
-            this.ra_Paper.UseVisualStyleBackColor = true;
-            this.ra_Paper.Click += new System.EventHandler(this.Ra_Paper_Click);
-            // 
-            // ra_QR
-            // 
-            this.ra_QR.AutoSize = true;
-            this.ra_QR.Location = new System.Drawing.Point(3, 31);
-            this.ra_QR.Name = "ra_QR";
-            this.ra_QR.Size = new System.Drawing.Size(111, 21);
-            this.ra_QR.TabIndex = 0;
-            this.ra_QR.TabStop = true;
-            this.ra_QR.Text = "QRコードで作業";
-            this.ra_QR.UseVisualStyleBackColor = true;
-            this.ra_QR.Click += new System.EventHandler(this.Ra_Paper_Click);
             // 
             // ch_DispDummyQR
             // 
             this.ch_DispDummyQR.AutoSize = true;
-            this.ch_DispDummyQR.Location = new System.Drawing.Point(3, 59);
+            this.ch_DispDummyQR.Location = new System.Drawing.Point(3, 3);
             this.ch_DispDummyQR.Name = "ch_DispDummyQR";
             this.ch_DispDummyQR.Size = new System.Drawing.Size(85, 21);
             this.ch_DispDummyQR.TabIndex = 1;
@@ -224,7 +196,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(645, 6);
+            this.label15.Location = new System.Drawing.Point(621, 6);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(64, 17);
             this.label15.TabIndex = 6;
@@ -1081,8 +1053,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.RadioButton ra_Paper;
-        private System.Windows.Forms.RadioButton ra_QR;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.CheckBox ch_DispDummyQR;
     }

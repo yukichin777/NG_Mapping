@@ -146,18 +146,6 @@ namespace NGMapping.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool isQRCodeReadMode {
-            get {
-                return ((bool)(this["isQRCodeReadMode"]));
-            }
-            set {
-                this["isQRCodeReadMode"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool FLG_DispQRCode {
             get {
                 return ((bool)(this["FLG_DispQRCode"]));

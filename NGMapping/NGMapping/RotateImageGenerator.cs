@@ -190,11 +190,17 @@ namespace NGMapping
                 return counts;
             }
         }
+
+        public void insertPoint(NgCounter ngc,int ListIndex)
+        {
+            _NgInfo.Insert(ListIndex,ngc);
+            refresh();
+        }
+
         public void addPoint(NgCounter ngc) 
         {
             _NgInfo.Add(ngc);
             refresh();
-
         }
         public void addPoint(Point Loc, int NgType,string NgText)
         {
@@ -222,9 +228,11 @@ namespace NGMapping
             //_PointsWithIndex.Add((new PointF(percentX, percentY), NgType));
             refresh();
         }
-        public void DeletePoint(Point Loc)
+
+        #region method----Pointを削除する(Locに一番近い点を削除する。削除したListIndexを返す)
+        public int DeletePoint(Point Loc,out NgCounter ngcnt)
         {
-            if (_NgInfo.Count == 0) return;
+            if (_NgInfo.Count == 0) { ngcnt = null; return -1; }
 
             // 表示領域を取得
             Rectangle displayRect = GetImageDisplayRectangle();
@@ -234,7 +242,7 @@ namespace NGMapping
             float normalizedY = (Loc.Y - displayRect.Top) / (float)displayRect.Height;
 
             // 正規化された座標が表示領域外なら何もしない
-            if (normalizedX < 0 || normalizedX > 1 || normalizedY < 0 || normalizedY > 1) return;
+            if (normalizedX < 0 || normalizedX > 1 || normalizedY < 0 || normalizedY > 1) { ngcnt = null; return -1; }
 
             // 回転を考慮して元の画像の座標に逆変換
             PointF originalPoint = TransformPointBack(new PointF(normalizedX, normalizedY), _RoteAngle);
@@ -263,43 +271,25 @@ namespace NGMapping
             // 最も近いインデックスが見つかった場合、その点を削除
             if (closestIndex != -1)
             {
+                ngcnt=_NgInfo[closestIndex];
+
                 _NgInfo.RemoveAt(closestIndex);
                 refresh();
+                return closestIndex; // 削除した点のNgTypeを返す
             }
-
-            //for (int i = 0; i < _PointsWithIndex.Count; i++)
-            //{
-            //    var (point, _) = _PointsWithIndex[i];
-            //    float dx = point.X - percentX;
-            //    float dy = point.Y - percentY;
-            //    float distanceSquared = dx * dx + dy * dy; // 距離の二乗を計算
-
-            //    if (distanceSquared < minDistanceSquared)
-            //    {
-            //        minDistanceSquared = distanceSquared;
-            //        closestIndex = i;
-            //    }
-            //}
-
-            // 最も近いインデックスが見つかった場合、その点を削除
-            //if (closestIndex != -1)
-            //{
-            //    _PointsWithIndex.RemoveAt(closestIndex);
-            //    refresh();
-            //}
+            else 
+            {                 // 近い点が見つからなかった場合は何もしない
+                { ngcnt = null; return -1; }
+            }
         }
+        #endregion
         public void delLastPoint()
         {
             if (_NgInfo.Count > 0)
             {
                 _NgInfo.RemoveAt(_NgInfo.Count - 1);
                 refresh();
-            }
-            //if (_PointsWithIndex.Count > 0)
-            //{
-            //    _PointsWithIndex.RemoveAt(_PointsWithIndex.Count - 1);
-            //    refresh();
-            //}
+            }           
         }
         private Rectangle GetImageDisplayRectangle()
         {
