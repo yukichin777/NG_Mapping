@@ -583,6 +583,7 @@ namespace NGMapping
             string Hinban = cb_Hinban.Text;
             string appFolderPath = Application.StartupPath;// アプリケーション自身のフォルダのパスを取得
             string picFolderPath = Path.Combine(appFolderPath, "pic");
+            string areaName=radioButton11.Checked?"塗布":radioButton10.Checked?"禁止":""; // 勤務区分の取得
 
             try
             {
@@ -595,8 +596,8 @@ namespace NGMapping
                 // 指定品番の "_A.png" と "_B.png" のファイルパスを組み立てる
                 string[] pngFiles = 
                     [
-                    Path.Combine(picFolderPath, $"{Hinban}_A.png"), 
-                    Path.Combine(picFolderPath, $"{Hinban}_B.png")
+                    Path.Combine(picFolderPath, $"{Hinban}_A{areaName}.png"), 
+                    Path.Combine(picFolderPath, $"{Hinban}_B{areaName}.png")
                     ];
 
                 // すべてのファイルが存在するか確認
@@ -1177,6 +1178,16 @@ namespace NGMapping
         private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
+        }
+
+        private void ra_Normal_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton rb = sender as RadioButton;
+            if (rb == null || !rb.Checked) return; // nullチェック
+            isQRead = false; // QRコード読み取りモードをオフ
+            isQRDisp = false; // QRコード表示をオフ
+            pictureBox2.Image = null; // QRコード画像をクリア
+            L_SN.Text = ""; // S/Nラベルをクリア
         }
     }
     public class UndoInfo
