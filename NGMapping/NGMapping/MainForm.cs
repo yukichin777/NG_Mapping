@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 using System.Windows.Media.Media3D;
@@ -802,6 +803,7 @@ namespace NGMapping
                 return;
             }
 
+            DateTime testDate= dtPicker_TestDate.Value.Date;
             string mkDate = dtPicker_TestDate.Value.ToString("yyyy-MM-dd");
             string svDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             string hinban = cb_Hinban.Text;
@@ -811,17 +813,33 @@ namespace NGMapping
 
 
             //現在のデータを削除する
+            //この保存メソッドは紙から入力modeなので、operator別の処理は行わない
             List<string> SqlList0 =
                 [
                 $"DELETE FROM T_Daicho WHERE SN='{NowSerial}';",
-                $"DELETE FROM T_Data WHERE SN='{NowSerial}';",
+                $"DELETE FROM T_Data WHERE dID IN (SELECT ID FROM T_Daicho WHERE SN = '{NowSerial}');"
                 ];
+
+
             db.Execute(SqlList0);
 
-            List<string> SqlList = 
-                [
-                $"INSERT INTO T_Daicho (SN,TestDate, SaveDateTime,Hinban,isDay,Operator) VALUES ('{NowSerial}','{mkDate}', '{svDate}','{hinban}',{isDay},'{ope}');"
-                ];
+            string sql = 
+                dbCM.MakeInsertSQL(
+                    "T_Daicho",
+                    new Dictionary<string, object>
+                    {
+                        { "mode", 0 },
+                        { "SN", NowSerial },
+                        { "Operator", ope },
+                        { "TestDate",testDate },
+                        { "SaveDate", DateTime.Now },
+                        { "BoardDate",testDate},
+                        { "Hinban", hinban },
+                        { "isDay", ra_Day.Checked }
+                    });
+            db.InsertDataAndGetId(sql, out int dID);
+
+            List<string> SqlList = []; 
 
             string[] board =["A", "B"];
 
@@ -831,7 +849,18 @@ namespace NGMapping
                 foreach (var item in ImgGen[i].NgPoints)
                 {
                     int areaNo = GetArea(item.XYPercent, i);
-                    SqlList.Add($"INSERT INTO T_Data (SN,Board, NgType,NgText,X,Y,Area) VALUES ('{NowSerial}','{board[i]}', {item.NgType},'{item.NgText}',{item.XPercent},{item.YPercent},{areaNo});");
+                    SqlList.Add(dbCM.MakeInsertSQL(
+                        "T_Data",
+                        new Dictionary<string, object>
+                        {
+                            { "dID", dID },
+                            { "Board", board[i] },
+                            { "NgType", item.NgType },
+                            { "NgText", item.NgText },
+                            { "X", item.XPercent }, // X座標を計算
+                            { "Y", item.YPercent }, // Y座標を計算
+                            { "Area", areaNo }
+                        }));
                 }
             }
 
@@ -846,6 +875,8 @@ namespace NGMapping
             ImgGen[1].ClearPoints();
             CountUpdate();
         }
+
+
         private void b_Mae_Click(object sender, EventArgs e)
         {
             DateTime dTime = dtPicker_TestDate.Value;
@@ -975,7 +1006,7 @@ namespace NGMapping
 
             SQLiteCon db = new(CSet.DbPath, CSet.DbTableCFG(), false);
 
-            string mkDate = dtPicker_TestDate.Value.ToString("yyyy-MM-dd");
+            string TestDate = dtPicker_TestDate.Value.ToString("yyyy-MM-dd");
 
             string[] hinban = ["6365590", "6365590", "6365590", "6365590", "6365630", "6365630", "6365630", "6365630"];
             string[] board = ["A", "B", "A", "B", "A", "B", "A", "B"];
@@ -986,7 +1017,6 @@ namespace NGMapping
 
             for (int i = 0; i < 8; i++)
             {
-
                 string sql =
                      "SELECT " +
                      "   T2.Area, " +
@@ -994,9 +1024,9 @@ namespace NGMapping
                      "   COUNT(*) AS NgTypeCount " +
                      "FROM " +
                      "              T_Daicho T1 " +
-                     "   INNER JOIN T_Data   T2 ON T2.SN = T1.SN " +
+                     "   INNER JOIN T_Data   T2 ON T2.dID = T1.ID " +
                      "WHERE " +
-                    $"       T1.TestDate = '{mkDate}' " +
+                    $"       T1.TestDate LIKE '{TestDate}%' " +
                     $"   AND T1.Hinban = '{hinban[i]}' " +
                     $"   AND T2.Board = '{board[i]}' " +
                     $"   AND T1.isDay = {isDay[i]} " +
@@ -1142,6 +1172,11 @@ namespace NGMapping
                 ImgGen[uinfo.PanelIndex].insertPoint(uinfo.ngCounter,uinfo.ListIndex); // NgCounterを復元
             }
             undoList.RemoveAt(LastIndex); // アンドゥリストから削除
+        }
+
+        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
     public class UndoInfo

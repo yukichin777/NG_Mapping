@@ -45,8 +45,46 @@
             this.dtPicker_TestDate = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.L_CountA_5 = new NGMapping.ExLabel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cb_Hinban = new System.Windows.Forms.ComboBox();
+            this.L_Color1 = new System.Windows.Forms.Label();
+            this.L_Color2 = new System.Windows.Forms.Label();
+            this.L_Color4 = new System.Windows.Forms.Label();
+            this.L_Color3 = new System.Windows.Forms.Label();
+            this.L_Color5 = new System.Windows.Forms.Label();
+            this.L_Color6 = new System.Windows.Forms.Label();
+            this.L_Color7 = new System.Windows.Forms.Label();
+            this.L_Color8 = new System.Windows.Forms.Label();
+            this.radioButton9 = new System.Windows.Forms.RadioButton();
+            this.L_SN = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.ra_Day = new System.Windows.Forms.RadioButton();
             this.ra_Night = new System.Windows.Forms.RadioButton();
+            this.ra_Normal = new System.Windows.Forms.RadioButton();
+            this.radioButton11 = new System.Windows.Forms.RadioButton();
+            this.picBox_B = new System.Windows.Forms.PictureBox();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.L_A = new System.Windows.Forms.Label();
+            this.L_B = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.menu_Setting = new System.Windows.Forms.ToolStripButton();
+            this.menu_Clear = new System.Windows.Forms.ToolStripButton();
+            this.menu_Save = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.L_Operator = new System.Windows.Forms.ToolStripLabel();
+            this.t_operator = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.L_CountA_5 = new NGMapping.ExLabel();
             this.L_Count = new NGMapping.ExLabel();
             this.L_CountB = new NGMapping.ExLabel();
             this.L_Count_7 = new NGMapping.ExLabel();
@@ -70,49 +108,13 @@
             this.L_CountA_2 = new NGMapping.ExLabel();
             this.L_CountA_1 = new NGMapping.ExLabel();
             this.L_CountA_0 = new NGMapping.ExLabel();
-            this.label4 = new System.Windows.Forms.Label();
             this.L_CountB_0 = new NGMapping.ExLabel();
-            this.cb_Hinban = new System.Windows.Forms.ComboBox();
             this.L_Count_0 = new NGMapping.ExLabel();
             this.L_CountA = new NGMapping.ExLabel();
-            this.L_Color1 = new System.Windows.Forms.Label();
-            this.L_Color2 = new System.Windows.Forms.Label();
-            this.L_Color4 = new System.Windows.Forms.Label();
-            this.L_Color3 = new System.Windows.Forms.Label();
-            this.L_Color5 = new System.Windows.Forms.Label();
-            this.L_Color6 = new System.Windows.Forms.Label();
-            this.L_Color7 = new System.Windows.Forms.Label();
-            this.L_Color8 = new System.Windows.Forms.Label();
-            this.radioButton9 = new System.Windows.Forms.RadioButton();
-            this.L_SN = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.ra_Day = new System.Windows.Forms.RadioButton();
-            this.ra_Normal = new System.Windows.Forms.RadioButton();
-            this.radioButton11 = new System.Windows.Forms.RadioButton();
-            this.picBox_B = new System.Windows.Forms.PictureBox();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.L_A = new System.Windows.Forms.Label();
-            this.L_B = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.menu_Setting = new System.Windows.Forms.ToolStripButton();
-            this.menu_Clear = new System.Windows.Forms.ToolStripButton();
-            this.menu_Save = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.L_Operator = new System.Windows.Forms.ToolStripLabel();
-            this.t_operator = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.picBox_A)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBox_B)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -350,7 +352,6 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.L_CountA_5, 12, 1);
-            this.tableLayoutPanel2.Controls.Add(this.ra_Night, 2, 1);
             this.tableLayoutPanel2.Controls.Add(this.L_Count, 14, 5);
             this.tableLayoutPanel2.Controls.Add(this.L_CountB, 13, 5);
             this.tableLayoutPanel2.Controls.Add(this.L_Count_7, 14, 3);
@@ -405,7 +406,7 @@
             this.tableLayoutPanel2.Controls.Add(this.L_SN, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.pictureBox2, 2, 3);
             this.tableLayoutPanel2.Controls.Add(this.listBox1, 0, 3);
-            this.tableLayoutPanel2.Controls.Add(this.ra_Day, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel1, 2, 0);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -419,6 +420,508 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1200, 152);
             this.tableLayoutPanel2.TabIndex = 7;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label4.Location = new System.Drawing.Point(1, 25);
+            this.label4.Margin = new System.Windows.Forms.Padding(1);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(74, 22);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "対象基板";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // cb_Hinban
+            // 
+            this.cb_Hinban.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cb_Hinban.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_Hinban.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.cb_Hinban.FormattingEnabled = true;
+            this.cb_Hinban.Items.AddRange(new object[] {
+            "6365590",
+            "6365630"});
+            this.cb_Hinban.Location = new System.Drawing.Point(77, 25);
+            this.cb_Hinban.Margin = new System.Windows.Forms.Padding(1);
+            this.cb_Hinban.Name = "cb_Hinban";
+            this.cb_Hinban.Size = new System.Drawing.Size(133, 23);
+            this.cb_Hinban.TabIndex = 7;
+            this.cb_Hinban.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
+            // 
+            // L_Color1
+            // 
+            this.L_Color1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_Color1.Location = new System.Drawing.Point(352, 25);
+            this.L_Color1.Margin = new System.Windows.Forms.Padding(1);
+            this.L_Color1.Name = "L_Color1";
+            this.L_Color1.Size = new System.Drawing.Size(18, 22);
+            this.L_Color1.TabIndex = 3;
+            this.L_Color1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // L_Color2
+            // 
+            this.L_Color2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_Color2.Location = new System.Drawing.Point(352, 49);
+            this.L_Color2.Margin = new System.Windows.Forms.Padding(1);
+            this.L_Color2.Name = "L_Color2";
+            this.L_Color2.Size = new System.Drawing.Size(18, 22);
+            this.L_Color2.TabIndex = 3;
+            this.L_Color2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // L_Color4
+            // 
+            this.L_Color4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_Color4.Location = new System.Drawing.Point(352, 97);
+            this.L_Color4.Margin = new System.Windows.Forms.Padding(1);
+            this.L_Color4.Name = "L_Color4";
+            this.L_Color4.Size = new System.Drawing.Size(18, 22);
+            this.L_Color4.TabIndex = 3;
+            this.L_Color4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // L_Color3
+            // 
+            this.L_Color3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_Color3.Location = new System.Drawing.Point(352, 73);
+            this.L_Color3.Margin = new System.Windows.Forms.Padding(1);
+            this.L_Color3.Name = "L_Color3";
+            this.L_Color3.Size = new System.Drawing.Size(18, 22);
+            this.L_Color3.TabIndex = 3;
+            this.L_Color3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // L_Color5
+            // 
+            this.L_Color5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_Color5.Location = new System.Drawing.Point(352, 121);
+            this.L_Color5.Margin = new System.Windows.Forms.Padding(1);
+            this.L_Color5.Name = "L_Color5";
+            this.L_Color5.Size = new System.Drawing.Size(18, 22);
+            this.L_Color5.TabIndex = 3;
+            this.L_Color5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // L_Color6
+            // 
+            this.L_Color6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_Color6.Location = new System.Drawing.Point(657, 25);
+            this.L_Color6.Margin = new System.Windows.Forms.Padding(1);
+            this.L_Color6.Name = "L_Color6";
+            this.L_Color6.Size = new System.Drawing.Size(18, 22);
+            this.L_Color6.TabIndex = 3;
+            this.L_Color6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // L_Color7
+            // 
+            this.L_Color7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_Color7.Location = new System.Drawing.Point(657, 49);
+            this.L_Color7.Margin = new System.Windows.Forms.Padding(1);
+            this.L_Color7.Name = "L_Color7";
+            this.L_Color7.Size = new System.Drawing.Size(18, 22);
+            this.L_Color7.TabIndex = 3;
+            this.L_Color7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // L_Color8
+            // 
+            this.L_Color8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_Color8.Location = new System.Drawing.Point(657, 73);
+            this.L_Color8.Margin = new System.Windows.Forms.Padding(1);
+            this.L_Color8.Name = "L_Color8";
+            this.L_Color8.Size = new System.Drawing.Size(18, 22);
+            this.L_Color8.TabIndex = 3;
+            this.L_Color8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // radioButton9
+            // 
+            this.radioButton9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.radioButton9.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.radioButton9.Location = new System.Drawing.Point(677, 97);
+            this.radioButton9.Margin = new System.Windows.Forms.Padding(1);
+            this.radioButton9.Name = "radioButton9";
+            this.radioButton9.Size = new System.Drawing.Size(128, 22);
+            this.radioButton9.TabIndex = 4;
+            this.radioButton9.Text = "消しゴム";
+            this.radioButton9.UseVisualStyleBackColor = true;
+            // 
+            // L_SN
+            // 
+            this.L_SN.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_SN.AutoSize = true;
+            this.tableLayoutPanel2.SetColumnSpan(this.L_SN, 2);
+            this.L_SN.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.L_SN.Location = new System.Drawing.Point(1, 49);
+            this.L_SN.Margin = new System.Windows.Forms.Padding(1);
+            this.L_SN.Name = "L_SN";
+            this.L_SN.Size = new System.Drawing.Size(209, 22);
+            this.L_SN.TabIndex = 13;
+            this.L_SN.Text = "SN";
+            this.L_SN.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox2.Location = new System.Drawing.Point(212, 73);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(1);
+            this.pictureBox2.Name = "pictureBox2";
+            this.tableLayoutPanel2.SetRowSpan(this.pictureBox2, 3);
+            this.pictureBox2.Size = new System.Drawing.Size(118, 70);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 12;
+            this.pictureBox2.TabStop = false;
+            // 
+            // listBox1
+            // 
+            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.SetColumnSpan(this.listBox1, 2);
+            this.listBox1.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 14;
+            this.listBox1.Location = new System.Drawing.Point(1, 73);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(1);
+            this.listBox1.Name = "listBox1";
+            this.tableLayoutPanel2.SetRowSpan(this.listBox1, 4);
+            this.listBox1.Size = new System.Drawing.Size(209, 74);
+            this.listBox1.TabIndex = 14;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.ra_Day, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.ra_Night, 0, 1);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(211, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel2.SetRowSpan(this.tableLayoutPanel1, 2);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(120, 48);
+            this.tableLayoutPanel1.TabIndex = 15;
+            // 
+            // ra_Day
+            // 
+            this.ra_Day.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.ra_Day.AutoSize = true;
+            this.ra_Day.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.ra_Day.Location = new System.Drawing.Point(1, 2);
+            this.ra_Day.Margin = new System.Windows.Forms.Padding(1);
+            this.ra_Day.Name = "ra_Day";
+            this.ra_Day.Size = new System.Drawing.Size(118, 19);
+            this.ra_Day.TabIndex = 8;
+            this.ra_Day.Text = "昼勤";
+            this.ra_Day.UseVisualStyleBackColor = true;
+            this.ra_Day.Click += new System.EventHandler(this.ra_Day_Click);
+            // 
+            // ra_Night
+            // 
+            this.ra_Night.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.ra_Night.AutoSize = true;
+            this.ra_Night.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.ra_Night.Location = new System.Drawing.Point(1, 26);
+            this.ra_Night.Margin = new System.Windows.Forms.Padding(1);
+            this.ra_Night.Name = "ra_Night";
+            this.ra_Night.Size = new System.Drawing.Size(118, 19);
+            this.ra_Night.TabIndex = 8;
+            this.ra_Night.Text = "夜勤";
+            this.ra_Night.UseVisualStyleBackColor = true;
+            // 
+            // ra_Normal
+            // 
+            this.ra_Normal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.ra_Normal.AutoSize = true;
+            this.ra_Normal.Checked = true;
+            this.ra_Normal.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.ra_Normal.Location = new System.Drawing.Point(607, 99);
+            this.ra_Normal.Margin = new System.Windows.Forms.Padding(1);
+            this.ra_Normal.Name = "ra_Normal";
+            this.ra_Normal.Size = new System.Drawing.Size(68, 19);
+            this.ra_Normal.TabIndex = 8;
+            this.ra_Normal.TabStop = true;
+            this.ra_Normal.Text = "1";
+            this.ra_Normal.UseVisualStyleBackColor = true;
+            // 
+            // radioButton11
+            // 
+            this.radioButton11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.radioButton11.AutoSize = true;
+            this.radioButton11.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.radioButton11.Location = new System.Drawing.Point(607, 127);
+            this.radioButton11.Margin = new System.Windows.Forms.Padding(1);
+            this.radioButton11.Name = "radioButton11";
+            this.radioButton11.Size = new System.Drawing.Size(68, 19);
+            this.radioButton11.TabIndex = 8;
+            this.radioButton11.Text = "2";
+            this.radioButton11.UseVisualStyleBackColor = true;
+            // 
+            // picBox_B
+            // 
+            this.picBox_B.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picBox_B.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picBox_B.Location = new System.Drawing.Point(677, 20);
+            this.picBox_B.Margin = new System.Windows.Forms.Padding(1);
+            this.picBox_B.Name = "picBox_B";
+            this.tableLayoutPanel3.SetRowSpan(this.picBox_B, 6);
+            this.picBox_B.Size = new System.Drawing.Size(605, 420);
+            this.picBox_B.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picBox_B.TabIndex = 0;
+            this.picBox_B.TabStop = false;
+            this.picBox_B.Tag = "1";
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 3;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.radioButton11, 1, 5);
+            this.tableLayoutPanel3.Controls.Add(this.ra_Normal, 1, 4);
+            this.tableLayoutPanel3.Controls.Add(this.L_A, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.L_B, 2, 0);
+            this.tableLayoutPanel3.Controls.Add(this.button2, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.button3, 1, 2);
+            this.tableLayoutPanel3.Controls.Add(this.picBox_A, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.picBox_B, 2, 1);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 152);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 7;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 19F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1283, 441);
+            this.tableLayoutPanel3.TabIndex = 8;
+            // 
+            // L_A
+            // 
+            this.L_A.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_A.Location = new System.Drawing.Point(1, 1);
+            this.L_A.Margin = new System.Windows.Forms.Padding(1);
+            this.L_A.Name = "L_A";
+            this.L_A.Size = new System.Drawing.Size(604, 17);
+            this.L_A.TabIndex = 3;
+            this.L_A.Text = "A面";
+            this.L_A.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // L_B
+            // 
+            this.L_B.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_B.Location = new System.Drawing.Point(677, 1);
+            this.L_B.Margin = new System.Windows.Forms.Padding(1);
+            this.L_B.Name = "L_B";
+            this.L_B.Size = new System.Drawing.Size(605, 17);
+            this.L_B.TabIndex = 3;
+            this.L_B.Text = "B面";
+            this.L_B.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.button2.Location = new System.Drawing.Point(607, 20);
+            this.button2.Margin = new System.Windows.Forms.Padding(1);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(68, 26);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "⇔";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.button3.Location = new System.Drawing.Point(607, 48);
+            this.button3.Margin = new System.Windows.Forms.Padding(1);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(68, 26);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "反転";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.B_Rotate_Click);
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 1;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel2, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel3, 0, 1);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 39);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 2;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 152F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1283, 593);
+            this.tableLayoutPanel4.TabIndex = 9;
+            // 
+            // menu_Setting
+            // 
+            this.menu_Setting.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.menu_Setting.Image = ((System.Drawing.Image)(resources.GetObject("menu_Setting.Image")));
+            this.menu_Setting.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.menu_Setting.Name = "menu_Setting";
+            this.menu_Setting.Size = new System.Drawing.Size(36, 36);
+            this.menu_Setting.Text = "toolStripButton2";
+            this.menu_Setting.ToolTipText = "Setting";
+            this.menu_Setting.Click += new System.EventHandler(this.B_Setting_Click);
+            // 
+            // menu_Clear
+            // 
+            this.menu_Clear.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.menu_Clear.Image = ((System.Drawing.Image)(resources.GetObject("menu_Clear.Image")));
+            this.menu_Clear.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.menu_Clear.Name = "menu_Clear";
+            this.menu_Clear.Size = new System.Drawing.Size(36, 36);
+            this.menu_Clear.Text = "toolStripButton1";
+            this.menu_Clear.ToolTipText = "Clear";
+            this.menu_Clear.Click += new System.EventHandler(this.B_Clear_Click);
+            // 
+            // menu_Save
+            // 
+            this.menu_Save.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.menu_Save.Image = ((System.Drawing.Image)(resources.GetObject("menu_Save.Image")));
+            this.menu_Save.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.menu_Save.Name = "menu_Save";
+            this.menu_Save.Size = new System.Drawing.Size(36, 36);
+            this.menu_Save.Text = "Save";
+            this.menu_Save.Click += new System.EventHandler(this.b_Save_Click);
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(36, 36);
+            this.toolStripButton3.Text = "MakeExcelFile";
+            this.toolStripButton3.Click += new System.EventHandler(this.B_Excel_Click);
+            // 
+            // toolStripButton4
+            // 
+            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
+            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.Size = new System.Drawing.Size(36, 36);
+            this.toolStripButton4.Text = "Analyze";
+            this.toolStripButton4.Click += new System.EventHandler(this.B_Analyze_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 39);
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.L_Operator,
+            this.t_operator,
+            this.toolStripSeparator2,
+            this.menu_Setting,
+            this.menu_Clear,
+            this.menu_Save,
+            this.toolStripButton3,
+            this.toolStripButton4,
+            this.toolStripSeparator1,
+            this.toolStripLabel1,
+            this.toolStripComboBox1,
+            this.toolStripButton5});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStrip1.Size = new System.Drawing.Size(1283, 39);
+            this.toolStrip1.TabIndex = 10;
+            this.toolStrip1.Text = "Save";
+            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
+            // 
+            // L_Operator
+            // 
+            this.L_Operator.Name = "L_Operator";
+            this.L_Operator.Size = new System.Drawing.Size(43, 36);
+            this.L_Operator.Text = "検査員";
+            // 
+            // t_operator
+            // 
+            this.t_operator.AutoSize = false;
+            this.t_operator.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
+            this.t_operator.Name = "t_operator";
+            this.t_operator.ReadOnly = true;
+            this.t_operator.Size = new System.Drawing.Size(150, 23);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 39);
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(59, 36);
+            this.toolStripLabel1.Text = "Language";
+            // 
+            // toolStripComboBox1
+            // 
+            this.toolStripComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.toolStripComboBox1.Items.AddRange(new object[] {
+            "Japanease",
+            "RomanAlphabet",
+            "English",
+            "Português"});
+            this.toolStripComboBox1.Name = "toolStripComboBox1";
+            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 39);
+            // 
+            // toolStripButton5
+            // 
+            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
+            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton5.Name = "toolStripButton5";
+            this.toolStripButton5.Size = new System.Drawing.Size(36, 36);
+            this.toolStripButton5.Text = "Undo";
+            this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
             // L_CountA_5
             // 
@@ -436,19 +939,6 @@
             this.L_CountA_5.Text = "0";
             this.L_CountA_5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.L_CountA_5.Value = 0;
-            // 
-            // ra_Night
-            // 
-            this.ra_Night.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.ra_Night.AutoSize = true;
-            this.ra_Night.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.ra_Night.Location = new System.Drawing.Point(212, 26);
-            this.ra_Night.Margin = new System.Windows.Forms.Padding(1);
-            this.ra_Night.Name = "ra_Night";
-            this.ra_Night.Size = new System.Drawing.Size(118, 19);
-            this.ra_Night.TabIndex = 8;
-            this.ra_Night.Text = "夜勤";
-            this.ra_Night.UseVisualStyleBackColor = true;
             // 
             // L_Count
             // 
@@ -841,20 +1331,6 @@
             this.L_CountA_0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.L_CountA_0.Value = 0;
             // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label4.Location = new System.Drawing.Point(1, 25);
-            this.label4.Margin = new System.Windows.Forms.Padding(1);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 22);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "対象基板";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // L_CountB_0
             // 
             this.L_CountB_0.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -871,24 +1347,6 @@
             this.L_CountB_0.Text = "0";
             this.L_CountB_0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.L_CountB_0.Value = 0;
-            // 
-            // cb_Hinban
-            // 
-            this.cb_Hinban.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cb_Hinban.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cb_Hinban.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.cb_Hinban.FormattingEnabled = true;
-            this.cb_Hinban.Items.AddRange(new object[] {
-            "6365590",
-            "6365630"});
-            this.cb_Hinban.Location = new System.Drawing.Point(77, 25);
-            this.cb_Hinban.Margin = new System.Windows.Forms.Padding(1);
-            this.cb_Hinban.Name = "cb_Hinban";
-            this.cb_Hinban.Size = new System.Drawing.Size(133, 23);
-            this.cb_Hinban.TabIndex = 7;
-            this.cb_Hinban.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
             // 
             // L_Count_0
             // 
@@ -924,446 +1382,6 @@
             this.L_CountA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.L_CountA.Value = 0;
             // 
-            // L_Color1
-            // 
-            this.L_Color1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_Color1.Location = new System.Drawing.Point(352, 25);
-            this.L_Color1.Margin = new System.Windows.Forms.Padding(1);
-            this.L_Color1.Name = "L_Color1";
-            this.L_Color1.Size = new System.Drawing.Size(18, 22);
-            this.L_Color1.TabIndex = 3;
-            this.L_Color1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // L_Color2
-            // 
-            this.L_Color2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_Color2.Location = new System.Drawing.Point(352, 49);
-            this.L_Color2.Margin = new System.Windows.Forms.Padding(1);
-            this.L_Color2.Name = "L_Color2";
-            this.L_Color2.Size = new System.Drawing.Size(18, 22);
-            this.L_Color2.TabIndex = 3;
-            this.L_Color2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // L_Color4
-            // 
-            this.L_Color4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_Color4.Location = new System.Drawing.Point(352, 97);
-            this.L_Color4.Margin = new System.Windows.Forms.Padding(1);
-            this.L_Color4.Name = "L_Color4";
-            this.L_Color4.Size = new System.Drawing.Size(18, 22);
-            this.L_Color4.TabIndex = 3;
-            this.L_Color4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // L_Color3
-            // 
-            this.L_Color3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_Color3.Location = new System.Drawing.Point(352, 73);
-            this.L_Color3.Margin = new System.Windows.Forms.Padding(1);
-            this.L_Color3.Name = "L_Color3";
-            this.L_Color3.Size = new System.Drawing.Size(18, 22);
-            this.L_Color3.TabIndex = 3;
-            this.L_Color3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // L_Color5
-            // 
-            this.L_Color5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_Color5.Location = new System.Drawing.Point(352, 121);
-            this.L_Color5.Margin = new System.Windows.Forms.Padding(1);
-            this.L_Color5.Name = "L_Color5";
-            this.L_Color5.Size = new System.Drawing.Size(18, 22);
-            this.L_Color5.TabIndex = 3;
-            this.L_Color5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // L_Color6
-            // 
-            this.L_Color6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_Color6.Location = new System.Drawing.Point(657, 25);
-            this.L_Color6.Margin = new System.Windows.Forms.Padding(1);
-            this.L_Color6.Name = "L_Color6";
-            this.L_Color6.Size = new System.Drawing.Size(18, 22);
-            this.L_Color6.TabIndex = 3;
-            this.L_Color6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // L_Color7
-            // 
-            this.L_Color7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_Color7.Location = new System.Drawing.Point(657, 49);
-            this.L_Color7.Margin = new System.Windows.Forms.Padding(1);
-            this.L_Color7.Name = "L_Color7";
-            this.L_Color7.Size = new System.Drawing.Size(18, 22);
-            this.L_Color7.TabIndex = 3;
-            this.L_Color7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // L_Color8
-            // 
-            this.L_Color8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_Color8.Location = new System.Drawing.Point(657, 73);
-            this.L_Color8.Margin = new System.Windows.Forms.Padding(1);
-            this.L_Color8.Name = "L_Color8";
-            this.L_Color8.Size = new System.Drawing.Size(18, 22);
-            this.L_Color8.TabIndex = 3;
-            this.L_Color8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // radioButton9
-            // 
-            this.radioButton9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.radioButton9.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.radioButton9.Location = new System.Drawing.Point(677, 97);
-            this.radioButton9.Margin = new System.Windows.Forms.Padding(1);
-            this.radioButton9.Name = "radioButton9";
-            this.radioButton9.Size = new System.Drawing.Size(128, 22);
-            this.radioButton9.TabIndex = 4;
-            this.radioButton9.Text = "消しゴム";
-            this.radioButton9.UseVisualStyleBackColor = true;
-            // 
-            // L_SN
-            // 
-            this.L_SN.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_SN.AutoSize = true;
-            this.tableLayoutPanel2.SetColumnSpan(this.L_SN, 2);
-            this.L_SN.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.L_SN.Location = new System.Drawing.Point(1, 49);
-            this.L_SN.Margin = new System.Windows.Forms.Padding(1);
-            this.L_SN.Name = "L_SN";
-            this.L_SN.Size = new System.Drawing.Size(209, 22);
-            this.L_SN.TabIndex = 13;
-            this.L_SN.Text = "SN";
-            this.L_SN.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox2.Location = new System.Drawing.Point(212, 73);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(1);
-            this.pictureBox2.Name = "pictureBox2";
-            this.tableLayoutPanel2.SetRowSpan(this.pictureBox2, 3);
-            this.pictureBox2.Size = new System.Drawing.Size(118, 70);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 12;
-            this.pictureBox2.TabStop = false;
-            // 
-            // listBox1
-            // 
-            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel2.SetColumnSpan(this.listBox1, 2);
-            this.listBox1.Font = new System.Drawing.Font("Meiryo UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 14;
-            this.listBox1.Location = new System.Drawing.Point(1, 73);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(1);
-            this.listBox1.Name = "listBox1";
-            this.tableLayoutPanel2.SetRowSpan(this.listBox1, 4);
-            this.listBox1.Size = new System.Drawing.Size(209, 74);
-            this.listBox1.TabIndex = 14;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
-            // 
-            // ra_Day
-            // 
-            this.ra_Day.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.ra_Day.AutoSize = true;
-            this.ra_Day.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.ra_Day.Location = new System.Drawing.Point(212, 2);
-            this.ra_Day.Margin = new System.Windows.Forms.Padding(1);
-            this.ra_Day.Name = "ra_Day";
-            this.ra_Day.Size = new System.Drawing.Size(118, 19);
-            this.ra_Day.TabIndex = 8;
-            this.ra_Day.Text = "昼勤";
-            this.ra_Day.UseVisualStyleBackColor = true;
-            this.ra_Day.Click += new System.EventHandler(this.ra_Day_Click);
-            // 
-            // ra_Normal
-            // 
-            this.ra_Normal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.ra_Normal.AutoSize = true;
-            this.ra_Normal.Checked = true;
-            this.ra_Normal.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.ra_Normal.Location = new System.Drawing.Point(607, 99);
-            this.ra_Normal.Margin = new System.Windows.Forms.Padding(1);
-            this.ra_Normal.Name = "ra_Normal";
-            this.ra_Normal.Size = new System.Drawing.Size(68, 19);
-            this.ra_Normal.TabIndex = 8;
-            this.ra_Normal.TabStop = true;
-            this.ra_Normal.Text = "1";
-            this.ra_Normal.UseVisualStyleBackColor = true;
-            // 
-            // radioButton11
-            // 
-            this.radioButton11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.radioButton11.AutoSize = true;
-            this.radioButton11.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.radioButton11.Location = new System.Drawing.Point(607, 127);
-            this.radioButton11.Margin = new System.Windows.Forms.Padding(1);
-            this.radioButton11.Name = "radioButton11";
-            this.radioButton11.Size = new System.Drawing.Size(68, 19);
-            this.radioButton11.TabIndex = 8;
-            this.radioButton11.Text = "2";
-            this.radioButton11.UseVisualStyleBackColor = true;
-            // 
-            // picBox_B
-            // 
-            this.picBox_B.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picBox_B.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picBox_B.Location = new System.Drawing.Point(677, 20);
-            this.picBox_B.Margin = new System.Windows.Forms.Padding(1);
-            this.picBox_B.Name = "picBox_B";
-            this.tableLayoutPanel3.SetRowSpan(this.picBox_B, 6);
-            this.picBox_B.Size = new System.Drawing.Size(605, 420);
-            this.picBox_B.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picBox_B.TabIndex = 0;
-            this.picBox_B.TabStop = false;
-            this.picBox_B.Tag = "1";
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 3;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.radioButton11, 1, 5);
-            this.tableLayoutPanel3.Controls.Add(this.ra_Normal, 1, 4);
-            this.tableLayoutPanel3.Controls.Add(this.L_A, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.L_B, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.button2, 1, 1);
-            this.tableLayoutPanel3.Controls.Add(this.button3, 1, 2);
-            this.tableLayoutPanel3.Controls.Add(this.picBox_A, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.picBox_B, 2, 1);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 152);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 7;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 19F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1283, 441);
-            this.tableLayoutPanel3.TabIndex = 8;
-            // 
-            // L_A
-            // 
-            this.L_A.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_A.Location = new System.Drawing.Point(1, 1);
-            this.L_A.Margin = new System.Windows.Forms.Padding(1);
-            this.L_A.Name = "L_A";
-            this.L_A.Size = new System.Drawing.Size(604, 17);
-            this.L_A.TabIndex = 3;
-            this.L_A.Text = "A面";
-            this.L_A.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // L_B
-            // 
-            this.L_B.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_B.Location = new System.Drawing.Point(677, 1);
-            this.L_B.Margin = new System.Windows.Forms.Padding(1);
-            this.L_B.Name = "L_B";
-            this.L_B.Size = new System.Drawing.Size(605, 17);
-            this.L_B.TabIndex = 3;
-            this.L_B.Text = "B面";
-            this.L_B.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button2.Location = new System.Drawing.Point(607, 20);
-            this.button2.Margin = new System.Windows.Forms.Padding(1);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(68, 26);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "⇔";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button3.Location = new System.Drawing.Point(607, 48);
-            this.button3.Margin = new System.Windows.Forms.Padding(1);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(68, 26);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "反転";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.B_Rotate_Click);
-            // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.ColumnCount = 1;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel2, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel3, 0, 1);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 39);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 2;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 152F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(1283, 593);
-            this.tableLayoutPanel4.TabIndex = 9;
-            // 
-            // menu_Setting
-            // 
-            this.menu_Setting.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.menu_Setting.Image = ((System.Drawing.Image)(resources.GetObject("menu_Setting.Image")));
-            this.menu_Setting.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.menu_Setting.Name = "menu_Setting";
-            this.menu_Setting.Size = new System.Drawing.Size(36, 36);
-            this.menu_Setting.Text = "toolStripButton2";
-            this.menu_Setting.ToolTipText = "Setting";
-            this.menu_Setting.Click += new System.EventHandler(this.B_Setting_Click);
-            // 
-            // menu_Clear
-            // 
-            this.menu_Clear.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.menu_Clear.Image = ((System.Drawing.Image)(resources.GetObject("menu_Clear.Image")));
-            this.menu_Clear.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.menu_Clear.Name = "menu_Clear";
-            this.menu_Clear.Size = new System.Drawing.Size(36, 36);
-            this.menu_Clear.Text = "toolStripButton1";
-            this.menu_Clear.ToolTipText = "Clear";
-            this.menu_Clear.Click += new System.EventHandler(this.B_Clear_Click);
-            // 
-            // menu_Save
-            // 
-            this.menu_Save.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.menu_Save.Image = ((System.Drawing.Image)(resources.GetObject("menu_Save.Image")));
-            this.menu_Save.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.menu_Save.Name = "menu_Save";
-            this.menu_Save.Size = new System.Drawing.Size(36, 36);
-            this.menu_Save.Text = "toolStripButton1";
-            this.menu_Save.Click += new System.EventHandler(this.b_Save_Click);
-            // 
-            // toolStripButton3
-            // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(36, 36);
-            this.toolStripButton3.Text = "MakeExcelFile";
-            this.toolStripButton3.Click += new System.EventHandler(this.B_Excel_Click);
-            // 
-            // toolStripButton4
-            // 
-            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(36, 36);
-            this.toolStripButton4.Text = "Analyze";
-            this.toolStripButton4.Click += new System.EventHandler(this.B_Analyze_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 39);
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.L_Operator,
-            this.t_operator,
-            this.toolStripSeparator2,
-            this.menu_Setting,
-            this.menu_Clear,
-            this.menu_Save,
-            this.toolStripButton3,
-            this.toolStripButton4,
-            this.toolStripSeparator1,
-            this.toolStripLabel1,
-            this.toolStripComboBox1,
-            this.toolStripButton5});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.toolStrip1.Size = new System.Drawing.Size(1283, 39);
-            this.toolStrip1.TabIndex = 10;
-            this.toolStrip1.Text = "Save";
-            // 
-            // L_Operator
-            // 
-            this.L_Operator.Name = "L_Operator";
-            this.L_Operator.Size = new System.Drawing.Size(43, 36);
-            this.L_Operator.Text = "検査員";
-            // 
-            // t_operator
-            // 
-            this.t_operator.AutoSize = false;
-            this.t_operator.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
-            this.t_operator.Name = "t_operator";
-            this.t_operator.ReadOnly = true;
-            this.t_operator.Size = new System.Drawing.Size(150, 23);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 39);
-            // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(59, 36);
-            this.toolStripLabel1.Text = "Language";
-            // 
-            // toolStripComboBox1
-            // 
-            this.toolStripComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.toolStripComboBox1.Items.AddRange(new object[] {
-            "Japanease",
-            "RomanAlphabet",
-            "English",
-            "Português"});
-            this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 39);
-            // 
-            // toolStripButton5
-            // 
-            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
-            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(36, 36);
-            this.toolStripButton5.Text = "Undo";
-            this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1382,6 +1400,8 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBox_B)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
@@ -1476,6 +1496,7 @@
         private System.Windows.Forms.ToolStripTextBox t_operator;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton toolStripButton5;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
 

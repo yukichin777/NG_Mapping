@@ -14,7 +14,6 @@ namespace NGMapping
         CRLF,
         TAB
     }
-
     public class KeyInputEventArgs : EventArgs
     {
         public string InputText { get; }
@@ -24,7 +23,6 @@ namespace NGMapping
             InputText = inputText;
         }
     }
-
     public class GlobalKeyboardHook
     {
         private const int WH_KEYBOARD_LL = 13;
@@ -36,6 +34,12 @@ namespace NGMapping
 
         public SubmitKey SubmitKeyMode { get; set; } = SubmitKey.CR;
 
+        /// <summary>
+        /// True の場合、CTRL+Z のイベントのみ発生させます。
+        /// False の場合、他のキーイベントも処理します。
+        /// </summary>
+        public bool OnlyCtrlZ { get; set; } = false; // デフォルトは false
+
         public event EventHandler<KeyInputEventArgs>? InputSubmitted;
         public event EventHandler<char>? CharReceived;
 
@@ -44,6 +48,7 @@ namespace NGMapping
             _proc = HookCallback;
             // 初期状態ではフックしない
         }
+
         public void Start()
         {
             if (_hookID == IntPtr.Zero)
@@ -72,7 +77,6 @@ namespace NGMapping
 
             return result > 0 ? sb.ToString() : "";
         }
-
         private string GetSubmitKeyString()
         {
             return SubmitKeyMode switch
@@ -84,16 +88,13 @@ namespace NGMapping
                 _ => "\r"
             };
         }
-
         private IntPtr SetHook(LowLevelKeyboardProc proc)
         {
             using var curProcess = Process.GetCurrentProcess();
             using var curModule = curProcess.MainModule!;
             return SetWindowsHookEx(WH_KEYBOARD_LL, proc, GetModuleHandle(curModule.ModuleName), 0);
         }
-
         private delegate IntPtr LowLevelKeyboardProc(int nCode, IntPtr wParam, IntPtr lParam);
-
         private IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
         {
             if (nCode >= 0 && wParam == (IntPtr)WM_KEYDOWN)
@@ -101,25 +102,39 @@ namespace NGMapping
                 int vkCode = Marshal.ReadInt32(lParam);
                 Keys key = (Keys)vkCode;
 
-                if (key == Keys.Back)
-                {
-                    if (_buffer.Length > 0)
-                        _buffer.Length--;
-                }
-                else
-                {
-                    string ch = GetCharsFromKey(key);
-                    if (!string.IsNullOrEmpty(ch))
-                    {
-                        _buffer.Append(ch);
-                        CharReceived?.Invoke(this, ch[0]);
+                // CTRL キーが押されているかを確認
+                byte[] keyboardState = new byte[256];
+                GetKeyboardState(keyboardState);
+                bool isCtrlPressed = (keyboardState[(int)Keys.ControlKey] & 0x80) != 0;
 
-                        string submitPattern = GetSubmitKeyString();
-                        if (_buffer.Length >= submitPattern.Length &&
-                            _buffer.ToString(_buffer.Length - submitPattern.Length, submitPattern.Length) == submitPattern)
+                // CTRL+Z の判定
+                if (isCtrlPressed && key == Keys.Z)
+                {
+                    // CTRL+Z 時のイベントを発生
+                    InputSubmitted?.Invoke(this, new KeyInputEventArgs("CTRL+Z"));
+                }
+                else if (!OnlyCtrlZ) // OnlyCtrlZ が false ならその他のイベントも処理
+                {
+                    if (key == Keys.Back)
+                    {
+                        if (_buffer.Length > 0)
+                            _buffer.Length--;
+                    }
+                    else
+                    {
+                        string ch = GetCharsFromKey(key);
+                        if (!string.IsNullOrEmpty(ch))
                         {
-                            InputSubmitted?.Invoke(this, new KeyInputEventArgs(_buffer.ToString()));
-                            _buffer.Clear();
+                            _buffer.Append(ch);
+                            CharReceived?.Invoke(this, ch[0]);
+
+                            string submitPattern = GetSubmitKeyString();
+                            if (_buffer.Length >= submitPattern.Length &&
+                                _buffer.ToString(_buffer.Length - submitPattern.Length, submitPattern.Length) == submitPattern)
+                            {
+                                InputSubmitted?.Invoke(this, new KeyInputEventArgs(_buffer.ToString()));
+                                _buffer.Clear();
+                            }
                         }
                     }
                 }
@@ -156,6 +171,5 @@ namespace NGMapping
 
         #endregion
     }
-
 
 }

@@ -329,6 +329,14 @@ namespace NGMapping
             List<TableInfo> tables =
             [
                 // T_Daicho テーブル定義
+                // mode  0:紙から入力, 1:QRコードから入力
+                // SN  シリアル番号(mode=0のときはDummySN、mode=1の時はQRからの読み取りSN)
+                // Operator  オペレータ名
+                // TestDate  検査実施日時
+                // SaveDateTime  データ保存日時
+                // BoardDate  ボード製造日
+                // Hinban  品番
+                // isDay  昼勤かどうか(true:昼勤, false:夜勤)
                 new TableInfo(
                     "T_Daicho",
                     [
@@ -337,18 +345,25 @@ namespace NGMapping
                         new("SN", DataType.Text, isNullable: false,maxLength:50),
                         new("Operator", DataType.Text, isNullable: false,maxLength:50),
                         new("TestDate", DataType.DateTime, isNullable: false),
-                        new("SaveDateTime", DataType.DateTime, isNullable: false),
+                        new("SaveDate", DataType.DateTime, isNullable: false),
                         new("BoardDate", DataType.DateTime, isNullable: false),
                         new("Hinban", DataType.Text, isNullable: true,maxLength:50),
                         new("isDay", DataType.Boolean, isNullable: false)
                     ]
                 ),
                 // T_Data テーブル定義
+                // dID  台帳ID（T_DaichoのID）
+                // Board  ボード名（例：6365590A, 6365630Bなど）
+                // NgType  NGの種類（0:異物, 1:フラックス, 2:はんだボール, 3:はんだ屑, 4:炭化物, 5:ヒュミシール付着, 6:ヒュミシール未塗布, 7:浮き, 8:破損, 9:リードカット異常）
+                // NgText  NGの詳細テキスト（例：はんだボール, フラックスなど）
+                // X  X座標
+                // Y  Y座標
+                // Area  エリア番号（1～9）
                 new TableInfo(
                     "T_Data",
                     [
                         new("ID", DataType.Integer, isNullable : false, isPrimaryKey : true, isAutoIncrement : true),
-                        new("SN", DataType.Text, isNullable: false,maxLength:50),
+                        new("dID", DataType.Integer, isNullable: false,maxLength:50),
                         new("Board", DataType.Text, isNullable: true, maxLength : 5),
                         new("NgType", DataType.Integer, isNullable: false),
                         new("NgText", DataType.Text, isNullable: true),
@@ -361,6 +376,7 @@ namespace NGMapping
 
             return tables;
         }       
+
         public static bool FLG_DispDummyQR
         {
             get { return Properties.Settings.Default.FLG_DispQRCode; }

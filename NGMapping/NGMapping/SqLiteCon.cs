@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SQLite;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace NGMapping
 {
@@ -359,6 +360,9 @@ namespace NGMapping
             }
         }
         #endregion
+
+
+
     }
     #endregion
     #region enum-----サポートするデータ型定義
@@ -412,6 +416,62 @@ namespace NGMapping
         public List<ColumnInfo> Columns { get; set; } = columns;       // カラム定義（ColumnInfoのリスト）
     }
     #endregion
+
+    public static class dbCM
+    {
+        public static string MakeInsertSQL<T>(string tblName, Dictionary<string, T> dic)
+        {
+            // null や空文字チェック
+            if (string.IsNullOrWhiteSpace(tblName))
+                throw new ArgumentException("テーブル名は空にできません。", nameof(tblName));
+
+            if (dic == null || dic.Count == 0)
+                throw new ArgumentException("カラムと値のペアを含む辞書が空です。", nameof(dic));
+
+            // 列名と値を順次追加するリスト
+            List<string> columnNames = new List<string>();
+            List<string> values = new List<string>();
+
+            foreach (var kvp in dic)
+            {
+                // カラム名をリストに追加
+                columnNames.Add(kvp.Key);
+
+                // 値の型で処理を分ける
+                if (kvp.Value is string strValue)
+                {
+                    values.Add($"'{strValue}'"); // シングルクォーテーションで囲む
+                }
+                else if (kvp.Value is int || kvp.Value is float || kvp.Value is double)
+                {
+                    values.Add($"{kvp.Value}"); // 数値型はそのまま追加
+                }
+                else if (kvp.Value is DateTime dateTimeValue)
+                {
+                    // 日時型はフォーマットしてシングルクォーテーションで囲む
+                    values.Add($"'{dateTimeValue:yyyy-MM-dd HH:mm:ss}'");
+                }
+                else if (kvp.Value is bool boolValue)
+                {
+                    // bool型はtrueを1、falseを0として追加
+                    values.Add($"{(boolValue ? 1 : 0)}");
+                }
+                else
+                {
+                    // サポートされていない型の場合例外をスロー
+                    throw new ArgumentException($"型 '{typeof(T)}' はサポートされていません。");
+                }
+            }
+
+            // SQL文を組み立てる (string.Joinを活用して列名と値をカンマ区切りでまとめる)
+            string sql = $"INSERT INTO {tblName} ({string.Join(", ", columnNames)}) VALUES ({string.Join(", ", values)});";
+
+            return sql;
+        }
+
+    }
+
+
 }
 
 
