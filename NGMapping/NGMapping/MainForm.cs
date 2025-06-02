@@ -80,7 +80,7 @@ namespace NGMapping
 
             t_operator.Text = opeName;
             operatorName = opeName;
-            this.loginForm = loginForm;
+            //this.loginForm = loginForm;
         }
         #endregion
         #region event-----Formロード
@@ -205,7 +205,9 @@ namespace NGMapping
                     L_A.Text = "A_Men";
                     L_B.Text = "B_Men";
                     button3.Text = "Hanten";
-
+                    ra_Normal.Text = "Tsujo"; // 通常
+                    ra_TofuArea.Text = "Tofu"; // 塗布
+                    ra_KinshiArea.Text = "Kinshi"; // 禁止
                     break;
                 case "English":
                     ngtxt = NgTexts_en;
@@ -222,6 +224,11 @@ namespace NGMapping
                     L_A.Text = "Side A";               // A面
                     L_B.Text = "Side B";               // B面
                     button3.Text = "Toggle";           // 反転
+
+                    ra_Normal.Text = "regular"; // 通常
+                    ra_TofuArea.Text = "apply"; // 塗布
+                    ra_KinshiArea.Text = "no apply"; // 禁止
+
                     break;
                 case "Português":
                     ngtxt = NgTexts_pt;
@@ -238,6 +245,11 @@ namespace NGMapping
                     L_A.Text = "Lado A";                 // A面
                     L_B.Text = "Lado B";                 // B面
                     button3.Text = "Inverter";
+
+                    ra_Normal.Text = "regular"; // 通常
+                    ra_TofuArea.Text = "aplicar"; // 塗布
+                    ra_KinshiArea.Text = "proibido"; // 禁止
+
                     break;
                 case "Japanease":
                 default:
@@ -583,7 +595,7 @@ namespace NGMapping
             string Hinban = cb_Hinban.Text;
             string appFolderPath = Application.StartupPath;// アプリケーション自身のフォルダのパスを取得
             string picFolderPath = Path.Combine(appFolderPath, "pic");
-            string areaName=radioButton11.Checked?"塗布":radioButton10.Checked?"禁止":""; // 勤務区分の取得
+            string areaName=ra_TofuArea.Checked?"塗布":ra_KinshiArea.Checked?"禁止":""; // 勤務区分の取得
 
             try
             {
@@ -1184,10 +1196,10 @@ namespace NGMapping
         {
             RadioButton rb = sender as RadioButton;
             if (rb == null || !rb.Checked) return; // nullチェック
-            isQRead = false; // QRコード読み取りモードをオフ
-            isQRDisp = false; // QRコード表示をオフ
-            pictureBox2.Image = null; // QRコード画像をクリア
-            L_SN.Text = ""; // S/Nラベルをクリア
+            if (!LoadImageToPictureBox(out string mes))
+            {
+                MessageBox.Show(mes);
+            }
         }
     }
     public class UndoInfo

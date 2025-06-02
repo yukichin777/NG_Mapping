@@ -90,7 +90,7 @@
             this.ra_Day = new System.Windows.Forms.RadioButton();
             this.ra_Night = new System.Windows.Forms.RadioButton();
             this.ra_Normal = new System.Windows.Forms.RadioButton();
-            this.radioButton11 = new System.Windows.Forms.RadioButton();
+            this.ra_TofuArea = new System.Windows.Forms.RadioButton();
             this.picBox_B = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.L_A = new System.Windows.Forms.Label();
@@ -98,7 +98,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.radioButton10 = new System.Windows.Forms.RadioButton();
+            this.ra_KinshiArea = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.menu_Setting = new System.Windows.Forms.ToolStripButton();
             this.menu_Clear = new System.Windows.Forms.ToolStripButton();
@@ -132,7 +132,7 @@
             this.picBox_A.Margin = new System.Windows.Forms.Padding(1);
             this.picBox_A.Name = "picBox_A";
             this.tableLayoutPanel3.SetRowSpan(this.picBox_A, 6);
-            this.picBox_A.Size = new System.Drawing.Size(604, 415);
+            this.picBox_A.Size = new System.Drawing.Size(594, 415);
             this.picBox_A.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picBox_A.TabIndex = 0;
             this.picBox_A.TabStop = false;
@@ -1124,37 +1124,38 @@
             this.ra_Normal.Location = new System.Drawing.Point(1, 4);
             this.ra_Normal.Margin = new System.Windows.Forms.Padding(1);
             this.ra_Normal.Name = "ra_Normal";
-            this.ra_Normal.Size = new System.Drawing.Size(68, 19);
+            this.ra_Normal.Size = new System.Drawing.Size(88, 19);
             this.ra_Normal.TabIndex = 8;
             this.ra_Normal.TabStop = true;
             this.ra_Normal.Tag = "1";
-            this.ra_Normal.Text = "1";
+            this.ra_Normal.Text = "通常";
             this.ra_Normal.UseVisualStyleBackColor = true;
             this.ra_Normal.CheckedChanged += new System.EventHandler(this.ra_Normal_CheckedChanged);
             // 
-            // radioButton11
+            // ra_TofuArea
             // 
-            this.radioButton11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.radioButton11.AutoSize = true;
-            this.radioButton11.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.radioButton11.Location = new System.Drawing.Point(1, 32);
-            this.radioButton11.Margin = new System.Windows.Forms.Padding(1);
-            this.radioButton11.Name = "radioButton11";
-            this.radioButton11.Size = new System.Drawing.Size(68, 19);
-            this.radioButton11.TabIndex = 8;
-            this.radioButton11.Tag = "2";
-            this.radioButton11.Text = "2";
-            this.radioButton11.UseVisualStyleBackColor = true;
+            this.ra_TofuArea.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.ra_TofuArea.AutoSize = true;
+            this.ra_TofuArea.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.ra_TofuArea.Location = new System.Drawing.Point(1, 32);
+            this.ra_TofuArea.Margin = new System.Windows.Forms.Padding(1);
+            this.ra_TofuArea.Name = "ra_TofuArea";
+            this.ra_TofuArea.Size = new System.Drawing.Size(88, 19);
+            this.ra_TofuArea.TabIndex = 8;
+            this.ra_TofuArea.Tag = "2";
+            this.ra_TofuArea.Text = "塗布エリア";
+            this.ra_TofuArea.UseVisualStyleBackColor = true;
+            this.ra_TofuArea.CheckedChanged += new System.EventHandler(this.ra_Normal_CheckedChanged);
             // 
             // picBox_B
             // 
             this.picBox_B.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picBox_B.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picBox_B.Location = new System.Drawing.Point(677, 25);
+            this.picBox_B.Location = new System.Drawing.Point(687, 25);
             this.picBox_B.Margin = new System.Windows.Forms.Padding(1);
             this.picBox_B.Name = "picBox_B";
             this.tableLayoutPanel3.SetRowSpan(this.picBox_B, 6);
-            this.picBox_B.Size = new System.Drawing.Size(605, 415);
+            this.picBox_B.Size = new System.Drawing.Size(595, 415);
             this.picBox_B.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picBox_B.TabIndex = 0;
             this.picBox_B.TabStop = false;
@@ -1164,7 +1165,7 @@
             // 
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Controls.Add(this.L_A, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.L_B, 2, 0);
@@ -1196,7 +1197,7 @@
             this.L_A.Location = new System.Drawing.Point(1, 1);
             this.L_A.Margin = new System.Windows.Forms.Padding(1);
             this.L_A.Name = "L_A";
-            this.L_A.Size = new System.Drawing.Size(604, 22);
+            this.L_A.Size = new System.Drawing.Size(594, 22);
             this.L_A.TabIndex = 3;
             this.L_A.Text = "A面";
             this.L_A.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1206,10 +1207,10 @@
             this.L_B.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_B.Location = new System.Drawing.Point(677, 1);
+            this.L_B.Location = new System.Drawing.Point(687, 1);
             this.L_B.Margin = new System.Windows.Forms.Padding(1);
             this.L_B.Name = "L_B";
-            this.L_B.Size = new System.Drawing.Size(605, 22);
+            this.L_B.Size = new System.Drawing.Size(595, 22);
             this.L_B.TabIndex = 3;
             this.L_B.Text = "B面";
             this.L_B.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1220,10 +1221,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button2.Location = new System.Drawing.Point(607, 25);
+            this.button2.Location = new System.Drawing.Point(597, 25);
             this.button2.Margin = new System.Windows.Forms.Padding(1);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(68, 26);
+            this.button2.Size = new System.Drawing.Size(88, 26);
             this.button2.TabIndex = 4;
             this.button2.Text = "⇔";
             this.button2.UseVisualStyleBackColor = true;
@@ -1235,10 +1236,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button3.Location = new System.Drawing.Point(607, 53);
+            this.button3.Location = new System.Drawing.Point(597, 53);
             this.button3.Margin = new System.Windows.Forms.Padding(1);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(68, 26);
+            this.button3.Size = new System.Drawing.Size(88, 26);
             this.button3.TabIndex = 4;
             this.button3.Text = "反転";
             this.button3.UseVisualStyleBackColor = true;
@@ -1246,35 +1247,39 @@
             // 
             // tableLayoutPanel5
             // 
+            this.tableLayoutPanel5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel5.ColumnCount = 1;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Controls.Add(this.radioButton11, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.ra_TofuArea, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.ra_Normal, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.radioButton10, 0, 2);
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(606, 100);
+            this.tableLayoutPanel5.Controls.Add(this.ra_KinshiArea, 0, 2);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(596, 100);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 3;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(70, 84);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(90, 84);
             this.tableLayoutPanel5.TabIndex = 9;
             // 
-            // radioButton10
+            // ra_KinshiArea
             // 
-            this.radioButton10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.radioButton10.AutoSize = true;
-            this.radioButton10.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.radioButton10.Location = new System.Drawing.Point(1, 60);
-            this.radioButton10.Margin = new System.Windows.Forms.Padding(1);
-            this.radioButton10.Name = "radioButton10";
-            this.radioButton10.Size = new System.Drawing.Size(68, 19);
-            this.radioButton10.TabIndex = 8;
-            this.radioButton10.Tag = "3";
-            this.radioButton10.Text = "3";
-            this.radioButton10.UseVisualStyleBackColor = true;
+            this.ra_KinshiArea.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.ra_KinshiArea.AutoSize = true;
+            this.ra_KinshiArea.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.ra_KinshiArea.Location = new System.Drawing.Point(1, 60);
+            this.ra_KinshiArea.Margin = new System.Windows.Forms.Padding(1);
+            this.ra_KinshiArea.Name = "ra_KinshiArea";
+            this.ra_KinshiArea.Size = new System.Drawing.Size(88, 19);
+            this.ra_KinshiArea.TabIndex = 8;
+            this.ra_KinshiArea.Tag = "3";
+            this.ra_KinshiArea.Text = "禁止エリア";
+            this.ra_KinshiArea.UseVisualStyleBackColor = true;
+            this.ra_KinshiArea.CheckedChanged += new System.EventHandler(this.ra_Normal_CheckedChanged);
             // 
             // tableLayoutPanel4
             // 
@@ -1520,7 +1525,7 @@
         private System.Windows.Forms.Label L_SN;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.RadioButton ra_Normal;
-        private System.Windows.Forms.RadioButton radioButton11;
+        private System.Windows.Forms.RadioButton ra_TofuArea;
         private System.Windows.Forms.ToolStripButton menu_Setting;
         private System.Windows.Forms.ToolStripButton menu_Clear;
         private System.Windows.Forms.ToolStripButton menu_Save;
@@ -1536,7 +1541,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButton5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.RadioButton radioButton10;
+        private System.Windows.Forms.RadioButton ra_KinshiArea;
     }
 }
 
