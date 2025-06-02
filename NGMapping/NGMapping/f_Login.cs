@@ -14,13 +14,13 @@ namespace NGMapping
 {
     public partial class f_Login : Form
     {
-        private GlobalKeyboardHook _hook = new();
+        private GlobalKeyboardHook hook = new();
 
         private MainForm mainfrm;
         public f_Login()
         {
             InitializeComponent();
-            _hook.SubmitKeyMode = SubmitKey.CR;
+            hook.SubmitKeyMode = SubmitKey.CR;
 
             //_hook.CharReceived += (s, c) => Console.WriteLine($"Char: {c}");
             //_hook.InputSubmitted += (s, e) => Console.WriteLine($"Submitted: [{e.InputText}]");
@@ -32,11 +32,11 @@ namespace NGMapping
             CSet.SetFormLocState(this);
 
             //_hook.CharReceived += _hook_CharReceived;
-            _hook.InputSubmitted += _hook_InputSubmitted;
-            _hook.Start();
+            hook.InputSubmitted += hook_InputSubmitted;
+            hook.Start();
         }
 
-        private void _hook_InputSubmitted(object sender, KeyInputEventArgs e)
+        private void hook_InputSubmitted(object sender, KeyInputEventArgs e)
         {
             
             string st=e.InputText.Trim();
@@ -44,12 +44,12 @@ namespace NGMapping
 
             if (st.Length>5 && st.Substring(0, 5) == "Name-") 
             {   
-                _hook.Stop();
+                hook.Stop();
                 Operator = st.Substring(5);
             }
             if(st=="admin" || st == "ad"||st=="paper" || st=="pa" || st == "qc")
             {
-                _hook.Stop();                
+                hook.Stop();                
                 Operator = "##";
             }
 

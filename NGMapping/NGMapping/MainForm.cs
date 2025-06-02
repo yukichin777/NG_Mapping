@@ -49,7 +49,7 @@ namespace NGMapping
 
 
 
-
+        private GlobalKeyboardHook hook = new();
         private string operatorName = "";
 
         bool isQRDisp = false; // QRコードの表示フラグ
@@ -65,6 +65,8 @@ namespace NGMapping
         public MainForm(string opeName, f_Login frm)
         {
             InitializeComponent();
+            hook.SubmitKeyMode = SubmitKey.CR;
+
             loginForm = frm;
 
             LCountA = [L_CountA_0, L_CountA_1, L_CountA_2, L_CountA_3, L_CountA_4, L_CountA_5, L_CountA_6, L_CountA_7, L_CountA];
@@ -86,6 +88,7 @@ namespace NGMapping
         #region event-----Formロード
         private void MainForm_Load(object sender, EventArgs e)
         {
+            hook.InputSubmitted += hook_InputSubmitted;
             if (string.IsNullOrWhiteSpace(CSet.DbPath) || !File.Exists(CSet.DbPath))
             {
                 string myDocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -113,8 +116,34 @@ namespace NGMapping
 
         }
 
-       
 
+        private void hook_InputSubmitted(object sender, KeyInputEventArgs e)
+        {
+
+            string st = e.InputText.Trim();
+            string Operator = "";
+
+            if (st.Length > 5 && st.Substring(0, 5) == "Name-")
+            {
+                hook.Stop();
+                Operator = st.Substring(5);
+            }
+            if (st == "admin" || st == "ad" || st == "paper" || st == "pa" || st == "qc")
+            {
+                hook.Stop();
+                Operator = "##";
+            }
+
+            if (Operator != "")
+            {
+                mainfrm = new MainForm(Operator, this);
+                mainfrm.Show();
+                this.ShowInTaskbar = false; // タスクバーに表示しない
+                this.Hide();
+                return; // ここで処理を終了
+            }
+            //LabelText = "";
+        }
 
         private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -501,7 +530,7 @@ namespace NGMapping
                 $"  T2.Y AS Y " +
                 $"FROM " +
                 $"            T_Daicho T1 " +
-                $"  LEFT JOIN T_Data   T2 ON T2.SN = T1.SN " +
+                $"  LEFT JOIN T_Data   T2 ON T2.dID = T1.ID " +
                 $"WHERE " +
                 $"  T1.SN = '{sn}' " +
                 $"  AND T2.Board='{AB[i]}';");
