@@ -144,13 +144,13 @@ namespace NGMapping
         DateTime makeDt;
         string hinban = "";
         private void Hook_InputSubmitted(object sender, KeyInputEventArgs e)
-        {
+        {            
             string QRTxt= e.InputText.Trim();
             if (QRTxt.Length != 21) return;
 
-            string dtTxt = "20" + QRTxt.Substring(0, 2) + "/" + QRTxt.Substring(2, 2) + "/"; QRTxt.Substring(4, 2);
+            string dtTxt = "20" + QRTxt.Substring(0, 2) + "/" + QRTxt.Substring(2, 2) + "/" + QRTxt.Substring(4, 2);
 
-            if(!DateTime.TryParse(dtTxt, out makeDt))
+            if (!DateTime.TryParse(dtTxt, out makeDt))
             {
                 return;
             }
@@ -167,16 +167,7 @@ namespace NGMapping
                     return; // 無効なS/N形式の場合は何もしない
 
             }
-
-
-            throw new NotImplementedException();
-
-
-
-
         }
-
-
         #endregion
         #region method-----色初期化/コンテキストメニュー作成
         private void ColorInit()
