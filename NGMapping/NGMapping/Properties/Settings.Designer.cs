@@ -166,5 +166,17 @@ namespace NGMapping.Properties {
                 this["Language"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("8:30,20:30")]
+        public string DayTimeRange {
+            get {
+                return ((string)(this["DayTimeRange"]));
+            }
+            set {
+                this["DayTimeRange"] = value;
+            }
+        }
     }
 }

@@ -33,9 +33,13 @@
             this.button2 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dtp_DayTime1 = new System.Windows.Forms.DateTimePicker();
+            this.dtp_DayTime0 = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.ch_DispDummyQR = new System.Windows.Forms.CheckBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -150,8 +154,12 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.dtp_DayTime1);
+            this.tabPage1.Controls.Add(this.dtp_DayTime0);
             this.tabPage1.Controls.Add(this.tableLayoutPanel4);
             this.tabPage1.Controls.Add(this.label15);
+            this.tabPage1.Controls.Add(this.label17);
+            this.tabPage1.Controls.Add(this.label16);
             this.tabPage1.Controls.Add(this.label14);
             this.tabPage1.Controls.Add(this.label13);
             this.tabPage1.Controls.Add(this.tableLayoutPanel3);
@@ -167,6 +175,30 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "ワード登録";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // dtp_DayTime1
+            // 
+            this.dtp_DayTime1.CustomFormat = "HH:mm";
+            this.dtp_DayTime1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_DayTime1.Location = new System.Drawing.Point(555, 311);
+            this.dtp_DayTime1.Name = "dtp_DayTime1";
+            this.dtp_DayTime1.ShowUpDown = true;
+            this.dtp_DayTime1.Size = new System.Drawing.Size(79, 24);
+            this.dtp_DayTime1.TabIndex = 8;
+            this.dtp_DayTime1.Value = new System.DateTime(2025, 6, 3, 20, 30, 0, 0);
+            this.dtp_DayTime1.ValueChanged += new System.EventHandler(this.dtp_DayTime_ValueChanged);
+            // 
+            // dtp_DayTime0
+            // 
+            this.dtp_DayTime0.CustomFormat = "HH:mm";
+            this.dtp_DayTime0.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_DayTime0.Location = new System.Drawing.Point(444, 311);
+            this.dtp_DayTime0.Name = "dtp_DayTime0";
+            this.dtp_DayTime0.ShowUpDown = true;
+            this.dtp_DayTime0.Size = new System.Drawing.Size(79, 24);
+            this.dtp_DayTime0.TabIndex = 8;
+            this.dtp_DayTime0.Value = new System.DateTime(2025, 6, 3, 8, 30, 0, 0);
+            this.dtp_DayTime0.ValueChanged += new System.EventHandler(this.dtp_DayTime_ValueChanged);
             // 
             // tableLayoutPanel4
             // 
@@ -201,6 +233,24 @@
             this.label15.Size = new System.Drawing.Size(64, 17);
             this.label15.TabIndex = 6;
             this.label15.Text = "作業モード";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(528, 315);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(21, 17);
+            this.label17.TabIndex = 6;
+            this.label17.Text = "～";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(420, 290);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(84, 17);
+            this.label16.TabIndex = 6;
+            this.label16.Text = "昼勤の時間帯";
             // 
             // label14
             // 
@@ -253,7 +303,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(195, 255);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(195, 236);
             this.tableLayoutPanel3.TabIndex = 5;
             // 
             // label4
@@ -1055,5 +1105,9 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.CheckBox ch_DispDummyQR;
+        private System.Windows.Forms.DateTimePicker dtp_DayTime0;
+        private System.Windows.Forms.DateTimePicker dtp_DayTime1;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
     }
 }

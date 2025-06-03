@@ -3,7 +3,8 @@ using System.Linq;
 using System.Text.Json;
 using System.Drawing;
 using System.Windows.Forms; // JSONシリアライズライブラリ
-using QRCoder;         // QRCoderライブラリを使用
+using QRCoder;
+using System;         // QRCoderライブラリを使用
 
 
 namespace NGMapping
@@ -110,15 +111,30 @@ namespace NGMapping
                 Properties.Settings.Default.Save();
             }
         }
-        //public static Size WindowSize
-        //{
-        //    get { return Properties.Settings.Default.WindowSize; }
-        //    set
-        //    {
-        //        Properties.Settings.Default.WindowSize = value;
-        //        Properties.Settings.Default.Save();
-        //    }
-        //}
+        public static DateTime[] DayTimeRange
+        {
+            get 
+            {
+                string[] dum = Properties.Settings.Default.DayTimeRange.Split(',');
+                if(dum.Length == 2 && DateTime.TryParse(dum[0], out DateTime start) && DateTime.TryParse(dum[1], out DateTime end))
+                {
+                    return [start, end]; // 正しい形式ならばDateTime配列を返す
+                }
+                else
+                {
+                    // デフォルトの時間範囲を返す
+                    return [new DateTime(2025, 1, 1, 8, 30, 0), new DateTime(2025, 1, 1, 20,30, 0)];
+                }            
+            }
+            set
+            {
+                if (value.Length == 2)
+                {
+                    Properties.Settings.Default.DayTimeRange = value[0].ToString("HH:mm") + "," + value[1].ToString("HH:mm");
+                    Properties.Settings.Default.Save();
+                }
+            }
+        }
         //public static FormWindowState WindowState
         //{
         //    get 

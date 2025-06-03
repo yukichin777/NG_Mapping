@@ -45,8 +45,35 @@
             this.dtPicker_TestDate = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.L_CountA_5 = new NGMapping.ExLabel();
+            this.L_Count = new NGMapping.ExLabel();
+            this.L_CountB = new NGMapping.ExLabel();
+            this.L_Count_7 = new NGMapping.ExLabel();
+            this.L_Count_6 = new NGMapping.ExLabel();
+            this.L_Count_5 = new NGMapping.ExLabel();
+            this.L_Count_4 = new NGMapping.ExLabel();
+            this.L_Count_3 = new NGMapping.ExLabel();
+            this.L_Count_2 = new NGMapping.ExLabel();
+            this.L_Count_1 = new NGMapping.ExLabel();
+            this.L_CountB_7 = new NGMapping.ExLabel();
+            this.L_CountB_6 = new NGMapping.ExLabel();
+            this.L_CountB_5 = new NGMapping.ExLabel();
+            this.L_CountB_4 = new NGMapping.ExLabel();
+            this.L_CountB_3 = new NGMapping.ExLabel();
+            this.L_CountB_2 = new NGMapping.ExLabel();
+            this.L_CountB_1 = new NGMapping.ExLabel();
+            this.L_CountA_7 = new NGMapping.ExLabel();
+            this.L_CountA_6 = new NGMapping.ExLabel();
+            this.L_CountA_4 = new NGMapping.ExLabel();
+            this.L_CountA_3 = new NGMapping.ExLabel();
+            this.L_CountA_2 = new NGMapping.ExLabel();
+            this.L_CountA_1 = new NGMapping.ExLabel();
+            this.L_CountA_0 = new NGMapping.ExLabel();
             this.label4 = new System.Windows.Forms.Label();
+            this.L_CountB_0 = new NGMapping.ExLabel();
             this.cb_Hinban = new System.Windows.Forms.ComboBox();
+            this.L_Count_0 = new NGMapping.ExLabel();
+            this.L_CountA = new NGMapping.ExLabel();
             this.L_Color1 = new System.Windows.Forms.Label();
             this.L_Color2 = new System.Windows.Forms.Label();
             this.L_Color4 = new System.Windows.Forms.Label();
@@ -86,33 +113,6 @@
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.tsCombo_Language = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
-            this.L_CountA_5 = new NGMapping.ExLabel();
-            this.L_Count = new NGMapping.ExLabel();
-            this.L_CountB = new NGMapping.ExLabel();
-            this.L_Count_7 = new NGMapping.ExLabel();
-            this.L_Count_6 = new NGMapping.ExLabel();
-            this.L_Count_5 = new NGMapping.ExLabel();
-            this.L_Count_4 = new NGMapping.ExLabel();
-            this.L_Count_3 = new NGMapping.ExLabel();
-            this.L_Count_2 = new NGMapping.ExLabel();
-            this.L_Count_1 = new NGMapping.ExLabel();
-            this.L_CountB_7 = new NGMapping.ExLabel();
-            this.L_CountB_6 = new NGMapping.ExLabel();
-            this.L_CountB_5 = new NGMapping.ExLabel();
-            this.L_CountB_4 = new NGMapping.ExLabel();
-            this.L_CountB_3 = new NGMapping.ExLabel();
-            this.L_CountB_2 = new NGMapping.ExLabel();
-            this.L_CountB_1 = new NGMapping.ExLabel();
-            this.L_CountA_7 = new NGMapping.ExLabel();
-            this.L_CountA_6 = new NGMapping.ExLabel();
-            this.L_CountA_4 = new NGMapping.ExLabel();
-            this.L_CountA_3 = new NGMapping.ExLabel();
-            this.L_CountA_2 = new NGMapping.ExLabel();
-            this.L_CountA_1 = new NGMapping.ExLabel();
-            this.L_CountA_0 = new NGMapping.ExLabel();
-            this.L_CountB_0 = new NGMapping.ExLabel();
-            this.L_Count_0 = new NGMapping.ExLabel();
-            this.L_CountA = new NGMapping.ExLabel();
             ((System.ComponentModel.ISupportInitialize)(this.picBox_A)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -424,6 +424,414 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1200, 152);
             this.tableLayoutPanel2.TabIndex = 7;
             // 
+            // L_CountA_5
+            // 
+            this.L_CountA_5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_CountA_5.BackColor = System.Drawing.Color.White;
+            this.L_CountA_5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.L_CountA_5.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.L_CountA_5.Location = new System.Drawing.Point(807, 25);
+            this.L_CountA_5.Margin = new System.Windows.Forms.Padding(1);
+            this.L_CountA_5.Name = "L_CountA_5";
+            this.L_CountA_5.Size = new System.Drawing.Size(43, 22);
+            this.L_CountA_5.TabIndex = 3;
+            this.L_CountA_5.Text = "0";
+            this.L_CountA_5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.L_CountA_5.Value = 0;
+            // 
+            // L_Count
+            // 
+            this.L_Count.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_Count.BackColor = System.Drawing.Color.White;
+            this.L_Count.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.L_Count.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.L_Count.Location = new System.Drawing.Point(897, 121);
+            this.L_Count.Margin = new System.Windows.Forms.Padding(1);
+            this.L_Count.Name = "L_Count";
+            this.L_Count.Size = new System.Drawing.Size(43, 22);
+            this.L_Count.TabIndex = 3;
+            this.L_Count.Text = "0";
+            this.L_Count.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.L_Count.Value = 0;
+            // 
+            // L_CountB
+            // 
+            this.L_CountB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_CountB.BackColor = System.Drawing.Color.White;
+            this.L_CountB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.L_CountB.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.L_CountB.Location = new System.Drawing.Point(852, 121);
+            this.L_CountB.Margin = new System.Windows.Forms.Padding(1);
+            this.L_CountB.Name = "L_CountB";
+            this.L_CountB.Size = new System.Drawing.Size(43, 22);
+            this.L_CountB.TabIndex = 3;
+            this.L_CountB.Text = "0";
+            this.L_CountB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.L_CountB.Value = 0;
+            // 
+            // L_Count_7
+            // 
+            this.L_Count_7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_Count_7.BackColor = System.Drawing.Color.White;
+            this.L_Count_7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.L_Count_7.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.L_Count_7.Location = new System.Drawing.Point(897, 73);
+            this.L_Count_7.Margin = new System.Windows.Forms.Padding(1);
+            this.L_Count_7.Name = "L_Count_7";
+            this.L_Count_7.Size = new System.Drawing.Size(43, 22);
+            this.L_Count_7.TabIndex = 3;
+            this.L_Count_7.Text = "0";
+            this.L_Count_7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.L_Count_7.Value = 0;
+            // 
+            // L_Count_6
+            // 
+            this.L_Count_6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_Count_6.BackColor = System.Drawing.Color.White;
+            this.L_Count_6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.L_Count_6.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.L_Count_6.Location = new System.Drawing.Point(897, 49);
+            this.L_Count_6.Margin = new System.Windows.Forms.Padding(1);
+            this.L_Count_6.Name = "L_Count_6";
+            this.L_Count_6.Size = new System.Drawing.Size(43, 22);
+            this.L_Count_6.TabIndex = 3;
+            this.L_Count_6.Text = "0";
+            this.L_Count_6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.L_Count_6.Value = 0;
+            // 
+            // L_Count_5
+            // 
+            this.L_Count_5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_Count_5.BackColor = System.Drawing.Color.White;
+            this.L_Count_5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.L_Count_5.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.L_Count_5.Location = new System.Drawing.Point(897, 25);
+            this.L_Count_5.Margin = new System.Windows.Forms.Padding(1);
+            this.L_Count_5.Name = "L_Count_5";
+            this.L_Count_5.Size = new System.Drawing.Size(43, 22);
+            this.L_Count_5.TabIndex = 3;
+            this.L_Count_5.Text = "0";
+            this.L_Count_5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.L_Count_5.Value = 0;
+            // 
+            // L_Count_4
+            // 
+            this.L_Count_4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_Count_4.BackColor = System.Drawing.Color.White;
+            this.L_Count_4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.L_Count_4.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.L_Count_4.Location = new System.Drawing.Point(592, 121);
+            this.L_Count_4.Margin = new System.Windows.Forms.Padding(1);
+            this.L_Count_4.Name = "L_Count_4";
+            this.L_Count_4.Size = new System.Drawing.Size(43, 22);
+            this.L_Count_4.TabIndex = 3;
+            this.L_Count_4.Text = "0";
+            this.L_Count_4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.L_Count_4.Value = 0;
+            // 
+            // L_Count_3
+            // 
+            this.L_Count_3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_Count_3.BackColor = System.Drawing.Color.White;
+            this.L_Count_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.L_Count_3.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.L_Count_3.Location = new System.Drawing.Point(592, 97);
+            this.L_Count_3.Margin = new System.Windows.Forms.Padding(1);
+            this.L_Count_3.Name = "L_Count_3";
+            this.L_Count_3.Size = new System.Drawing.Size(43, 22);
+            this.L_Count_3.TabIndex = 3;
+            this.L_Count_3.Text = "0";
+            this.L_Count_3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.L_Count_3.Value = 0;
+            // 
+            // L_Count_2
+            // 
+            this.L_Count_2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_Count_2.BackColor = System.Drawing.Color.White;
+            this.L_Count_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.L_Count_2.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.L_Count_2.Location = new System.Drawing.Point(592, 73);
+            this.L_Count_2.Margin = new System.Windows.Forms.Padding(1);
+            this.L_Count_2.Name = "L_Count_2";
+            this.L_Count_2.Size = new System.Drawing.Size(43, 22);
+            this.L_Count_2.TabIndex = 3;
+            this.L_Count_2.Text = "0";
+            this.L_Count_2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.L_Count_2.Value = 0;
+            // 
+            // L_Count_1
+            // 
+            this.L_Count_1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_Count_1.BackColor = System.Drawing.Color.White;
+            this.L_Count_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.L_Count_1.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.L_Count_1.Location = new System.Drawing.Point(592, 49);
+            this.L_Count_1.Margin = new System.Windows.Forms.Padding(1);
+            this.L_Count_1.Name = "L_Count_1";
+            this.L_Count_1.Size = new System.Drawing.Size(43, 22);
+            this.L_Count_1.TabIndex = 3;
+            this.L_Count_1.Text = "0";
+            this.L_Count_1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.L_Count_1.Value = 0;
+            // 
+            // L_CountB_7
+            // 
+            this.L_CountB_7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_CountB_7.BackColor = System.Drawing.Color.White;
+            this.L_CountB_7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.L_CountB_7.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.L_CountB_7.Location = new System.Drawing.Point(852, 73);
+            this.L_CountB_7.Margin = new System.Windows.Forms.Padding(1);
+            this.L_CountB_7.Name = "L_CountB_7";
+            this.L_CountB_7.Size = new System.Drawing.Size(43, 22);
+            this.L_CountB_7.TabIndex = 3;
+            this.L_CountB_7.Text = "0";
+            this.L_CountB_7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.L_CountB_7.Value = 0;
+            // 
+            // L_CountB_6
+            // 
+            this.L_CountB_6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_CountB_6.BackColor = System.Drawing.Color.White;
+            this.L_CountB_6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.L_CountB_6.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.L_CountB_6.Location = new System.Drawing.Point(852, 49);
+            this.L_CountB_6.Margin = new System.Windows.Forms.Padding(1);
+            this.L_CountB_6.Name = "L_CountB_6";
+            this.L_CountB_6.Size = new System.Drawing.Size(43, 22);
+            this.L_CountB_6.TabIndex = 3;
+            this.L_CountB_6.Text = "0";
+            this.L_CountB_6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.L_CountB_6.Value = 0;
+            // 
+            // L_CountB_5
+            // 
+            this.L_CountB_5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_CountB_5.BackColor = System.Drawing.Color.White;
+            this.L_CountB_5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.L_CountB_5.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.L_CountB_5.Location = new System.Drawing.Point(852, 25);
+            this.L_CountB_5.Margin = new System.Windows.Forms.Padding(1);
+            this.L_CountB_5.Name = "L_CountB_5";
+            this.L_CountB_5.Size = new System.Drawing.Size(43, 22);
+            this.L_CountB_5.TabIndex = 3;
+            this.L_CountB_5.Text = "0";
+            this.L_CountB_5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.L_CountB_5.Value = 0;
+            // 
+            // L_CountB_4
+            // 
+            this.L_CountB_4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_CountB_4.BackColor = System.Drawing.Color.White;
+            this.L_CountB_4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.L_CountB_4.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.L_CountB_4.Location = new System.Drawing.Point(547, 121);
+            this.L_CountB_4.Margin = new System.Windows.Forms.Padding(1);
+            this.L_CountB_4.Name = "L_CountB_4";
+            this.L_CountB_4.Size = new System.Drawing.Size(43, 22);
+            this.L_CountB_4.TabIndex = 3;
+            this.L_CountB_4.Text = "0";
+            this.L_CountB_4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.L_CountB_4.Value = 0;
+            // 
+            // L_CountB_3
+            // 
+            this.L_CountB_3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_CountB_3.BackColor = System.Drawing.Color.White;
+            this.L_CountB_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.L_CountB_3.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.L_CountB_3.Location = new System.Drawing.Point(547, 97);
+            this.L_CountB_3.Margin = new System.Windows.Forms.Padding(1);
+            this.L_CountB_3.Name = "L_CountB_3";
+            this.L_CountB_3.Size = new System.Drawing.Size(43, 22);
+            this.L_CountB_3.TabIndex = 3;
+            this.L_CountB_3.Text = "0";
+            this.L_CountB_3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.L_CountB_3.Value = 0;
+            // 
+            // L_CountB_2
+            // 
+            this.L_CountB_2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_CountB_2.BackColor = System.Drawing.Color.White;
+            this.L_CountB_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.L_CountB_2.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.L_CountB_2.Location = new System.Drawing.Point(547, 73);
+            this.L_CountB_2.Margin = new System.Windows.Forms.Padding(1);
+            this.L_CountB_2.Name = "L_CountB_2";
+            this.L_CountB_2.Size = new System.Drawing.Size(43, 22);
+            this.L_CountB_2.TabIndex = 3;
+            this.L_CountB_2.Text = "0";
+            this.L_CountB_2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.L_CountB_2.Value = 0;
+            // 
+            // L_CountB_1
+            // 
+            this.L_CountB_1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_CountB_1.BackColor = System.Drawing.Color.White;
+            this.L_CountB_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.L_CountB_1.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.L_CountB_1.Location = new System.Drawing.Point(547, 49);
+            this.L_CountB_1.Margin = new System.Windows.Forms.Padding(1);
+            this.L_CountB_1.Name = "L_CountB_1";
+            this.L_CountB_1.Size = new System.Drawing.Size(43, 22);
+            this.L_CountB_1.TabIndex = 3;
+            this.L_CountB_1.Text = "0";
+            this.L_CountB_1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.L_CountB_1.Value = 0;
+            // 
+            // L_CountA_7
+            // 
+            this.L_CountA_7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_CountA_7.BackColor = System.Drawing.Color.White;
+            this.L_CountA_7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.L_CountA_7.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.L_CountA_7.Location = new System.Drawing.Point(807, 73);
+            this.L_CountA_7.Margin = new System.Windows.Forms.Padding(1);
+            this.L_CountA_7.Name = "L_CountA_7";
+            this.L_CountA_7.Size = new System.Drawing.Size(43, 22);
+            this.L_CountA_7.TabIndex = 3;
+            this.L_CountA_7.Text = "0";
+            this.L_CountA_7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.L_CountA_7.Value = 0;
+            // 
+            // L_CountA_6
+            // 
+            this.L_CountA_6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_CountA_6.BackColor = System.Drawing.Color.White;
+            this.L_CountA_6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.L_CountA_6.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.L_CountA_6.Location = new System.Drawing.Point(807, 49);
+            this.L_CountA_6.Margin = new System.Windows.Forms.Padding(1);
+            this.L_CountA_6.Name = "L_CountA_6";
+            this.L_CountA_6.Size = new System.Drawing.Size(43, 22);
+            this.L_CountA_6.TabIndex = 3;
+            this.L_CountA_6.Text = "0";
+            this.L_CountA_6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.L_CountA_6.Value = 0;
+            // 
+            // L_CountA_4
+            // 
+            this.L_CountA_4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_CountA_4.BackColor = System.Drawing.Color.White;
+            this.L_CountA_4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.L_CountA_4.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.L_CountA_4.Location = new System.Drawing.Point(502, 121);
+            this.L_CountA_4.Margin = new System.Windows.Forms.Padding(1);
+            this.L_CountA_4.Name = "L_CountA_4";
+            this.L_CountA_4.Size = new System.Drawing.Size(43, 22);
+            this.L_CountA_4.TabIndex = 3;
+            this.L_CountA_4.Text = "0";
+            this.L_CountA_4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.L_CountA_4.Value = 0;
+            // 
+            // L_CountA_3
+            // 
+            this.L_CountA_3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_CountA_3.BackColor = System.Drawing.Color.White;
+            this.L_CountA_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.L_CountA_3.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.L_CountA_3.Location = new System.Drawing.Point(502, 97);
+            this.L_CountA_3.Margin = new System.Windows.Forms.Padding(1);
+            this.L_CountA_3.Name = "L_CountA_3";
+            this.L_CountA_3.Size = new System.Drawing.Size(43, 22);
+            this.L_CountA_3.TabIndex = 3;
+            this.L_CountA_3.Text = "0";
+            this.L_CountA_3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.L_CountA_3.Value = 0;
+            // 
+            // L_CountA_2
+            // 
+            this.L_CountA_2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_CountA_2.BackColor = System.Drawing.Color.White;
+            this.L_CountA_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.L_CountA_2.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.L_CountA_2.Location = new System.Drawing.Point(502, 73);
+            this.L_CountA_2.Margin = new System.Windows.Forms.Padding(1);
+            this.L_CountA_2.Name = "L_CountA_2";
+            this.L_CountA_2.Size = new System.Drawing.Size(43, 22);
+            this.L_CountA_2.TabIndex = 3;
+            this.L_CountA_2.Text = "0";
+            this.L_CountA_2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.L_CountA_2.Value = 0;
+            // 
+            // L_CountA_1
+            // 
+            this.L_CountA_1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_CountA_1.BackColor = System.Drawing.Color.White;
+            this.L_CountA_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.L_CountA_1.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.L_CountA_1.Location = new System.Drawing.Point(502, 49);
+            this.L_CountA_1.Margin = new System.Windows.Forms.Padding(1);
+            this.L_CountA_1.Name = "L_CountA_1";
+            this.L_CountA_1.Size = new System.Drawing.Size(43, 22);
+            this.L_CountA_1.TabIndex = 3;
+            this.L_CountA_1.Text = "0";
+            this.L_CountA_1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.L_CountA_1.Value = 0;
+            // 
+            // L_CountA_0
+            // 
+            this.L_CountA_0.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_CountA_0.BackColor = System.Drawing.Color.White;
+            this.L_CountA_0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.L_CountA_0.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.L_CountA_0.Location = new System.Drawing.Point(502, 25);
+            this.L_CountA_0.Margin = new System.Windows.Forms.Padding(1);
+            this.L_CountA_0.Name = "L_CountA_0";
+            this.L_CountA_0.Size = new System.Drawing.Size(43, 22);
+            this.L_CountA_0.TabIndex = 3;
+            this.L_CountA_0.Text = "0";
+            this.L_CountA_0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.L_CountA_0.Value = 0;
+            // 
             // label4
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -437,6 +845,23 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "対象基板";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // L_CountB_0
+            // 
+            this.L_CountB_0.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_CountB_0.BackColor = System.Drawing.Color.White;
+            this.L_CountB_0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.L_CountB_0.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.L_CountB_0.Location = new System.Drawing.Point(547, 25);
+            this.L_CountB_0.Margin = new System.Windows.Forms.Padding(1);
+            this.L_CountB_0.Name = "L_CountB_0";
+            this.L_CountB_0.Size = new System.Drawing.Size(43, 22);
+            this.L_CountB_0.TabIndex = 3;
+            this.L_CountB_0.Text = "0";
+            this.L_CountB_0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.L_CountB_0.Value = 0;
             // 
             // cb_Hinban
             // 
@@ -455,6 +880,40 @@
             this.cb_Hinban.Size = new System.Drawing.Size(133, 23);
             this.cb_Hinban.TabIndex = 7;
             this.cb_Hinban.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
+            // 
+            // L_Count_0
+            // 
+            this.L_Count_0.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_Count_0.BackColor = System.Drawing.Color.White;
+            this.L_Count_0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.L_Count_0.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.L_Count_0.Location = new System.Drawing.Point(592, 25);
+            this.L_Count_0.Margin = new System.Windows.Forms.Padding(1);
+            this.L_Count_0.Name = "L_Count_0";
+            this.L_Count_0.Size = new System.Drawing.Size(43, 22);
+            this.L_Count_0.TabIndex = 3;
+            this.L_Count_0.Text = "0";
+            this.L_Count_0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.L_Count_0.Value = 0;
+            // 
+            // L_CountA
+            // 
+            this.L_CountA.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L_CountA.BackColor = System.Drawing.Color.White;
+            this.L_CountA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.L_CountA.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.L_CountA.Location = new System.Drawing.Point(807, 121);
+            this.L_CountA.Margin = new System.Windows.Forms.Padding(1);
+            this.L_CountA.Name = "L_CountA";
+            this.L_CountA.Size = new System.Drawing.Size(43, 22);
+            this.L_CountA.TabIndex = 3;
+            this.L_CountA.Text = "0";
+            this.L_CountA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.L_CountA.Value = 0;
             // 
             // L_Color1
             // 
@@ -964,465 +1423,6 @@
             this.toolStripButton5.Size = new System.Drawing.Size(36, 36);
             this.toolStripButton5.Text = "Undo";
             this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
-            // 
-            // L_CountA_5
-            // 
-            this.L_CountA_5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_CountA_5.BackColor = System.Drawing.Color.White;
-            this.L_CountA_5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.L_CountA_5.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.L_CountA_5.Location = new System.Drawing.Point(807, 25);
-            this.L_CountA_5.Margin = new System.Windows.Forms.Padding(1);
-            this.L_CountA_5.Name = "L_CountA_5";
-            this.L_CountA_5.Size = new System.Drawing.Size(43, 22);
-            this.L_CountA_5.TabIndex = 3;
-            this.L_CountA_5.Text = "0";
-            this.L_CountA_5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.L_CountA_5.Value = 0;
-            // 
-            // L_Count
-            // 
-            this.L_Count.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_Count.BackColor = System.Drawing.Color.White;
-            this.L_Count.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.L_Count.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.L_Count.Location = new System.Drawing.Point(897, 121);
-            this.L_Count.Margin = new System.Windows.Forms.Padding(1);
-            this.L_Count.Name = "L_Count";
-            this.L_Count.Size = new System.Drawing.Size(43, 22);
-            this.L_Count.TabIndex = 3;
-            this.L_Count.Text = "0";
-            this.L_Count.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.L_Count.Value = 0;
-            // 
-            // L_CountB
-            // 
-            this.L_CountB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_CountB.BackColor = System.Drawing.Color.White;
-            this.L_CountB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.L_CountB.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.L_CountB.Location = new System.Drawing.Point(852, 121);
-            this.L_CountB.Margin = new System.Windows.Forms.Padding(1);
-            this.L_CountB.Name = "L_CountB";
-            this.L_CountB.Size = new System.Drawing.Size(43, 22);
-            this.L_CountB.TabIndex = 3;
-            this.L_CountB.Text = "0";
-            this.L_CountB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.L_CountB.Value = 0;
-            // 
-            // L_Count_7
-            // 
-            this.L_Count_7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_Count_7.BackColor = System.Drawing.Color.White;
-            this.L_Count_7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.L_Count_7.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.L_Count_7.Location = new System.Drawing.Point(897, 73);
-            this.L_Count_7.Margin = new System.Windows.Forms.Padding(1);
-            this.L_Count_7.Name = "L_Count_7";
-            this.L_Count_7.Size = new System.Drawing.Size(43, 22);
-            this.L_Count_7.TabIndex = 3;
-            this.L_Count_7.Text = "0";
-            this.L_Count_7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.L_Count_7.Value = 0;
-            // 
-            // L_Count_6
-            // 
-            this.L_Count_6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_Count_6.BackColor = System.Drawing.Color.White;
-            this.L_Count_6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.L_Count_6.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.L_Count_6.Location = new System.Drawing.Point(897, 49);
-            this.L_Count_6.Margin = new System.Windows.Forms.Padding(1);
-            this.L_Count_6.Name = "L_Count_6";
-            this.L_Count_6.Size = new System.Drawing.Size(43, 22);
-            this.L_Count_6.TabIndex = 3;
-            this.L_Count_6.Text = "0";
-            this.L_Count_6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.L_Count_6.Value = 0;
-            // 
-            // L_Count_5
-            // 
-            this.L_Count_5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_Count_5.BackColor = System.Drawing.Color.White;
-            this.L_Count_5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.L_Count_5.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.L_Count_5.Location = new System.Drawing.Point(897, 25);
-            this.L_Count_5.Margin = new System.Windows.Forms.Padding(1);
-            this.L_Count_5.Name = "L_Count_5";
-            this.L_Count_5.Size = new System.Drawing.Size(43, 22);
-            this.L_Count_5.TabIndex = 3;
-            this.L_Count_5.Text = "0";
-            this.L_Count_5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.L_Count_5.Value = 0;
-            // 
-            // L_Count_4
-            // 
-            this.L_Count_4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_Count_4.BackColor = System.Drawing.Color.White;
-            this.L_Count_4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.L_Count_4.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.L_Count_4.Location = new System.Drawing.Point(592, 121);
-            this.L_Count_4.Margin = new System.Windows.Forms.Padding(1);
-            this.L_Count_4.Name = "L_Count_4";
-            this.L_Count_4.Size = new System.Drawing.Size(43, 22);
-            this.L_Count_4.TabIndex = 3;
-            this.L_Count_4.Text = "0";
-            this.L_Count_4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.L_Count_4.Value = 0;
-            // 
-            // L_Count_3
-            // 
-            this.L_Count_3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_Count_3.BackColor = System.Drawing.Color.White;
-            this.L_Count_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.L_Count_3.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.L_Count_3.Location = new System.Drawing.Point(592, 97);
-            this.L_Count_3.Margin = new System.Windows.Forms.Padding(1);
-            this.L_Count_3.Name = "L_Count_3";
-            this.L_Count_3.Size = new System.Drawing.Size(43, 22);
-            this.L_Count_3.TabIndex = 3;
-            this.L_Count_3.Text = "0";
-            this.L_Count_3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.L_Count_3.Value = 0;
-            // 
-            // L_Count_2
-            // 
-            this.L_Count_2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_Count_2.BackColor = System.Drawing.Color.White;
-            this.L_Count_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.L_Count_2.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.L_Count_2.Location = new System.Drawing.Point(592, 73);
-            this.L_Count_2.Margin = new System.Windows.Forms.Padding(1);
-            this.L_Count_2.Name = "L_Count_2";
-            this.L_Count_2.Size = new System.Drawing.Size(43, 22);
-            this.L_Count_2.TabIndex = 3;
-            this.L_Count_2.Text = "0";
-            this.L_Count_2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.L_Count_2.Value = 0;
-            // 
-            // L_Count_1
-            // 
-            this.L_Count_1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_Count_1.BackColor = System.Drawing.Color.White;
-            this.L_Count_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.L_Count_1.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.L_Count_1.Location = new System.Drawing.Point(592, 49);
-            this.L_Count_1.Margin = new System.Windows.Forms.Padding(1);
-            this.L_Count_1.Name = "L_Count_1";
-            this.L_Count_1.Size = new System.Drawing.Size(43, 22);
-            this.L_Count_1.TabIndex = 3;
-            this.L_Count_1.Text = "0";
-            this.L_Count_1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.L_Count_1.Value = 0;
-            // 
-            // L_CountB_7
-            // 
-            this.L_CountB_7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_CountB_7.BackColor = System.Drawing.Color.White;
-            this.L_CountB_7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.L_CountB_7.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.L_CountB_7.Location = new System.Drawing.Point(852, 73);
-            this.L_CountB_7.Margin = new System.Windows.Forms.Padding(1);
-            this.L_CountB_7.Name = "L_CountB_7";
-            this.L_CountB_7.Size = new System.Drawing.Size(43, 22);
-            this.L_CountB_7.TabIndex = 3;
-            this.L_CountB_7.Text = "0";
-            this.L_CountB_7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.L_CountB_7.Value = 0;
-            // 
-            // L_CountB_6
-            // 
-            this.L_CountB_6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_CountB_6.BackColor = System.Drawing.Color.White;
-            this.L_CountB_6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.L_CountB_6.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.L_CountB_6.Location = new System.Drawing.Point(852, 49);
-            this.L_CountB_6.Margin = new System.Windows.Forms.Padding(1);
-            this.L_CountB_6.Name = "L_CountB_6";
-            this.L_CountB_6.Size = new System.Drawing.Size(43, 22);
-            this.L_CountB_6.TabIndex = 3;
-            this.L_CountB_6.Text = "0";
-            this.L_CountB_6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.L_CountB_6.Value = 0;
-            // 
-            // L_CountB_5
-            // 
-            this.L_CountB_5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_CountB_5.BackColor = System.Drawing.Color.White;
-            this.L_CountB_5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.L_CountB_5.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.L_CountB_5.Location = new System.Drawing.Point(852, 25);
-            this.L_CountB_5.Margin = new System.Windows.Forms.Padding(1);
-            this.L_CountB_5.Name = "L_CountB_5";
-            this.L_CountB_5.Size = new System.Drawing.Size(43, 22);
-            this.L_CountB_5.TabIndex = 3;
-            this.L_CountB_5.Text = "0";
-            this.L_CountB_5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.L_CountB_5.Value = 0;
-            // 
-            // L_CountB_4
-            // 
-            this.L_CountB_4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_CountB_4.BackColor = System.Drawing.Color.White;
-            this.L_CountB_4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.L_CountB_4.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.L_CountB_4.Location = new System.Drawing.Point(547, 121);
-            this.L_CountB_4.Margin = new System.Windows.Forms.Padding(1);
-            this.L_CountB_4.Name = "L_CountB_4";
-            this.L_CountB_4.Size = new System.Drawing.Size(43, 22);
-            this.L_CountB_4.TabIndex = 3;
-            this.L_CountB_4.Text = "0";
-            this.L_CountB_4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.L_CountB_4.Value = 0;
-            // 
-            // L_CountB_3
-            // 
-            this.L_CountB_3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_CountB_3.BackColor = System.Drawing.Color.White;
-            this.L_CountB_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.L_CountB_3.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.L_CountB_3.Location = new System.Drawing.Point(547, 97);
-            this.L_CountB_3.Margin = new System.Windows.Forms.Padding(1);
-            this.L_CountB_3.Name = "L_CountB_3";
-            this.L_CountB_3.Size = new System.Drawing.Size(43, 22);
-            this.L_CountB_3.TabIndex = 3;
-            this.L_CountB_3.Text = "0";
-            this.L_CountB_3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.L_CountB_3.Value = 0;
-            // 
-            // L_CountB_2
-            // 
-            this.L_CountB_2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_CountB_2.BackColor = System.Drawing.Color.White;
-            this.L_CountB_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.L_CountB_2.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.L_CountB_2.Location = new System.Drawing.Point(547, 73);
-            this.L_CountB_2.Margin = new System.Windows.Forms.Padding(1);
-            this.L_CountB_2.Name = "L_CountB_2";
-            this.L_CountB_2.Size = new System.Drawing.Size(43, 22);
-            this.L_CountB_2.TabIndex = 3;
-            this.L_CountB_2.Text = "0";
-            this.L_CountB_2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.L_CountB_2.Value = 0;
-            // 
-            // L_CountB_1
-            // 
-            this.L_CountB_1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_CountB_1.BackColor = System.Drawing.Color.White;
-            this.L_CountB_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.L_CountB_1.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.L_CountB_1.Location = new System.Drawing.Point(547, 49);
-            this.L_CountB_1.Margin = new System.Windows.Forms.Padding(1);
-            this.L_CountB_1.Name = "L_CountB_1";
-            this.L_CountB_1.Size = new System.Drawing.Size(43, 22);
-            this.L_CountB_1.TabIndex = 3;
-            this.L_CountB_1.Text = "0";
-            this.L_CountB_1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.L_CountB_1.Value = 0;
-            // 
-            // L_CountA_7
-            // 
-            this.L_CountA_7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_CountA_7.BackColor = System.Drawing.Color.White;
-            this.L_CountA_7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.L_CountA_7.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.L_CountA_7.Location = new System.Drawing.Point(807, 73);
-            this.L_CountA_7.Margin = new System.Windows.Forms.Padding(1);
-            this.L_CountA_7.Name = "L_CountA_7";
-            this.L_CountA_7.Size = new System.Drawing.Size(43, 22);
-            this.L_CountA_7.TabIndex = 3;
-            this.L_CountA_7.Text = "0";
-            this.L_CountA_7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.L_CountA_7.Value = 0;
-            // 
-            // L_CountA_6
-            // 
-            this.L_CountA_6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_CountA_6.BackColor = System.Drawing.Color.White;
-            this.L_CountA_6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.L_CountA_6.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.L_CountA_6.Location = new System.Drawing.Point(807, 49);
-            this.L_CountA_6.Margin = new System.Windows.Forms.Padding(1);
-            this.L_CountA_6.Name = "L_CountA_6";
-            this.L_CountA_6.Size = new System.Drawing.Size(43, 22);
-            this.L_CountA_6.TabIndex = 3;
-            this.L_CountA_6.Text = "0";
-            this.L_CountA_6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.L_CountA_6.Value = 0;
-            // 
-            // L_CountA_4
-            // 
-            this.L_CountA_4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_CountA_4.BackColor = System.Drawing.Color.White;
-            this.L_CountA_4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.L_CountA_4.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.L_CountA_4.Location = new System.Drawing.Point(502, 121);
-            this.L_CountA_4.Margin = new System.Windows.Forms.Padding(1);
-            this.L_CountA_4.Name = "L_CountA_4";
-            this.L_CountA_4.Size = new System.Drawing.Size(43, 22);
-            this.L_CountA_4.TabIndex = 3;
-            this.L_CountA_4.Text = "0";
-            this.L_CountA_4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.L_CountA_4.Value = 0;
-            // 
-            // L_CountA_3
-            // 
-            this.L_CountA_3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_CountA_3.BackColor = System.Drawing.Color.White;
-            this.L_CountA_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.L_CountA_3.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.L_CountA_3.Location = new System.Drawing.Point(502, 97);
-            this.L_CountA_3.Margin = new System.Windows.Forms.Padding(1);
-            this.L_CountA_3.Name = "L_CountA_3";
-            this.L_CountA_3.Size = new System.Drawing.Size(43, 22);
-            this.L_CountA_3.TabIndex = 3;
-            this.L_CountA_3.Text = "0";
-            this.L_CountA_3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.L_CountA_3.Value = 0;
-            // 
-            // L_CountA_2
-            // 
-            this.L_CountA_2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_CountA_2.BackColor = System.Drawing.Color.White;
-            this.L_CountA_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.L_CountA_2.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.L_CountA_2.Location = new System.Drawing.Point(502, 73);
-            this.L_CountA_2.Margin = new System.Windows.Forms.Padding(1);
-            this.L_CountA_2.Name = "L_CountA_2";
-            this.L_CountA_2.Size = new System.Drawing.Size(43, 22);
-            this.L_CountA_2.TabIndex = 3;
-            this.L_CountA_2.Text = "0";
-            this.L_CountA_2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.L_CountA_2.Value = 0;
-            // 
-            // L_CountA_1
-            // 
-            this.L_CountA_1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_CountA_1.BackColor = System.Drawing.Color.White;
-            this.L_CountA_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.L_CountA_1.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.L_CountA_1.Location = new System.Drawing.Point(502, 49);
-            this.L_CountA_1.Margin = new System.Windows.Forms.Padding(1);
-            this.L_CountA_1.Name = "L_CountA_1";
-            this.L_CountA_1.Size = new System.Drawing.Size(43, 22);
-            this.L_CountA_1.TabIndex = 3;
-            this.L_CountA_1.Text = "0";
-            this.L_CountA_1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.L_CountA_1.Value = 0;
-            // 
-            // L_CountA_0
-            // 
-            this.L_CountA_0.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_CountA_0.BackColor = System.Drawing.Color.White;
-            this.L_CountA_0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.L_CountA_0.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.L_CountA_0.Location = new System.Drawing.Point(502, 25);
-            this.L_CountA_0.Margin = new System.Windows.Forms.Padding(1);
-            this.L_CountA_0.Name = "L_CountA_0";
-            this.L_CountA_0.Size = new System.Drawing.Size(43, 22);
-            this.L_CountA_0.TabIndex = 3;
-            this.L_CountA_0.Text = "0";
-            this.L_CountA_0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.L_CountA_0.Value = 0;
-            // 
-            // L_CountB_0
-            // 
-            this.L_CountB_0.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_CountB_0.BackColor = System.Drawing.Color.White;
-            this.L_CountB_0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.L_CountB_0.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.L_CountB_0.Location = new System.Drawing.Point(547, 25);
-            this.L_CountB_0.Margin = new System.Windows.Forms.Padding(1);
-            this.L_CountB_0.Name = "L_CountB_0";
-            this.L_CountB_0.Size = new System.Drawing.Size(43, 22);
-            this.L_CountB_0.TabIndex = 3;
-            this.L_CountB_0.Text = "0";
-            this.L_CountB_0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.L_CountB_0.Value = 0;
-            // 
-            // L_Count_0
-            // 
-            this.L_Count_0.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_Count_0.BackColor = System.Drawing.Color.White;
-            this.L_Count_0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.L_Count_0.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.L_Count_0.Location = new System.Drawing.Point(592, 25);
-            this.L_Count_0.Margin = new System.Windows.Forms.Padding(1);
-            this.L_Count_0.Name = "L_Count_0";
-            this.L_Count_0.Size = new System.Drawing.Size(43, 22);
-            this.L_Count_0.TabIndex = 3;
-            this.L_Count_0.Text = "0";
-            this.L_Count_0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.L_Count_0.Value = 0;
-            // 
-            // L_CountA
-            // 
-            this.L_CountA.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.L_CountA.BackColor = System.Drawing.Color.White;
-            this.L_CountA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.L_CountA.Font = new System.Drawing.Font("Meiryo UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.L_CountA.Location = new System.Drawing.Point(807, 121);
-            this.L_CountA.Margin = new System.Windows.Forms.Padding(1);
-            this.L_CountA.Name = "L_CountA";
-            this.L_CountA.Size = new System.Drawing.Size(43, 22);
-            this.L_CountA.TabIndex = 3;
-            this.L_CountA.Text = "0";
-            this.L_CountA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.L_CountA.Value = 0;
             // 
             // MainForm
             // 

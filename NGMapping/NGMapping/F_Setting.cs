@@ -127,6 +127,10 @@ namespace NGMapping
             
             ch_DispDummyQR.Checked = CSet.FLG_DispDummyQR;
 
+            DateTime[]dts=CSet.DayTimeRange;            
+            dtp_DayTime0.Value = dts[0];
+            dtp_DayTime1.Value = dts[1];
+
         }
 
         private void Item_ValueChanged(object sender, EventArgs e)
@@ -449,6 +453,11 @@ namespace NGMapping
         private void Ch_DispDummyQR_CheckedChanged(object sender, EventArgs e)
         {
             CSet.FLG_DispDummyQR = ch_DispDummyQR.Checked;
+        }
+
+        private void dtp_DayTime_ValueChanged(object sender, EventArgs e)
+        {
+            CSet.DayTimeRange = [dtp_DayTime0.Value, dtp_DayTime1.Value];
         }
     }
 }

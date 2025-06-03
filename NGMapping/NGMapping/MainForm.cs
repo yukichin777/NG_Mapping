@@ -48,7 +48,7 @@ namespace NGMapping
         readonly List<UndoInfo> undoList = []; // クリックデータの履歴
 
 
-
+        private GlobalKeyboardHook hook = new(); // グローバルキーボードフック
 
         private string operatorName = "";
 
@@ -130,7 +130,53 @@ namespace NGMapping
             dtPicker_TestDate.Enabled = !isQRead; // QRコード読み取りモードでは検査日ピッカーを無効化
             cb_Hinban.Enabled = !isQRead; // QRコード読み取りモードでは品番コンボボックスを無効化
 
+            if(isQRead)
+            {
+                hook=new GlobalKeyboardHook(); // QRコード読み取りモードではグローバルキーボードフックを使用
+                hook.SubmitKeyMode= SubmitKey.CR; // QRコード読み取りモードではEnterキーで送信
+                hook.InputSubmitted += Hook_InputSubmitted; 
+                hook.Start();
+            }
+
         }
+
+
+        DateTime makeDt;
+        string hinban = "";
+        private void Hook_InputSubmitted(object sender, KeyInputEventArgs e)
+        {
+            string QRTxt= e.InputText.Trim();
+            if (QRTxt.Length != 21) return;
+
+            string dtTxt = "20" + QRTxt.Substring(0, 2) + "/" + QRTxt.Substring(2, 2) + "/"; QRTxt.Substring(4, 2);
+
+            if(!DateTime.TryParse(dtTxt, out makeDt))
+            {
+                return;
+            }
+
+            switch (QRTxt.Substring(7, 6))
+            {
+                case "659000":
+                    hinban = "6365590";
+                    break;
+                case "663000":
+                    hinban = "6365630";
+                    break;
+                default:
+                    return; // 無効なS/N形式の場合は何もしない
+
+            }
+
+
+            throw new NotImplementedException();
+
+
+
+
+        }
+
+
         #endregion
         #region method-----色初期化/コンテキストメニュー作成
         private void ColorInit()
