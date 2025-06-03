@@ -109,18 +109,8 @@ namespace NGMapping
 
             Init();
 
-            toolStripComboBox1.ComboBox.SelectedIndexChanged += ComboBox_SelectedIndexChanged;
+            tsCombo_Language.ComboBox.SelectedIndexChanged += ComboBox_SelectedIndexChanged;
 
-        }
-
-       
-
-
-        private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string lang = ((ComboBox)sender).SelectedItem.ToString();
-            SetLanguage(lang); // 言語設定を更新
-            CSet.Language = lang; // 言語設定を保存
         }
 
         #endregion
@@ -130,17 +120,19 @@ namespace NGMapping
 
             db = new(CSet.DbPath, CSet.DbTableCFG(), false);
             ColorInit(); // 色の初期化とコンテキストメニューの作成
-            toolStripComboBox1.ComboBox.Text = CSet.Language;
+            tsCombo_Language.ComboBox.Text = CSet.Language;
             SetLanguage(CSet.Language); // 言語設定を適用
 
             isQRead = operatorName != "##"; 
             isQRDisp = isQRead && CSet.FLG_DispDummyQR;
-            
+
             menu_Save.Enabled = !isQRead; // QRコード読み取りモードでは保存ボタンを無効化
+            dtPicker_TestDate.Enabled = !isQRead; // QRコード読み取りモードでは検査日ピッカーを無効化
+            cb_Hinban.Enabled = !isQRead; // QRコード読み取りモードでは品番コンボボックスを無効化
 
         }
         #endregion
-        #region method-----色初期化
+        #region method-----色初期化/コンテキストメニュー作成
         private void ColorInit()
         {
             Color[] colors = CSet.NgColors;
@@ -180,10 +172,17 @@ namespace NGMapping
             }
         }
         #endregion
+        #region event------tsCombo_Language_IndexChanged
+        private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string lang = ((ComboBox)sender).SelectedItem.ToString();
+            SetLanguage(lang); // 言語設定を更新
+            CSet.Language = lang; // 言語設定を保存
+        }
+        #endregion
         #region method-----言語設定
         private void SetLanguage(string lang)
-        {
-           
+        {           
             List<string> ngtxt;
             int wd0 = 130;
             int wd1 = 130;
@@ -263,6 +262,12 @@ namespace NGMapping
                     L_A.Text = "A面";
                     L_B.Text = "B面";
                     button3.Text = "反転";
+
+                    ra_Normal.Text = "通常"; // 通常
+                    ra_TofuArea.Text = "塗布エリア"; // 塗布
+                    ra_KinshiArea.Text = "禁止エリア"; // 禁止
+
+
                     ngtxt = NgTexts_jp;
                     ngtxt.Add("消しゴム"); // 日本語のNGテキストを追加
                     ngtxt = NgTexts_jp;
