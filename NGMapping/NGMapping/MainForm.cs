@@ -1041,10 +1041,67 @@ namespace NGMapping
 
                 ImgGen[ind].addPoint(new NgCounter(x, y, ngType, ngText));
             }
-
-
-
         }
+        #region method----SaveForMode1(現場入力modeでの保存処理)
+        private void SaveForMode1()
+        {
+            x = [
+                [xy_A[0], xy_A[1], xy_A[2], xy_A[3], 0, 100, 0, 100],
+                [xy_B[0], xy_B[1], xy_B[2], xy_B[3], 0, 100, 0, 100],
+            ];
+            y = [
+                [0, 100, 0, 100, xy_A[4], xy_A[5], xy_A[6], xy_A[7]],
+                [0, 100, 0, 100, xy_B[4], xy_B[5], xy_B[6], xy_B[7]],
+            ];
+            if (!db.IsConnected)
+            {
+                MessageBox.Show("DB接続失敗");
+                return;
+            }
+            if (!ra_Day.Checked && !ra_Night.Checked)
+            {
+                MessageBox.Show("昼勤、夜勤を選択してください");
+                return;
+            }
+            DateTime testDate = dtPicker_TestDate.Value.Date;
+            string mkDate = dtPicker_TestDate.Value.ToString("yyyy-MM-dd");
+            string svDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            //string hinban = cb_Hinban.Text;
+            int isDay = ra_Day.Checked ? 1 : 0;
+            string ope = t_operator.Text;
+            if (string.IsNullOrEmpty(ope)) ope = "unknown";
+            // 現場入力モードの保存処理
+
+            string aaa = 
+                $"DELETE FROM T_Data " +
+                $"WHERE dID IN (SELECT ID FROM T_Daicho WHERE QRText = '{QRText}' AND Operator = '{operatorName}' AND isDay={isDay});";
+
+
+            List<string> SqlList0 =
+                [
+                    $"DELETE FROM T_Daicho WHERE QRText='{QRText}' AND Operator='{operatorName}' AND isDay={isDay};",
+                    $"DELETE FROM T_Data WHERE dID IN (SELECT ID FROM T_Daicho WHERE Hinban='{hinban}' AND TestDate='{mkDate}' AND isDay={isDay});"
+                ];
+            db.Execute(SqlList0);
+            string sql =
+                dbCM.MakeInsertSQL(
+                    "T_Daicho",
+                    new Dictionary<string, object>
+                    {
+                        { "mode", 1 },
+                        { "SN", SN },
+                        { "Operator", ope },
+                        { "TestDate", testDate },
+                        { "SaveDate", DateTime.Now },
+                        { "BoardDate", testDate },
+
+
+        #endregion
+
+
+
+
+
 
         private int GetArea(PointF loc, int ind)
         {
