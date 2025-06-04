@@ -80,10 +80,10 @@ namespace NGMapping
 
             t_operator.Text = opeName;
             operatorName = opeName;
-            //this.loginForm = loginForm;
+            this.loginForm = frm;
         }
         #endregion
-        #region event-----Formロード
+        #region event------Formロード
         private void MainForm_Load(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(CSet.DbPath) || !File.Exists(CSet.DbPath))
@@ -132,7 +132,7 @@ namespace NGMapping
 
             if(isQRead)
             {
-                hook=new GlobalKeyboardHook(); // QRコード読み取りモードではグローバルキーボードフックを使用
+                //hook=new GlobalKeyboardHook(); // QRコード読み取りモードではグローバルキーボードフックを使用
                 hook.SubmitKeyMode= SubmitKey.CR; // QRコード読み取りモードではEnterキーで送信
                 hook.InputSubmitted += Hook_InputSubmitted; 
                 hook.Start();
@@ -165,7 +165,6 @@ namespace NGMapping
                     break;
                 default:
                     return; // 無効なS/N形式の場合は何もしない
-
             }
         }
         #endregion
