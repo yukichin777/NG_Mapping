@@ -50,17 +50,29 @@ namespace NGMapping
 
         private GlobalKeyboardHook hook = new(); // グローバルキーボードフック
 
-        private string operatorName = "";
+        
 
         bool isQRDisp = false; // QRコードの表示フラグ
         bool isQRead = false; // QRコード読み取りフラグ
-        string NowSerial = ""; // シリアル番号
 
         SQLiteCon db;
 
-        f_Login loginForm;
+        readonly f_Login loginForm;
 
+        //DB用データ(T_Daicho用)
+        private static DateTime InitDt = new(1900, 1, 1); // 初期化用の検査日
 
+        private int mode = 0; // mode(0:紙から入力、1:検査場で入力) 
+        private string QRText = ""; // シリアル番号
+        private string SN = ""; // シリアル番号
+        private string operatorName = "";
+        private DateTime TestDate = InitDt;//  DateTime.Now; // 検査日時(Time情報あり）
+        private DateTime SaveDate = InitDt; // 保存日時(Time情報あり）
+        private DateTime BoardDate = InitDt; // 基板製造年月日(Time情報なし）
+        private bool isDay = false;
+        private string LineName = "";
+        private string hinban = "";
+        private string AB = "";
         #region constructor
         public MainForm(string opeName, f_Login frm)
         {
@@ -139,23 +151,46 @@ namespace NGMapping
             }
 
         }
+        #endregion
+
+        private bool InDayRange(DateTime dt)
+        {
+            var dtRange = CSet.DayTimeRange; // 日付範囲設定
+            return dt.TimeOfDay >= dtRange[0].TimeOfDay && dt.TimeOfDay < dtRange[1].TimeOfDay;
+        }
+        #region event-----QRコード読み取りイベント
 
 
-        DateTime makeDt;
-        string hinban = "";
         private void Hook_InputSubmitted(object sender, KeyInputEventArgs e)
-        {            
-            string QRTxt= e.InputText.Trim();
-            if (QRTxt.Length != 21) return;
+        {
+            //例：250528H659000B10213IF
+            //分離
+            //0-6（250528）：製造年月日
+            //6-6（H）：ライン名
+            //7-12（659000）：品番　　前１桁+"365"+2桁目から3桁　// 6+365+590で、6365590
+            //13-13（B）：基板面（A or B）
+            //14-20（10213IF）：シリアル番号（7桁）
+            mode = 1; // QRコード読み取りモードに設定
+            QRText = "";
+            SN = "";
+            hinban = ""; // 品番を初期化
+            TestDate = InitDt; // 検査日を初期化
+            SaveDate = InitDt; // 保存日時を初期化
+            BoardDate = InitDt; // 基板製造年月日を初期化
+            isDay = InDayRange(DateTime.Now);//現在時間で、昼勤か夜勤かを判定
 
-            string dtTxt = "20" + QRTxt.Substring(0, 2) + "/" + QRTxt.Substring(2, 2) + "/" + QRTxt.Substring(4, 2);
+            string QRCode = e.InputText.Trim();
+            if (QRCode.Length != 21) return;
 
-            if (!DateTime.TryParse(dtTxt, out makeDt))
+            string dtTxt = "20" + QRCode.Substring(0, 2) + "/" + QRCode.Substring(2, 2) + "/" + QRCode.Substring(4, 2);
+
+            if (!DateTime.TryParse(dtTxt, out DateTime bDate))
             {
                 return;
             }
 
-            switch (QRTxt.Substring(7, 6))
+
+            switch (QRCode.Substring(7, 6))
             {
                 case "659000":
                     hinban = "6365590";
@@ -166,6 +201,12 @@ namespace NGMapping
                 default:
                     return; // 無効なS/N形式の場合は何もしない
             }
+
+            BoardDate = bDate; // 基板製造年月日を設定
+            LineName = QRCode.Substring(6, 1); // ライン名を取得
+            AB = QRCode.Substring(13, 1); // ライン名を取得
+            SN = QRCode.Substring(14, 7); // シリアル番号を取得
+
         }
         #endregion
         #region method-----色初期化/コンテキストメニュー作成
@@ -322,7 +363,7 @@ namespace NGMapping
             tableLayoutPanel2.ColumnStyles[11].Width = wd1;
         }
         #endregion
-        #region event-----コンテキストメニューのクリックイベント
+        #region event------コンテキストメニューのクリックイベント
         private void MenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem menuItem = sender as ToolStripMenuItem;
@@ -451,7 +492,7 @@ namespace NGMapping
         private void setSN(bool FLG_ReadSN_FromDB) 
         {
 
-            NowSerial = "";
+            SN = "";
 
             if (cb_Hinban.SelectedIndex < 0) return;
             if(!ra_Day.Checked && !ra_Night.Checked) return;
@@ -499,11 +540,11 @@ namespace NGMapping
                     listBox1.Items.Clear(); // ListBoxの内容をクリア
                     listBox1.Items.AddRange([.. dtSNList.Rows.Cast<DataRow>().Select(row => row.Field<string>("SN"))]);
                 }
-                NowSerial = DummySN;
+                SN = DummySN;
 
             }
 
-            L_SN.Text = NowSerial; // ラベルに現在のシリアル番号を表示
+            L_SN.Text = SN; // ラベルに現在のシリアル番号を表示
 
 
         }
@@ -570,7 +611,7 @@ namespace NGMapping
             }
 
             // QRコードのテキストを設定
-            NowSerial = sn;
+            SN = sn;
             L_SN.Text = sn;
             // QRコードを表示
             DispQRCode(sn);
@@ -870,8 +911,8 @@ namespace NGMapping
             //この保存メソッドは紙から入力modeなので、operator別の処理は行わない
             List<string> SqlList0 =
                 [
-                $"DELETE FROM T_Daicho WHERE SN='{NowSerial}';",
-                $"DELETE FROM T_Data WHERE dID IN (SELECT ID FROM T_Daicho WHERE SN = '{NowSerial}');"
+                $"DELETE FROM T_Daicho WHERE SN='{SN}';",
+                $"DELETE FROM T_Data WHERE dID IN (SELECT ID FROM T_Daicho WHERE SN = '{SN}');"
                 ];
 
 
@@ -883,7 +924,7 @@ namespace NGMapping
                     new Dictionary<string, object>
                     {
                         { "mode", 0 },
-                        { "SN", NowSerial },
+                        { "SN", SN },
                         { "Operator", ope },
                         { "TestDate",testDate },
                         { "SaveDate", DateTime.Now },
@@ -921,7 +962,7 @@ namespace NGMapping
             db.Execute(SqlList);
 
             
-            if(!listBox1.Items.Contains(NowSerial))listBox1.Items.Add(NowSerial); // ListBoxの内容をクリア
+            if(!listBox1.Items.Contains(SN))listBox1.Items.Add(SN); // ListBoxの内容をクリア
             setSN(false); // S/Nを更新
 
             undoList.Clear(); // アンドゥリストをクリア

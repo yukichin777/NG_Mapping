@@ -135,21 +135,7 @@ namespace NGMapping
                 }
             }
         }
-        //public static FormWindowState WindowState
-        //{
-        //    get 
-        //    { 
-        //        string dum=Properties.Settings.Default.WindowState;
-        //        if(dum==FormWindowState.Maximized.ToString())return FormWindowState.Maximized;
-        //        return FormWindowState.Normal;
-        //    }
-        //    set
-        //    {                
-        //        Properties.Settings.Default.WindowState = value.ToString();
-        //        Properties.Settings.Default.Save();
-        //    }
-        //}
-
+ 
 
 
 
