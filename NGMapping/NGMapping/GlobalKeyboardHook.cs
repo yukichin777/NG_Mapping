@@ -132,6 +132,7 @@ namespace NGMapping
                             if (_buffer.Length >= submitPattern.Length &&
                                 _buffer.ToString(_buffer.Length - submitPattern.Length, submitPattern.Length) == submitPattern)
                             {
+                                _buffer.Length -= submitPattern.Length; // 修正点: バッファから送信キーを削除
                                 InputSubmitted?.Invoke(this, new KeyInputEventArgs(_buffer.ToString()));
                                 _buffer.Clear();
                             }

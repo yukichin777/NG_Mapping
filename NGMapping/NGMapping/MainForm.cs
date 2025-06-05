@@ -11,6 +11,7 @@ using System.Text;
 using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 using System.Windows.Media.Media3D;
+using static QRCoder.PayloadGenerator.SwissQrCode;
 
 namespace NGMapping
 {
@@ -60,19 +61,75 @@ namespace NGMapping
         readonly f_Login loginForm;
 
         //DB用データ(T_Daicho用)
-        private static DateTime InitDt = new(1900, 1, 1); // 初期化用の検査日
 
-        private int mode = 0; // mode(0:紙から入力、1:検査場で入力) 
-        private string QRText = ""; // シリアル番号
-        private string SN = ""; // シリアル番号
-        private string operatorName = "";
-        private DateTime TestDate = InitDt;//  DateTime.Now; // 検査日時(Time情報あり）
-        private DateTime SaveDate = InitDt; // 保存日時(Time情報あり）
-        private DateTime BoardDate = InitDt; // 基板製造年月日(Time情報なし）
-        private bool isDay = false;
-        private string LineName = "";
-        private string hinban = "";
-        private string AB = "";
+
+
+
+
+        private static class Daicho
+        {
+            public static int mode = 0;                 // mode(0:紙から入力、1:検査場で入力) 
+            public static string QRText = "";           // シリアル番号
+            public static string SN = "";               // シリアル番号
+            public static string operatorName = "";     // 検査者名
+            public static DateTime TestDate = InitDt;   //  DateTime.Now; // 検査日時(Time情報あり）
+            //public static DateTime SaveDate = InitDt;   // 保存日時(Time情報あり）
+            public static DateTime BoardDate = InitDt;  // 基板製造年月日(Time情報なし）
+            public static bool isDay = false;
+            public static string LineName = "";
+            public static string Hinban = "";
+            public static string AB = "";
+            public static int intDay// 昼勤か夜勤かを判定するプロパティ
+            {
+                get{ return isDay ? 1 : 0; }
+                set{isDay = (value != 0);}
+            } 
+            public static string saveDateStr
+            {
+                get { return DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"); }
+            } // 保存日時の文字列形式
+            public static string TestDateStr
+            {
+                get 
+                {
+                    if (mode == 0)
+                    { // 紙から入力モードの場合は00:00:00で検査日を返す
+                        return TestDate.Date.ToString("yyyy-MM-dd HH:mm:ss");
+                    }
+                    else
+                    { // 検査場で入力モードの場合は時間付で検査日を返す
+                        return TestDate.ToString("yyyy-MM-dd HH:mm:ss");
+                    }
+                
+                }
+            } // 検査日の文字列形式
+
+
+            private static DateTime InitDt = new(1900, 1, 1); // 初期化用の検査日
+            public static void clear()
+            {
+                QRText = "";
+                Daicho.SN = "";
+                TestDate = InitDt;
+                BoardDate = InitDt;
+                isDay = false;
+                LineName = "";
+                Hinban = "";
+                AB = "";
+            }
+        }
+
+        //private int mode = 0; // mode(0:紙から入力、1:検査場で入力) 
+        //private string QRText = ""; // シリアル番号
+        //private string SN = ""; // シリアル番号
+        //private string operatorName = "";
+        //private DateTime TestDate = InitDt;//  DateTime.Now; // 検査日時(Time情報あり）
+        //private DateTime SaveDate = InitDt; // 保存日時(Time情報あり）
+        //private DateTime BoardDate = InitDt; // 基板製造年月日(Time情報なし）
+        //private bool isDay = false;
+        //private string LineName = "";
+        //private string hinban = "";
+        //private string AB = "";
         #region constructor
         public MainForm(string opeName, f_Login frm)
         {
@@ -91,7 +148,7 @@ namespace NGMapping
             La_NgItems = [L_Color1, L_Color2, L_Color3, L_Color4, L_Color5, L_Color6, L_Color7, L_Color8];
 
             t_operator.Text = opeName;
-            operatorName = opeName;
+            Daicho.operatorName = opeName;
             this.loginForm = frm;
         }
         #endregion
@@ -135,7 +192,7 @@ namespace NGMapping
             tsCombo_Language.ComboBox.Text = CSet.Language;
             SetLanguage(CSet.Language); // 言語設定を適用
 
-            isQRead = operatorName != "##"; 
+            isQRead =Daicho.operatorName != "##"; 
             isQRDisp = isQRead && CSet.FLG_DispDummyQR;
 
             menu_Save.Enabled = !isQRead; // QRコード読み取りモードでは保存ボタンを無効化
@@ -158,9 +215,11 @@ namespace NGMapping
             var dtRange = CSet.DayTimeRange; // 日付範囲設定
             return dt.TimeOfDay >= dtRange[0].TimeOfDay && dt.TimeOfDay < dtRange[1].TimeOfDay;
         }
+
+       
+
+
         #region event-----QRコード読み取りイベント
-
-
         private void Hook_InputSubmitted(object sender, KeyInputEventArgs e)
         {
             //例：250528H659000B10213IF
@@ -170,14 +229,10 @@ namespace NGMapping
             //7-12（659000）：品番　　前１桁+"365"+2桁目から3桁　// 6+365+590で、6365590
             //13-13（B）：基板面（A or B）
             //14-20（10213IF）：シリアル番号（7桁）
-            mode = 1; // QRコード読み取りモードに設定
-            QRText = "";
-            SN = "";
-            hinban = ""; // 品番を初期化
-            TestDate = InitDt; // 検査日を初期化
-            SaveDate = InitDt; // 保存日時を初期化
-            BoardDate = InitDt; // 基板製造年月日を初期化
-            isDay = InDayRange(DateTime.Now);//現在時間で、昼勤か夜勤かを判定
+       
+            if (Daicho.SN != "")SaveForMode1(); // 現場入力モードでの保存処理
+
+            Daicho.clear();
 
             string QRCode = e.InputText.Trim();
             if (QRCode.Length != 21) return;
@@ -193,23 +248,181 @@ namespace NGMapping
             switch (QRCode.Substring(7, 6))
             {
                 case "659000":
-                    hinban = "6365590";
+                    Daicho.Hinban = "6365590";
                     break;
                 case "663000":
-                    hinban = "6365630";
+                    Daicho.Hinban = "6365630";
                     break;
                 default:
                     return; // 無効なS/N形式の場合は何もしない
             }
 
-            BoardDate = bDate; // 基板製造年月日を設定
-            LineName = QRCode.Substring(6, 1); // ライン名を取得
-            AB = QRCode.Substring(13, 1); // ライン名を取得
-            SN = QRCode.Substring(14, 7); // シリアル番号を取得
+            Daicho.QRText = QRCode; // QRコードのテキストを設定
+            Daicho.SN = QRCode.Substring(14, 7); // シリアル番号を設定
+            Daicho.TestDate = DateTime.Now; // 検査日時を現在の日時に設定
+            Daicho.isDay = InDayRange(Daicho.TestDate); // 昼勤か夜勤かを判定
+            Daicho.BoardDate = bDate; // 基板製造年月日を設定
+            Daicho.LineName = QRCode.Substring(6, 1); // ライン名を取得
+            Daicho.AB = QRCode.Substring(13, 1); // 基板面（A or B）を取得
+            //Daicho.mode = 1; // 作業モードは変更しない
+            //Daicho.SaveDate = DateTime.Now; // 保存日時は保存時に設定するのでここでは設定しない
+
+            ra_Day.Checked = Daicho.isDay; // 昼勤か夜勤かを設定
+            ra_Night.Checked = !Daicho.isDay; // 夜勤か昼勤かを設定
+            cb_Hinban.Text = Daicho.Hinban; // 品番コンボボックスに品番を設定
+
+            ReadDataWithQRText();
+
+
 
         }
         #endregion
-        #region method-----色初期化/コンテキストメニュー作成
+
+
+        #region method----SaveForMode1(現場入力modeでの保存処理)
+        private void SaveForMode1()
+        {
+            x = [
+                [xy_A[0], xy_A[1], xy_A[2], xy_A[3], 0, 100, 0, 100],
+                [xy_B[0], xy_B[1], xy_B[2], xy_B[3], 0, 100, 0, 100],
+            ];
+            y = [
+                [0, 100, 0, 100, xy_A[4], xy_A[5], xy_A[6], xy_A[7]],
+                [0, 100, 0, 100, xy_B[4], xy_B[5], xy_B[6], xy_B[7]],
+            ];
+            if (!db.IsConnected)
+            {
+                MessageBox.Show("DB接続失敗");
+                return;
+            }
+            if (!ra_Day.Checked && !ra_Night.Checked)
+            {
+                MessageBox.Show("昼勤、夜勤を選択してください");
+                return;
+            }
+            Daicho.intDay = ra_Day.Checked ? 1 : 0; // 昼勤か夜勤かを設定
+
+
+            // まず、現場入力モードの保存処理
+            List<string> SqlList0 =
+                [
+                $"DELETE FROM T_Data WHERE dID IN (SELECT ID FROM T_Daicho WHERE QRText = '{Daicho.QRText}' AND Operator = '{Daicho.operatorName}');",
+                $"DELETE FROM T_Daicho WHERE QRText = '{Daicho.QRText}' AND Operator = '{Daicho.operatorName}';"
+                ];
+            db.Execute(SqlList0);
+            string sql =
+                dbCM.MakeInsertSQL(
+                    "T_Daicho",
+                    new Dictionary<string, object>
+                    {
+                        { "mode", 1 },
+                        { "QRText", Daicho.QRText },
+                        { "SN", Daicho.SN },
+                        { "Operator", Daicho.operatorName },
+                        { "TestDate",Daicho.TestDate },
+                        { "SaveDate", DateTime.Now },
+                        { "BoardDate",Daicho.BoardDate},
+                        { "Hinban",Daicho.Hinban },
+                        { "LineName",Daicho.LineName },
+                        { "isDay", Daicho.isDay }
+                    });
+            db.InsertDataAndGetId(sql, out int dID);
+
+            List<string> SqlList = [];
+
+            string[] board = ["A", "B"];
+
+            for (int i = 0; i < 2; i++)
+            {
+
+                foreach (var item in ImgGen[i].NgPoints)
+                {
+                    int areaNo = GetArea(item.XYPercent, i);
+                    SqlList.Add(dbCM.MakeInsertSQL(
+                        "T_Data",
+                        new Dictionary<string, object>
+                        {
+                            { "dID", dID },
+                            { "Board", board[i] },
+                            { "NgType", item.NgType },
+                            { "NgText", item.NgText },
+                            { "X", item.XPercent }, // X座標を計算
+                            { "Y", item.YPercent }, // Y座標を計算
+                            { "Area", areaNo }
+                        }));
+                }
+            }
+
+            db.Execute(SqlList);
+
+
+            if (!listBox1.Items.Contains(Daicho.SN)) listBox1.Items.Add(Daicho.SN); // ListBoxの内容をクリア
+            setSN(false); // S/Nを更新
+
+            undoList.Clear(); // アンドゥリストをクリア
+            ImgGen[0].ClearPoints();
+            ImgGen[1].ClearPoints();
+            CountUpdate();
+        }
+        #endregion
+        #region ReadQRText
+        private void ReadDataWithQRText()
+        {
+            if (string.IsNullOrWhiteSpace(Daicho.QRText)) return; // 空文字列の場合は何もしない
+            List<string> sql = [];
+            string[] AB = ["A", "B"];
+            ImgGen[0].ClearPoints(); // 画像のポイントをクリア
+            ImgGen[1].ClearPoints(); // 画像のポイントをクリア
+
+
+            for (int i = 0; i < 2; i++)
+            {
+                sql.Add(
+                $"SELECT " +
+                $"  T2.Board AS Board, " +
+                $"  T2.NgType AS NgType, " +
+                $"  T2.NgText AS NgText, " +
+                $"  T2.X AS X, " +
+                $"  T2.Y AS Y " +
+                $"FROM " +
+                $"            T_Daicho T1 " +
+                $"  LEFT JOIN T_Data   T2 ON T2.dID = T1.ID " +
+                $"WHERE " +
+                $"  T1.QRText = '{Daicho.QRText}' " +
+                $"  AND T1.Operator = '{Daicho.operatorName}' " +
+                $"  AND T2.Board='{AB[i]}';");
+            }
+
+            
+            
+            
+            
+            db.GetData(sql, out DataTable[] dts);
+
+
+            for (int i = 0; i < 2; i++)
+            {
+                ImgGen[i].ClearPoints(); // 画像のポイントをクリア
+
+                if (dts[i].Rows.Count == 0) continue; // データがない場合はスキップ
+                foreach (DataRow ro in dts[i].Rows)
+                {
+
+                    float x = (float)ro.Field<double>("X");
+                    float y = (float)ro.Field<double>("Y");
+                    int typ = (int)ro.Field<long>("NgType");
+                    string txt = ro.Field<string>("NgText");
+
+                    NgCounter ngCounter = new NgCounter(x, y, typ, txt);
+                    ImgGen[i].addPoint(ngCounter); // 画像にポイントを追加
+                }
+            }
+        }
+        #endregion
+
+
+
+        #region method----色初期化/コンテキストメニュー作成
         private void ColorInit()
         {
             Color[] colors = CSet.NgColors;
@@ -249,7 +462,7 @@ namespace NGMapping
             }
         }
         #endregion
-        #region event------tsCombo_Language_IndexChanged
+        #region event-----tsCombo_Language_IndexChanged
         private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             string lang = ((ComboBox)sender).SelectedItem.ToString();
@@ -492,7 +705,7 @@ namespace NGMapping
         private void setSN(bool FLG_ReadSN_FromDB) 
         {
 
-            SN = "";
+            Daicho.SN = "";
 
             if (cb_Hinban.SelectedIndex < 0) return;
             if(!ra_Day.Checked && !ra_Night.Checked) return;
@@ -540,16 +753,14 @@ namespace NGMapping
                     listBox1.Items.Clear(); // ListBoxの内容をクリア
                     listBox1.Items.AddRange([.. dtSNList.Rows.Cast<DataRow>().Select(row => row.Field<string>("SN"))]);
                 }
-                SN = DummySN;
+                Daicho.SN = DummySN;
 
             }
 
-            L_SN.Text = SN; // ラベルに現在のシリアル番号を表示
+            L_SN.Text = Daicho.SN; // ラベルに現在のシリアル番号を表示
 
 
         }
-
-
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -611,7 +822,7 @@ namespace NGMapping
             }
 
             // QRコードのテキストを設定
-            SN = sn;
+            Daicho.SN = sn;
             L_SN.Text = sn;
             // QRコードを表示
             DispQRCode(sn);
@@ -911,8 +1122,8 @@ namespace NGMapping
             //この保存メソッドは紙から入力modeなので、operator別の処理は行わない
             List<string> SqlList0 =
                 [
-                $"DELETE FROM T_Daicho WHERE SN='{SN}';",
-                $"DELETE FROM T_Data WHERE dID IN (SELECT ID FROM T_Daicho WHERE SN = '{SN}');"
+                $"DELETE FROM T_Daicho WHERE SN='{Daicho.SN}';",
+                $"DELETE FROM T_Data WHERE dID IN (SELECT ID FROM T_Daicho WHERE SN = '{Daicho.SN}');"
                 ];
 
 
@@ -924,7 +1135,7 @@ namespace NGMapping
                     new Dictionary<string, object>
                     {
                         { "mode", 0 },
-                        { "SN", SN },
+                        { "SN", Daicho.SN },
                         { "Operator", ope },
                         { "TestDate",testDate },
                         { "SaveDate", DateTime.Now },
@@ -962,7 +1173,7 @@ namespace NGMapping
             db.Execute(SqlList);
 
             
-            if(!listBox1.Items.Contains(SN))listBox1.Items.Add(SN); // ListBoxの内容をクリア
+            if(!listBox1.Items.Contains(Daicho.SN))listBox1.Items.Add(Daicho.SN); // ListBoxの内容をクリア
             setSN(false); // S/Nを更新
 
             undoList.Clear(); // アンドゥリストをクリア
@@ -1042,61 +1253,7 @@ namespace NGMapping
                 ImgGen[ind].addPoint(new NgCounter(x, y, ngType, ngText));
             }
         }
-        #region method----SaveForMode1(現場入力modeでの保存処理)
-        private void SaveForMode1()
-        {
-            x = [
-                [xy_A[0], xy_A[1], xy_A[2], xy_A[3], 0, 100, 0, 100],
-                [xy_B[0], xy_B[1], xy_B[2], xy_B[3], 0, 100, 0, 100],
-            ];
-            y = [
-                [0, 100, 0, 100, xy_A[4], xy_A[5], xy_A[6], xy_A[7]],
-                [0, 100, 0, 100, xy_B[4], xy_B[5], xy_B[6], xy_B[7]],
-            ];
-            if (!db.IsConnected)
-            {
-                MessageBox.Show("DB接続失敗");
-                return;
-            }
-            if (!ra_Day.Checked && !ra_Night.Checked)
-            {
-                MessageBox.Show("昼勤、夜勤を選択してください");
-                return;
-            }
-            DateTime testDate = dtPicker_TestDate.Value.Date;
-            string mkDate = dtPicker_TestDate.Value.ToString("yyyy-MM-dd");
-            string svDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            //string hinban = cb_Hinban.Text;
-            int isDay = ra_Day.Checked ? 1 : 0;
-            string ope = t_operator.Text;
-            if (string.IsNullOrEmpty(ope)) ope = "unknown";
-            // 現場入力モードの保存処理
-
-            string aaa = 
-                $"DELETE FROM T_Data " +
-                $"WHERE dID IN (SELECT ID FROM T_Daicho WHERE QRText = '{QRText}' AND Operator = '{operatorName}' AND isDay={isDay});";
-
-
-            List<string> SqlList0 =
-                [
-                    $"DELETE FROM T_Daicho WHERE QRText='{QRText}' AND Operator='{operatorName}' AND isDay={isDay};",
-                    $"DELETE FROM T_Data WHERE dID IN (SELECT ID FROM T_Daicho WHERE Hinban='{hinban}' AND TestDate='{mkDate}' AND isDay={isDay});"
-                ];
-            db.Execute(SqlList0);
-            string sql =
-                dbCM.MakeInsertSQL(
-                    "T_Daicho",
-                    new Dictionary<string, object>
-                    {
-                        { "mode", 1 },
-                        { "SN", SN },
-                        { "Operator", ope },
-                        { "TestDate", testDate },
-                        { "SaveDate", DateTime.Now },
-                        { "BoardDate", testDate },
-
-
-        #endregion
+        
 
 
 

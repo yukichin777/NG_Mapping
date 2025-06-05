@@ -350,7 +350,8 @@ namespace NGMapping
                         new("TestDate", DataType.DateTime, isNullable: false),
                         new("SaveDate", DataType.DateTime, isNullable: false),
                         new("BoardDate", DataType.DateTime, isNullable: false),
-                        new("Hinban", DataType.Text, isNullable: true,maxLength:50),
+                        new("LineName", DataType.Text, isNullable: true,maxLength:2),
+                        new("Hinban", DataType.Text, isNullable: true,maxLength:20),
                         new("isDay", DataType.Boolean, isNullable: false)
                     ]
                 ),
@@ -366,10 +367,10 @@ namespace NGMapping
                     "T_Data",
                     [
                         new("ID", DataType.Integer, isNullable : false, isPrimaryKey : true, isAutoIncrement : true),
-                        new("dID", DataType.Integer, isNullable: false,maxLength:50),
-                        new("Board", DataType.Text, isNullable: true, maxLength : 5),
+                        new("dID", DataType.Integer, isNullable: false),
+                        new("Board", DataType.Text, isNullable: true, maxLength : 2),
                         new("NgType", DataType.Integer, isNullable: false),
-                        new("NgText", DataType.Text, isNullable: true),
+                        new("NgText", DataType.Text, isNullable: true, maxLength : 20),
                         new("X", DataType.Double, isNullable: false),
                         new("Y", DataType.Double, isNullable: false),
                         new("Area", DataType.Integer, isNullable: false),
