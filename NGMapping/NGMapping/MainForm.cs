@@ -183,7 +183,7 @@ namespace NGMapping
         }
 
         #endregion
-        #region method-----初期化
+        #region method----初期化
         private void Init()
         {
 
@@ -209,16 +209,13 @@ namespace NGMapping
 
         }
         #endregion
-
+        #region method----InDayRange(昼勤時間内か否かの判定)
         private bool InDayRange(DateTime dt)
         {
             var dtRange = CSet.DayTimeRange; // 日付範囲設定
             return dt.TimeOfDay >= dtRange[0].TimeOfDay && dt.TimeOfDay < dtRange[1].TimeOfDay;
         }
-
-       
-
-
+        #endregion
         #region event-----QRコード読み取りイベント
         private void Hook_InputSubmitted(object sender, KeyInputEventArgs e)
         {
@@ -277,8 +274,6 @@ namespace NGMapping
 
         }
         #endregion
-
-
         #region method----SaveForMode1(現場入力modeでの保存処理)
         private void SaveForMode1()
         {
@@ -365,7 +360,7 @@ namespace NGMapping
             CountUpdate();
         }
         #endregion
-        #region ReadQRText
+        #region method----ReadSataWithQRText
         private void ReadDataWithQRText()
         {
             if (string.IsNullOrWhiteSpace(Daicho.QRText)) return; // 空文字列の場合は何もしない
@@ -392,13 +387,7 @@ namespace NGMapping
                 $"  AND T1.Operator = '{Daicho.operatorName}' " +
                 $"  AND T2.Board='{AB[i]}';");
             }
-
-            
-            
-            
-            
             db.GetData(sql, out DataTable[] dts);
-
 
             for (int i = 0; i < 2; i++)
             {
@@ -419,9 +408,6 @@ namespace NGMapping
             }
         }
         #endregion
-
-
-
         #region method----色初期化/コンテキストメニュー作成
         private void ColorInit()
         {
@@ -697,15 +683,13 @@ namespace NGMapping
         {
             setSN(true);
         }
-
         private void ra_Day_Click(object sender, EventArgs e)
         {
             setSN(true);
         }
         private void setSN(bool FLG_ReadSN_FromDB) 
         {
-
-            Daicho.SN = "";
+            Daicho.clear(); // Daichoの内容をクリア
 
             if (cb_Hinban.SelectedIndex < 0) return;
             if(!ra_Day.Checked && !ra_Night.Checked) return;
@@ -918,6 +902,7 @@ namespace NGMapping
                     case "6365590":
                         xy_A = [.. CSet.XY_6365590_A];
                         xy_B = [.. CSet.XY_6365590_B];
+                        
                         break;
                     case "6365630":
                         xy_A = [.. CSet.XY_6365630_A];
