@@ -1,4 +1,5 @@
 ﻿using ClosedXML.Excel;
+using QRCoder;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -269,9 +270,6 @@ namespace NGMapping
             cb_Hinban.Text = Daicho.Hinban; // 品番コンボボックスに品番を設定
 
             ReadDataWithQRText();
-
-
-
         }
         #endregion
         #region method----SaveForMode1(現場入力modeでの保存処理)
@@ -687,26 +685,33 @@ namespace NGMapping
         {
             setSN(true);
         }
-        private void setSN(bool FLG_ReadSN_FromDB) 
+        private void setSN(bool FLG_ListUpSN) 
         {
             Daicho.clear(); // Daichoの内容をクリア
 
             if (cb_Hinban.SelectedIndex < 0) return;
             if(!ra_Day.Checked && !ra_Night.Checked) return;
-            DateTime dt = dtPicker_TestDate.Value.Date;
+            DateTime dt = dtPicker_TestDate.Value;
             DateTime dtNow = DateTime.Now;
             if (dt.Year < 2025 || dt > dtNow.Date) return; // 2025年以前や未来は処理しない
 
-            string hinban = cb_Hinban.Text;
-            int isDay = ra_Day.Checked ? 1 : 0; // 昼勤か夜勤かを判定
             string DummySN = $"{cb_Hinban.Text}_{dt:yyyyMMdd}_{dtNow:HHmmss}";
 
+            Daicho.Hinban = cb_Hinban.Text; // 品番を設定
+            Daicho.QRText = DummySN;        // QRコードテキストはDummy生成したSNとする
+            Daicho.SN = DummySN;            // シリアルはQRTextと同じとする
+            Daicho.TestDate = dt.Date;      // dtPickerに設定された日付(時間情報は削除する)
+            Daicho.isDay = ra_Day.Checked;  // 昼勤か夜勤かを判定(radioButtonの状態で判定)
+            Daicho.BoardDate = dt.Date;     // 検査日と同じ情報とする
+            Daicho.LineName = "-";          // 「-」とする
+            Daicho.AB = "";                 // 基板面（A or B）はここでは不要
+            //Daicho.mode = 1; // 作業モードは変更しない
+            //Daicho.SaveDate = DateTime.Now; // 保存日時は保存時に設定するのでここでは設定しない
 
             if (!LoadImageToPictureBox(out string mes))
             {
                 MessageBox.Show(mes);
             }
-
 
 
             if (isQRead)//QRコード読み取りモードの場合
@@ -718,7 +723,7 @@ namespace NGMapping
             }
             else //紙から入力の場合
             {
-                if (FLG_ReadSN_FromDB)
+                if (FLG_ListUpSN)//ListboxにS/Nを表示する場合
                 {
                     //まず、検査日がdtで、品番がcb_Hinban.TextのS/NﾘｽﾄをDBから取得する
                     //string sql = $"SELECT SN FROM T_Daicho WHERE TestDate = '{dt:yyyy-MM-dd}' AND Hinban = '{hinban.Replace("'", "''")}' AND isDay = {isDay} ORDER BY SaveDateTime DESC;";
@@ -726,9 +731,9 @@ namespace NGMapping
                     string sql = 
                         $"SELECT DISTINCT SN " +
                         $"FROM T_Daicho " +
-                        $"WHERE TestDate = '{dt:yyyy-MM-dd}' " +
-                        $"AND Hinban = '{hinban.Replace("'", "''")}' " +
-                        $"AND isDay = {isDay} " +
+                        $"WHERE TestDate LIKE '{Daicho.TestDate:yyyy-MM-dd}%' " +
+                        $"AND Hinban = '{Daicho.Hinban}' " +
+                        $"AND isDay = {Daicho.intDay} " +
                         $"ORDER BY SaveDateTime;";
 
 
@@ -867,9 +872,7 @@ namespace NGMapping
         #region method----画像読み込み
         private bool LoadImageToPictureBox(out string mes)
         {
-            
-
-            string Hinban = cb_Hinban.Text;
+            //string Hinban = cb_Hinban.Text;
             string appFolderPath = Application.StartupPath;// アプリケーション自身のフォルダのパスを取得
             string picFolderPath = Path.Combine(appFolderPath, "pic");
             string areaName=ra_TofuArea.Checked?"塗布":ra_KinshiArea.Checked?"禁止":""; // 勤務区分の取得
@@ -885,19 +888,19 @@ namespace NGMapping
                 // 指定品番の "_A.png" と "_B.png" のファイルパスを組み立てる
                 string[] pngFiles = 
                     [
-                    Path.Combine(picFolderPath, $"{Hinban}_A{areaName}.png"), 
-                    Path.Combine(picFolderPath, $"{Hinban}_B{areaName}.png")
+                    Path.Combine(picFolderPath, $"{Daicho.Hinban}_A{areaName}.png"), 
+                    Path.Combine(picFolderPath, $"{Daicho.Hinban}_B{areaName}.png")
                     ];
 
                 // すべてのファイルが存在するか確認
                 if (!pngFiles.All(File.Exists))
                 {
-                    mes = $"画像フォルダ内に {Hinban} のPNGファイルが存在しません。\n必要なファイル: {string.Join(", ", pngFiles)}";
+                    mes = $"画像フォルダ内に {Daicho.Hinban} のPNGファイルが存在しません。\n必要なファイル: {string.Join(", ", pngFiles)}";
                     return false;
                 }
 
                 
-                switch (Hinban)
+                switch (Daicho.Hinban)
                 {
                     case "6365590":
                         xy_A = [.. CSet.XY_6365590_A];

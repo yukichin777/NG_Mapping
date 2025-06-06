@@ -360,9 +360,6 @@ namespace NGMapping
             }
         }
         #endregion
-
-
-
     }
     #endregion
     #region enum-----サポートするデータ型定義
