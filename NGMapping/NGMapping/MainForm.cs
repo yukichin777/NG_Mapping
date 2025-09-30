@@ -1,4 +1,5 @@
 ﻿using ClosedXML.Excel;
+using DocumentFormat.OpenXml.InkML;
 using QRCoder;
 using System;
 using System.Collections.Generic;
@@ -235,6 +236,12 @@ namespace NGMapping
             string QRCode = e.InputText.Trim();
             if (QRCode.Length != 21) return;
 
+            this.Invoke(() =>
+            {
+                this.Text = $"NgMapping  L:{QRCode.Length}  Coe:{QRCode}";
+            });
+
+
             string dtTxt = "20" + QRCode.Substring(0, 2) + "/" + QRCode.Substring(2, 2) + "/" + QRCode.Substring(4, 2);
 
             if (!DateTime.TryParse(dtTxt, out DateTime bDate))
@@ -347,8 +354,7 @@ namespace NGMapping
             }
 
             db.Execute(SqlList);
-
-
+                        
             if (!listBox1.Items.Contains(Daicho.SN)) listBox1.Items.Add(Daicho.SN); // ListBoxの内容をクリア
             setSN(false); // S/Nを更新
 
@@ -763,6 +769,7 @@ namespace NGMapping
         private void ReadSN(string sn)
         {
             if (string.IsNullOrWhiteSpace(sn)) return; // 空文字列の場合は何もしない
+                int a=1;
             List<string> sql = [];
             string[] AB = ["A", "B"];
 
@@ -796,7 +803,7 @@ namespace NGMapping
             {
                 ImgGen[i].ClearPoints(); // 画像のポイントをクリア
 
-                if (dts[i].Rows.Count == 0) continue; // データがない場合はスキップ
+                if (dts == null || dts[i] == null || dts[i].Rows.Count == 0) continue; // データがない場合はスキップ
                 foreach (DataRow ro in dts[i].Rows)
                 {
 
